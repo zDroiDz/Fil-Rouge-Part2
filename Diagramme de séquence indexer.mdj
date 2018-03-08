@@ -1681,7 +1681,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "5 : lancerIndexation()",
+													"text": "4 : lancerIndexation()",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -1813,138 +1813,6 @@
 										},
 										{
 											"_type": "UMLSeqMessageView",
-											"_id": "AAAAAAFiBdxt3JxZUus=",
-											"_parent": {
-												"$ref": "AAAAAAFh11mV5JzsQgM="
-											},
-											"model": {
-												"$ref": "AAAAAAFiBdxt3JxYj08="
-											},
-											"subViews": [
-												{
-													"_type": "EdgeLabelView",
-													"_id": "AAAAAAFiBdxt3Jxb1x4=",
-													"_parent": {
-														"$ref": "AAAAAAFiBdxt3JxZUus="
-													},
-													"model": {
-														"$ref": "AAAAAAFiBdxt3JxYj08="
-													},
-													"visible": false,
-													"enabled": true,
-													"lineColor": "#000000",
-													"fillColor": "#ffffff",
-													"fontColor": "#000000",
-													"font": "Arial;13;0",
-													"showShadow": true,
-													"containerChangeable": false,
-													"containerExtending": false,
-													"left": 632,
-													"top": 243,
-													"width": 0,
-													"height": 13,
-													"autoResize": false,
-													"alpha": 1.5707963267948966,
-													"distance": 25,
-													"hostEdge": {
-														"$ref": "AAAAAAFiBdxt3JxZUus="
-													},
-													"edgePosition": 1,
-													"underline": false,
-													"horizontalAlignment": 2,
-													"verticalAlignment": 5,
-													"wordWrap": false
-												},
-												{
-													"_type": "EdgeLabelView",
-													"_id": "AAAAAAFiBdxt3JxcCeY=",
-													"_parent": {
-														"$ref": "AAAAAAFiBdxt3JxZUus="
-													},
-													"model": {
-														"$ref": "AAAAAAFiBdxt3JxYj08="
-													},
-													"visible": false,
-													"enabled": true,
-													"lineColor": "#000000",
-													"fillColor": "#ffffff",
-													"fontColor": "#000000",
-													"font": "Arial;13;0",
-													"showShadow": true,
-													"containerChangeable": false,
-													"containerExtending": false,
-													"left": 598,
-													"top": 244,
-													"width": 0,
-													"height": 13,
-													"autoResize": false,
-													"alpha": -1.5707963267948966,
-													"distance": 10,
-													"hostEdge": {
-														"$ref": "AAAAAAFiBdxt3JxZUus="
-													},
-													"edgePosition": 1,
-													"underline": false,
-													"horizontalAlignment": 2,
-													"verticalAlignment": 5,
-													"wordWrap": false
-												},
-												{
-													"_type": "UMLActivationView",
-													"_id": "AAAAAAFiBdxt3JxdxiE=",
-													"_parent": {
-														"$ref": "AAAAAAFiBdxt3JxZUus="
-													},
-													"model": {
-														"$ref": "AAAAAAFiBdxt3JxYj08="
-													},
-													"visible": true,
-													"enabled": true,
-													"lineColor": "#000000",
-													"fillColor": "#ffffff",
-													"fontColor": "#000000",
-													"font": "Arial;13;0",
-													"showShadow": true,
-													"containerChangeable": false,
-													"containerExtending": false,
-													"left": 572,
-													"top": 260,
-													"width": 14,
-													"height": 29,
-													"autoResize": false
-												}
-											],
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"head": {
-												"$ref": "AAAAAAFh11m74J0noOY="
-											},
-											"tail": {
-												"$ref": "AAAAAAFh11m74J0noOY="
-											},
-											"lineStyle": 0,
-											"points": "578:240;608:240;608:260;585:260",
-											"stereotypeLabel": {
-												"$ref": "AAAAAAFiBdxt3Jxb1x4="
-											},
-											"propertyLabel": {
-												"$ref": "AAAAAAFiBdxt3JxcCeY="
-											},
-											"activation": {
-												"$ref": "AAAAAAFiBdxt3JxdxiE="
-											},
-											"showProperty": true,
-											"showType": true
-										},
-										{
-											"_type": "UMLSeqMessageView",
 											"_id": "AAAAAAFiBd7z6Jzji1Q=",
 											"_parent": {
 												"$ref": "AAAAAAFh11mV5JzsQgM="
@@ -1983,7 +1851,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "6 : succes",
+													"text": "5 : succes",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -2237,7 +2105,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "7 : \"Indexation réussie avec succès\"",
+													"text": "6 : \"Indexation réussie avec succès\"",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -2407,7 +2275,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "8 : \"Indexation echouée\"",
+													"text": "7 : \"Indexation echouée\"",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -2811,23 +2679,6 @@
 									"name": "lancerIndexation()",
 									"source": {
 										"$ref": "AAAAAAFh11mp150A6sc="
-									},
-									"target": {
-										"$ref": "AAAAAAFh11m7350gXEc="
-									},
-									"visibility": "public",
-									"messageSort": "synchCall",
-									"isConcurrentIteration": false
-								},
-								{
-									"_type": "UMLMessage",
-									"_id": "AAAAAAFiBdxt3JxYj08=",
-									"_parent": {
-										"$ref": "AAAAAAFh11mV5Jzrc64="
-									},
-									"name": "Message1",
-									"source": {
-										"$ref": "AAAAAAFh11m7350gXEc="
 									},
 									"target": {
 										"$ref": "AAAAAAFh11m7350gXEc="
@@ -3705,6 +3556,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
