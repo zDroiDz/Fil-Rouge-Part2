@@ -38,24 +38,6 @@
 									"defaultDiagram": false,
 									"ownedViews": [
 										{
-											"_type": "UMLActivationView",
-											"_id": "AAAAAAFh11wlSZ2UKsg=",
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 413,
-											"top": 116,
-											"width": 14,
-											"height": 1261,
-											"autoResize": false
-										},
-										{
 											"_type": "UMLSeqLifelineView",
 											"_id": "AAAAAAFh11mp2J0BTfE=",
 											"_parent": {
@@ -1041,7 +1023,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "3 : saisieClavier(typeFichier)",
+													"text": "3 : saisieGraphique(typeFichier)",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -1199,9 +1181,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 164,
+													"left": 155,
 													"top": 228,
-													"width": 134.22119140625,
+													"width": 153.7529296875,
 													"height": 13,
 													"autoResize": false,
 													"alpha": 1.5707963267948966,
@@ -1211,7 +1193,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "4 : \"Saisissez le fichier\"",
+													"text": "4 : \"Sélectionnez le fichier\"",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -1709,9 +1691,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 164,
+													"left": 156,
 													"top": 344,
-													"width": 144.498046875,
+													"width": 161.12890625,
 													"height": 13,
 													"autoResize": false,
 													"alpha": 1.5707963267948966,
@@ -1721,7 +1703,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "7 : entreeClavier(moteur)",
+													"text": "7 : saisieGraphique(moteur)",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -2049,9 +2031,9 @@
 													"showShadow": true,
 													"containerChangeable": false,
 													"containerExtending": false,
-													"left": 171,
+													"left": 163,
 													"top": 432,
-													"width": 130.7744140625,
+													"width": 147.4052734375,
 													"height": 13,
 													"autoResize": false,
 													"alpha": 1.5707963267948966,
@@ -2061,7 +2043,7 @@
 													},
 													"edgePosition": 1,
 													"underline": false,
-													"text": "9 : entreeClavier(seuil)",
+													"text": "9 : saisieGraphique(seuil)",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -5232,7 +5214,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFh11mV5Jzrc64="
 									},
-									"name": "saisieClavier",
+									"name": "saisieGraphique",
 									"source": {
 										"$ref": "AAAAAAFh11mp150A6sc="
 									},
@@ -5250,7 +5232,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFh11mV5Jzrc64="
 									},
-									"name": "\"Saisissez le fichier\"",
+									"name": "\"Sélectionnez le fichier\"",
 									"source": {
 										"$ref": "AAAAAAFh11m7350gXEc="
 									},
@@ -5302,7 +5284,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFh11mV5Jzrc64="
 									},
-									"name": "entreeClavier(moteur)",
+									"name": "saisieGraphique",
 									"source": {
 										"$ref": "AAAAAAFh11mp150A6sc="
 									},
@@ -5311,6 +5293,7 @@
 									},
 									"visibility": "public",
 									"messageSort": "synchCall",
+									"arguments": "moteur",
 									"isConcurrentIteration": false
 								},
 								{
@@ -5336,7 +5319,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFh11mV5Jzrc64="
 									},
-									"name": "entreeClavier",
+									"name": "saisieGraphique",
 									"source": {
 										"$ref": "AAAAAAFh11mp150A6sc="
 									},
