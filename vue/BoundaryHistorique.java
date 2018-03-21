@@ -1,15 +1,16 @@
 package vue;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import control.Clavier;
 import control.ControlHistorique;
 
-public class BoundaryConsulterHistorique {
+public class BoundaryHistorique {
 
 	ControlHistorique controlHistorique;
 	
-	public BoundaryConsulterHistorique(ControlHistorique controlHistorique) {
+	public BoundaryHistorique(ControlHistorique controlHistorique) {
 		this.controlHistorique = controlHistorique;
 	}
 	
@@ -39,5 +40,9 @@ public class BoundaryConsulterHistorique {
 			System.out.println(historiqueRecherche);
 		}
 		
+	}
+	
+	public void ajouterHistorique(String requeteRecherche, List<String> resultatRecherche) {
+		controlHistorique.ajouterHistorique(requeteRecherche, resultatRecherche);
 	}
 }

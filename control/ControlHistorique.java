@@ -19,4 +19,12 @@ public class ControlHistorique {
 	public List<String> consulterListeRecherche(){
 		return BDhistorique.getListeRecherche();
 	}
+
+	public void ajouterHistorique(String requeteRecherche, List<String> resultatRecherche) {
+		BDhistorique.ajouterRecherche(requeteRecherche, resultatRecherche);
+	}
+	
+	public String toString() {
+		return ("Affichage BD : " + BDhistorique.toString() + "\n");
+	}
 }

@@ -8,13 +8,10 @@ import java.util.Map;
 public class BDHistorique {
 	
 	//2 Hasmap : Une corresponds à la requette, l'autre au résultats de recherche
-	Map<Integer,String> listeRequeteRecherche;
-	Map<Integer,ArrayList<String>> listeResultatRecherche;
+	protected static Map<Integer,String> listeRequeteRecherche = new HashMap<>();
+	protected static Map<Integer,List<String>> listeResultatRecherche = new HashMap<>();
 
-    private BDHistorique()
-    {
-        this.listeResultatRecherche=new HashMap<>();
-    }
+  
 
     private static class BDHistoriqueHolder
     {
@@ -26,10 +23,10 @@ public class BDHistorique {
         return BDHistoriqueHolder.instance;
     }
 
-    public  void ajouterRecherche(String recherche, ArrayList<String> resultatRecherche)
+    public  void ajouterRecherche(String recherche, List<String> resultatRecherche)
     {
-    	this.listeRequeteRecherche.put(listeRequeteRecherche.size(), recherche);
-        this.listeResultatRecherche.put(listeResultatRecherche.size(),resultatRecherche);
+    	listeRequeteRecherche.put(listeRequeteRecherche.size(), recherche);
+        listeResultatRecherche.put(listeResultatRecherche.size(),resultatRecherche);
     }
 
     
@@ -53,10 +50,11 @@ public class BDHistorique {
     	String retour = "";
     	
     	//Note : Pas d'utilisation d'iterator, car parcourir 2 listes en même temps
-    	for(int i =0;i<=listeRequeteRecherche.size();i++) {
-    		retour =  "Requete : " + listeRequeteRecherche.get(i) + ",Resultats : " + listeResultatRecherche.get(i).toString() + "\n";
+    	if(listeRequeteRecherche.size() != 0) {
+	    	for(int i =0;i<listeRequeteRecherche.size();i++) {
+	    		retour +=  "Requete : " + listeRequeteRecherche.get(i) + ",Resultats : " + String.valueOf(listeResultatRecherche.get(i).toString()) + "\n";
+	    	}
     	}
-    	
     	return retour;
     }
 
