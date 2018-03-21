@@ -410,7 +410,7 @@
 													"left": 420,
 													"top": 80,
 													"width": 1,
-													"height": 553,
+													"height": 585,
 													"autoResize": false
 												}
 											],
@@ -426,7 +426,7 @@
 											"left": 344,
 											"top": 40,
 											"width": 152.208984375,
-											"height": 593,
+											"height": 625,
 											"autoResize": false,
 											"stereotypeDisplay": "label",
 											"showVisibility": true,
@@ -3800,6 +3800,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
@@ -3817,6 +3818,7 @@
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
+							"type": "",
 							"isReadOnly": false,
 							"isOrdered": false,
 							"isUnique": false,
