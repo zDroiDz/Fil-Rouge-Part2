@@ -2,10 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class BDProfil {
 	
 	private List<Profil> lesProfils;
+	private Map<Integer,Profil> lesProfils1;
 	
 	private BDProfil() {
 		this.lesProfils=new ArrayList<>();
@@ -24,7 +26,6 @@ public class BDProfil {
 	    public  void ajouterUtilisateur(Profil user)
 	    {
 	        this.lesProfils.add(user);
-
 	    }
 
 	    public String toString()

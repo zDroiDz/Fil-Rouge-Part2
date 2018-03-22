@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DescripteurTexte extends Descripteur {
 	
-private Map<Integer,String> map;
+private Map<String,Integer> map;
 	
 	public DescripteurTexte() {
 		// TODO Auto-generated constructor stub
@@ -14,13 +14,20 @@ private Map<Integer,String> map;
 	
 	public void addContent(int nbOccurences,String word)
 	{
-		this.map.put(nbOccurences, word);
+		this.map.put(word, nbOccurences);
 	}
-     
-	
 	@Override
 	public String toString() {
 		return "DescripteurImage [map=" + map + "]";
 	}
 
+	public boolean checkSeuil(String motCle, int seuil) {
+		
+		if(this.map.get(motCle)>=seuil)
+		{
+			return true;
+		}
+		return false;
+		
+	}
 }

@@ -13,6 +13,11 @@ public class TestCreerProfilEtSidentifier {
 		ControlCreerProfil controlCreerProfil=new ControlCreerProfil();
 		BoundaryCreerProfilAdmin admin=new BoundaryCreerProfilAdmin(controlCreerProfil);
 		
+		admin.creerProfil();
+		System.out.println(controlCreerProfil.visualiserBDUtilisateur());
+		
+		
+		/*
 		BDProfil salut=BDProfil.getInstance();
 		ControlSIdentifier controlSIdentifier=new ControlSIdentifier();
 		
@@ -21,7 +26,7 @@ public class TestCreerProfilEtSidentifier {
 		System.out.println(controlCreerProfil.visualiserBDUtilisateur());
 		
 		BoundarySIdentifier boundarySIdentifier=new BoundarySIdentifier(controlSIdentifier);
-		boundarySIdentifier.connexion();
+		boundarySIdentifier.connexion();*/
 		
 		
 	}

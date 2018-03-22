@@ -61,8 +61,12 @@ public class ControlRechercher {
 	
 	public List<String> lancerRechercheMotCle(String motCle,int seuil){
 		List<String> listeDescripteursRecherche=new ArrayList<>();
-	     
-	     /*Reste à completer */ 
+	    listeDescripteursRecherche = bdTexte.getDescripteurs(motCle, seuil);
+	    
+		
+		
+		
+		
 		return listeDescripteursRecherche;
 		
 	}

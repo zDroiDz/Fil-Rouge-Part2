@@ -26,16 +26,13 @@ public class ControlCreerProfil {
 		case UTILISATEUR :
 			Utilisateur client =(Utilisateur)this.fabriqueProfil.getProfil(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);
 		    bdUtilisateur.ajouterUtilisateur(client);
+		    //bdProfil.ajouterProfil(client);
 		    break;
 		case ADMIN	:
 			Admin personnel =(Admin)this.fabriqueProfil.getProfil(ProfilUtilisateur.ADMIN, nom, prenom, mdp);
 			personnel.definirGerant();
 			bdAdministrateur.ajouterPersonnel(personnel);
-		    break;
-		case ADMING :
-			Admin personnelg =(Admin)this.fabriqueProfil.getProfil(ProfilUtilisateur.ADMING, nom, prenom, mdp);
-		    personnelg.definirGerant();
-		    bdAdministrateur.ajouterPersonnel(personnelg);
+			//bdProfil.ajouterProfil(client);
 		    break;
 		}
 	

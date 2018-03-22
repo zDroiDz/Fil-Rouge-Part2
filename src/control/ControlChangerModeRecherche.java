@@ -6,10 +6,6 @@ public class ControlChangerModeRecherche {
 		
 	}
 	
-	public boolean connexion(){
-		boolean connexionOK = false;
-		return connexionOK;
-	}
 	
 	public boolean setMode(int choix){
 		boolean changement = false;

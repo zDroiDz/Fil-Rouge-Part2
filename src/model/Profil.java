@@ -25,9 +25,14 @@ public abstract class Profil {
 		this.isHistorique=false;
 	}
 	
-	public void definirAdmin()
+	
+	public void setAdmin()
 	{
 		this.admin=true;
+	}
+	
+	public boolean getAdmin() {
+		return this.admin;
 	}
 	
 	public String getIdentifiant()

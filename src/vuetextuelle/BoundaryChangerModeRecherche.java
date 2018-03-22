@@ -15,9 +15,8 @@ public class BoundaryChangerModeRecherche {
 		this.controlChangerModeRecherche= controlChangerModeRecherche;
 	}
 	
-	public void  changerModeRecherche (){ // methode connexion() ds le diag de classe
+	public void  changerModeRecherche (){ 
 		int choix;
-	//	if (controlConfigurer.connexion()){
 		Clavier clavier = new Clavier();
 		System.out.println("Choississez le mode de recherche");
 		System.out.println("1 : mode ouvert");
@@ -30,8 +29,6 @@ public class BoundaryChangerModeRecherche {
 		else {
 			System.out.println("Probleme lors du changement de mode : mode inchange");
 		}
-		
-	//}
 
 	}
 

@@ -1,4 +1,5 @@
-package vue;
+package vuetextuelle;
+
 
 import java.util.Scanner;
 
