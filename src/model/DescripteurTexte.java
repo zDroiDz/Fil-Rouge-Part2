@@ -21,13 +21,12 @@ private Map<String,Integer> map;
 		return "DescripteurImage [map=" + map + "]";
 	}
 
-	public boolean checkSeuil(String motCle, int seuil) {
-		
+	public boolean checkSeuil(String motCle, int seuil) 
+	{
 		if(this.map.get(motCle)>=seuil)
 		{
 			return true;
 		}
 		return false;
-		
 	}
 }
