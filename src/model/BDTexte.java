@@ -52,9 +52,6 @@ public class BDTexte {
     	return listeDescripteursRecherche;
     }
     
-    
-    
-    
     public String toString()
     {
         return listeDescripteursTexte.toString();
