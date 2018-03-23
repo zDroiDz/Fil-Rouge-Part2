@@ -1,6 +1,9 @@
 package model;
 
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BDTexte {
@@ -34,6 +37,24 @@ public class BDTexte {
 
     }
 
+    
+    public List<String> getDescripteurs(String motCle,int seuil){
+    	List<String> listeDescripteursRecherche =new ArrayList<>();
+    	
+    	for(DescripteurTexte d: this.listeDescripteursTexte.values())
+    	{
+    		if(d.checkSeuil(motCle, seuil))
+    		{
+    			listeDescripteursRecherche.add(d.toString());
+    		}
+    	}
+    	
+    	return listeDescripteursRecherche;
+    }
+    
+    
+    
+    
     public String toString()
     {
         return listeDescripteursTexte.toString();

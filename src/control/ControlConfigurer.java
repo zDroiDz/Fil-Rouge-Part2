@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import model.BDMoteur;
+import model.Moteur;
+
 public class ControlConfigurer {
 
 	
@@ -17,6 +20,15 @@ public class ControlConfigurer {
 	int nbIntervalles; 
 	int nbBitsNb ;
 	int nbBitsCouleur ;
+	
+	private BDMoteur bdMoteur=BDMoteur.getInstance();
+	
+
+	public void creerMoteur(int nbOccTxt,int  nbEch,int nbIntervallle,int nbBitsCouleur){
+		Moteur moteurCreer=new Moteur(nbOccTxt,nbEch,nbIntervallle,nbBitsCouleur);
+		bdMoteur.ajouterMoteur(moteurCreer);
+		
+	}
 	
 	public int getNbOccTxt() {
 		return nbOccTxt;
