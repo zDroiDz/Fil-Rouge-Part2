@@ -40,6 +40,10 @@ public abstract class Profil {
 		return this.identifiant;
 	}
 	
+	public void definirAdmin(){
+		this.admin = true ;
+	}
+	
 	public String getMDP()
 	{
 		return this.mdp;

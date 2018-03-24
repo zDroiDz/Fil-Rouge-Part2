@@ -18,7 +18,6 @@ private Map<String,Integer> map;
 		this.map.put(word, nbOccurences);
 	}
 	
-
 	@Override
 	public String toString() {
 		return "DescripteurTexte [map=" + map + "]"+super.toString();
@@ -26,10 +25,13 @@ private Map<String,Integer> map;
 
 	public boolean checkSeuil(String motCle, int seuil) 
 	{
-		if(this.map.get(motCle)>=seuil)
-		{
-			return true;
+		if(this.map.containsKey(motCle)){
+			if(this.map.get(motCle)>=seuil)
+			{
+				return true;
+			}
 		}
+		
 		return false;
 	}
 }

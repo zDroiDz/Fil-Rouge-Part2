@@ -1,46 +1,44 @@
 package control;
 
 import model.Admin;
-import model.BDAdministrateur;
-import model.BDUtilisateur;
 import model.FabriqueProfil;
+import model.Profil;
 import model.ProfilUtilisateur;
 import model.Utilisateur;
+import model.BDProfil ;
 
 
 
 
 public class ControlCreerProfil {
 	private FabriqueProfil fabriqueProfil ;
-	private BDUtilisateur bdUtilisateur = BDUtilisateur.getInstance();
-	private BDAdministrateur bdAdministrateur = BDAdministrateur.getInstance() ;
+	private BDProfil bdProfil =BDProfil.getInstance();
 	public ControlCreerProfil() {
 		this.fabriqueProfil = new FabriqueProfil();
-		this.bdUtilisateur = BDUtilisateur.getInstance();
-		this.bdAdministrateur = BDAdministrateur.getInstance();
+		
 	}
-	public void creerProfilGerant(ProfilUtilisateur profilUtilisateur ,String nom ,String prenom ,String mdp)
+	public Profil creerProfil(ProfilUtilisateur profilUtilisateur ,String nom ,String prenom ,String mdp)
 	{
+		Profil profil = null ;
 		switch (profilUtilisateur)
 		{
 		case UTILISATEUR :
-			Utilisateur client =(Utilisateur)this.fabriqueProfil.getProfil(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);
-		    bdUtilisateur.ajouterUtilisateur(client);
-		    //bdProfil.ajouterProfil(client);
+			profil = this.fabriqueProfil.getProfil(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);
+			bdProfil.ajouterUtilisateur(profil);
 		    break;
 		case ADMIN	:
-			Admin personnel =(Admin)this.fabriqueProfil.getProfil(ProfilUtilisateur.ADMIN, nom, prenom, mdp);
-			personnel.definirGerant();
-			bdAdministrateur.ajouterPersonnel(personnel);
-			//bdProfil.ajouterProfil(client);
+			profil = this.fabriqueProfil.getProfil(ProfilUtilisateur.ADMIN, nom, prenom, mdp);
+			profil.definirAdmin();
+			bdProfil.ajouterUtilisateur(profil);
 		    break;
 		}
+		
+		return profil ;
 	
 	}
 	public String visualiserBDUtilisateur() {
-		String retour = this.bdAdministrateur.toString();
+		String retour = this.bdProfil.toString();
 		
-		retour += "\n"+this.bdUtilisateur.toString();
 		return retour;
 	}
 }

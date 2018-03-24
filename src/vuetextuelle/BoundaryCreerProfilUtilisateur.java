@@ -1,6 +1,7 @@
 package vuetextuelle;
 
 
+import model.Profil;
 import model.ProfilUtilisateur;
 import control.ControlCreerProfil;
 
@@ -13,7 +14,7 @@ public class BoundaryCreerProfilUtilisateur {
 		this.controlCreerProfil=controlCreerProfil;
 	}
 	
-	public void creerProfil()
+	public Profil creerProfil()
 	{
 		Clavier clavier =new Clavier();
 		System.out.println("Veuillez entrez votre nom");
@@ -23,7 +24,10 @@ public class BoundaryCreerProfilUtilisateur {
 		System.out.println("Veuillez entrez votre mot de passe");
 		String mdp = clavier.entrerClavierString();
 		
-	    this.controlCreerProfil.creerProfilGerant(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);		}
+	   return this.controlCreerProfil.creerProfil(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);
+				
+		
+	}
 	
 	
 	

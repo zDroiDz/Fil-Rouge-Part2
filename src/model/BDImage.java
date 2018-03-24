@@ -32,7 +32,38 @@ public class BDImage {
         return BDImageHolder.instance;
     }
     
-    
+    public List<DescripteurImage> getDescripteurs(int couleur, int seuil) {
+		// TODO Auto-generated method stub
+    	
+    	List<DescripteurImage> listImage = new ArrayList<>();
+    	
+    	switch(couleur){
+    		case 1:
+    			for(DescripteurImage d : this.tabR){
+    				if(d.checkPlage(seuil)){
+    					listImage.add(d);
+    				}
+    			}
+    			break;
+    		case 2 :
+    			for(DescripteurImage d : this.tabG){
+    				if(d.checkPlage(seuil)){
+    					listImage.add(d);
+    				}
+    			}
+    			break ;
+    		case 3 :
+    			for(DescripteurImage d : this.tabB){
+    				if(d.checkPlage(seuil)){
+    					listImage.add(d);
+    				}
+    			}
+    			break ;
+    	}
+    	
+    	return listImage ;	
+    	
+	}
     
     
     
