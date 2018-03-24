@@ -38,14 +38,14 @@ public class BDTexte {
     }
 
     
-    public List<String> getDescripteurs(String motCle,int seuil){
-    	List<String> listeDescripteursRecherche =new ArrayList<>();
+    public List<DescripteurTexte> getDescripteurs(String motCle,int seuil){
+    	List<DescripteurTexte> listeDescripteursRecherche =new ArrayList<>();
     	
     	for(DescripteurTexte d: this.listeDescripteursTexte.values())
     	{
     		if(d.checkSeuil(motCle, seuil))
     		{
-    			listeDescripteursRecherche.add(d.toString());
+    			listeDescripteursRecherche.add(d);
     		}
     	}
     	

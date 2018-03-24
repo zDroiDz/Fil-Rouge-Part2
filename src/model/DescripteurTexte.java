@@ -7,18 +7,20 @@ public class DescripteurTexte extends Descripteur {
 	
 private Map<String,Integer> map;
 	
-	public DescripteurTexte() {
+	public DescripteurTexte(int id,String path) {
 		// TODO Auto-generated constructor stub
 		this.map=new HashMap<>();
+		this.setId(id);
 	}
 	
-	public void addContent(int nbOccurences,String word)
+	public void addContent(String word,int nbOccurences)
 	{
 		this.map.put(word, nbOccurences);
 	}
+	
 	@Override
 	public String toString() {
-		return "DescripteurImage [map=" + map + "]";
+		return "DescripteurTexte [map=" + map + "]"+super.toString();
 	}
 
 	public boolean checkSeuil(String motCle, int seuil) 

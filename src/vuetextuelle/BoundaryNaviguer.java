@@ -3,10 +3,18 @@ package vuetextuelle;
 
 import java.util.Scanner;
 
+import control.ControlCreerProfil;
+import control.ControlSIdentifier;
+import model.Profil;
+
+
 public class BoundaryNaviguer {
 	
 	Scanner scanner = new Scanner(System.in);
+	Profil profil ;
 	int choix = -1 ;
+	
+	
 	//vérifie que les fichiers pour la recherche sont la (descripteurs)
 	int check_recherche(){
 
@@ -14,9 +22,39 @@ public class BoundaryNaviguer {
 
 	}
 
+	private void menu_choix_connexion() {
+		// TODO Auto-generated method stub
+		do{
+			System.out.println("\nMenu de choix connexion :  \n1- Se connecter\n2- Créer un compte");
+			choix = scanner.nextInt();
+			if ( (choix!= 1) && (choix!= 2)) {
+			       System.out.println("Probleme de saisie, veuillez recommencer.\n" );
+			     }
+		}while(choix != 1 && choix!= 2);
+		
+		switch(choix){
+			case 1 :
+				ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
+				BoundarySIdentifier boundarySIdentifier = new BoundarySIdentifier(controlSIdentifier);
+				profil = boundarySIdentifier.connexion();
+				break;
+			case 2:
+				ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
+				BoundaryCreerProfilUtilisateur boundaryCreerProfilUtilisateur=new BoundaryCreerProfilUtilisateur(controlCreerProfil );
+				profil = boundaryCreerProfilUtilisateur.creerProfil();	
+				break ;
+		}
+		
+		if(profil.getAdmin()){
+			menu_base_admin();
+		}else{
+			menu_utilisateur();
+		}
+	}
+	
 
 	/* menu de base quand on arrive dans l'api */
-	void menu_base() {
+	void menu_base_admin() {
 
 	   System.out.println("\nMenu principal : \n1 - Administrateur\n2 - Utilisateur\n3 - Quitter\n" );
 	   
@@ -39,7 +77,7 @@ public class BoundaryNaviguer {
 	        menu_utilisateur();
 	      }else{
 	        System.out.println("\nRecherche impossible, veuillez indexer les documents.\n" );
-	        menu_base();
+	        menu_base_admin();
 	      }
 
 	   }else if(choix == 3){
@@ -86,7 +124,7 @@ public class BoundaryNaviguer {
 
 	     //retour au menu principal
 	   } else if(choix == 4){
-	     menu_base();
+	     menu_base_admin();
 	   }
 
 
@@ -312,7 +350,7 @@ public class BoundaryNaviguer {
 	//Retour
 	   }else if (choix == 3 ) {
 
-	     menu_base();
+	     menu_base_admin();
 	   }
 
 
@@ -323,8 +361,11 @@ public class BoundaryNaviguer {
 	public static void  main(String[] args) {
 		
 	BoundaryNaviguer boundaryNaviguer = new BoundaryNaviguer() ;	
-	boundaryNaviguer.menu_base();
+	boundaryNaviguer.menu_choix_connexion();
 
 	}
+
+
+	
 
 }

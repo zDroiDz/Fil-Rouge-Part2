@@ -34,9 +34,18 @@ public class BDSon {
 
     }
 
-    public String toString()
-    {
-        return listeDescripteursSon.toString();
-    }
+	@Override
+	public String toString() {
+		String retour = "aaa"; 
+		
+		for(DescripteurSon ds : this.listeDescripteursSon.values()){
+			System.out.println("\n Descripteur \n");
+			System.out.println(ds.toString());
+		}
+		
+		return retour ;
+	}
+
+    
 
 }

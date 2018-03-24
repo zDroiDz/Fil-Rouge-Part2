@@ -1,16 +1,19 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import control.ControlProfil;
+
 public class BDProfil {
 	
-	private List<Profil> lesProfils;
-	private Map<Integer,Profil> lesProfils1;
+	private Map<Integer,Profil> lesProfils;
+	ControlProfil controlProfil = new ControlProfil();
 	
 	private BDProfil() {
-		this.lesProfils=new ArrayList<>();
+		this.lesProfils=new HashMap<>();
 	}
 	
 	 private static class BDProfilHolder
@@ -25,26 +28,25 @@ public class BDProfil {
 
 	    public  void ajouterUtilisateur(Profil user)
 	    {
-	        this.lesProfils.add(user);
+	    	this.controlProfil.addProfil(user);
+	        this.lesProfils.put(this.lesProfils.size(),user);
 	    }
 
 	    public String toString()
 	    {
-	        return lesProfils.toString();
+	        return this.lesProfils.toString();
 	    }
 	    
 	    public Profil connexion(String id,String mdp)
 	    {
-	    	for(Profil pro:lesProfils)
+	    	for(Profil pro:lesProfils.values())
 	    	{
 	    		if(pro.getIdentifiant().equals(id) && pro.getMDP().equals(mdp))
 	    		{
 	    			return pro;
 	    		}
 	    	}
-	    	
 	    	return null;
 	    }
 	    
-
 }

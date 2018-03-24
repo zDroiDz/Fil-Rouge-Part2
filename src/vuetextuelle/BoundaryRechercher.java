@@ -38,7 +38,7 @@ public class BoundaryRechercher {
 		switch(typeFichier){
 		case 1:
 			 descripteur =(DescripteurTexte) controlRechercher.genererDescripteurTexte(fichier);
-			resultat=controlRechercher.effectuerRechercheTexte((DescripteurTexte) descripteur,seuil);
+			 resultat=controlRechercher.effectuerRechercheTexte((DescripteurTexte) descripteur,seuil);
 			break;
 		case 2:
 			 descripteur =(DescripteurImage) controlRechercher.genererDescripteurImage(fichier);
@@ -52,21 +52,42 @@ public class BoundaryRechercher {
 			System.out.println("Erreur");
 		}
 		
-		System.out.println("Resutat de la recherche"+resultat);
+		System.out.println("Resutat de la recherche : \n"+resultat);
 	}
 	
 	
 	
 	public void effectuerRechercheMotCle(){
 		Clavier clavier = new Clavier();
-		System.out.println("Saisissez un mot clé");
+		System.out.println("Saisissez un ou plusieurs mot-clé(s)");
 		String motCle=clavier.entrerClavierString();
 		
 		System.out.println("Saisissez le seuil");
 		int seuil=clavier.entrerClavierInt();
 		
-	/* N'oubliez pas d'ajouter le moteur souahité */
 		
+		List<DescripteurTexte>resultat  = this.controlRechercher.lancerRechercheMotCle(motCle, seuil);
+	
+		for(DescripteurTexte d : resultat){
+			System.out.println(d.toString());
+		}
+		
+	}
+	
+	
+
+	public void effectuerRecherchePlageCouleur(){
+		Clavier clavier = new Clavier();
+		System.out.println("Saisissez (un entier) la plage de couleur souahitée ( 1 : rouge, 2 : vert , 3 : bleu) ");
+		int couleur = clavier.entrerClavierInt();
+		System.out.println("Saisissez le seuil pour la recherche");
+		int seuil = clavier.entrerClavierInt();
+		
+		List<DescripteurImage> resultat =  this.controlRechercher.lancerRecherchePlageCouleurs(couleur, seuil);
+		System.out.println("Résultats de la recherche : ");
+		for(DescripteurImage d : resultat){
+			System.out.println(d.getId() + " : " + d.toString());
+		}
 	}
 	
 	

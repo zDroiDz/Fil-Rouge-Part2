@@ -15,7 +15,7 @@ public class BoundarySIdentifier {
 		this.controlSIdentifier=controlSIdentifier;
 	}
 	
-	public void connexion()
+	public Profil connexion()
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Veuillez saisir votre idendifiant (prenom.nom)");
@@ -48,6 +48,6 @@ public class BoundarySIdentifier {
 			System.out.println("Ce compte n'existe pas identification echouée");
 		}
 		
-		
+		return profilUser;
 	}
 }

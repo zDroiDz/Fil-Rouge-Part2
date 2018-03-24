@@ -22,7 +22,7 @@ public class BoundaryCreerProfilAdmin {
 		System.out.println("Veuillez entrez votre mot de passe");
 		String mdp = clavier.entrerClavierString();
 		
-	    this.controlCreerProfil.creerProfilGerant(ProfilUtilisateur.ADMIN, nom, prenom, mdp);
+	    this.controlCreerProfil.creerProfil(ProfilUtilisateur.ADMIN, nom, prenom, mdp);
 	 }
 	
 	
