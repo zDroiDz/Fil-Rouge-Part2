@@ -42,7 +42,6 @@ public class BDProfil {
 	    			return pro;
 	    		}
 	    	}
-	    	
 	    	return null;
 	    }
 	    

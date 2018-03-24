@@ -1,11 +1,10 @@
 package test;
 
-import control.ControlCreerProfil;
 import control.ControlSIdentifier;
 import model.BDProfil;
 import model.Profil;
 import model.Utilisateur;
-import vuetextuelle.BoundaryCreerProfilAdmin;
+
 import vuetextuelle.BoundarySIdentifier;
 
 public class TestCreerProfilEtSidentifier {

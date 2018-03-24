@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import model.BDImage;
 import model.BDSon;
 import model.BDTexte;
+import model.DescripteurImage;
+import model.DescripteurSon;
 import model.DescripteurTexte;
 
 public class ControlDescripteurs {
@@ -22,7 +24,6 @@ public class ControlDescripteurs {
 	private BDTexte bdTexte=BDTexte.getInstance();
 	private BDSon bdSon=BDSon.getInstance();
 	private BDImage bdImage=BDImage.getInstance();
-	
 	
 	public void fillBDDescripteurTexte()
 	{
@@ -85,15 +86,7 @@ public class ControlDescripteurs {
 		setPathTexte();
 	}
 	
-	public void fillBDDescripteurSon()
-	{
-		
-	}
 	
-	public void fillBDDescripteurImage() 
-	{
-		
-	}
 	
 	public void setPathTexte()
 	{
