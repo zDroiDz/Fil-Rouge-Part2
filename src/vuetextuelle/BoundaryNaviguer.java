@@ -4,7 +4,10 @@ package vuetextuelle;
 import java.util.Scanner;
 
 import control.ControlCreerProfil;
+import control.ControlDescripteurs;
+import control.ControlProfil;
 import control.ControlSIdentifier;
+import model.BDProfil;
 import model.Profil;
 
 
@@ -21,10 +24,23 @@ public class BoundaryNaviguer {
 	return 1;
 
 	}
+	
+	public BoundaryNaviguer()
+	{
+		ControlProfil controlProfil=new ControlProfil();
+		ControlDescripteurs controlDescripteurs= new ControlDescripteurs();
+		
+		controlDescripteurs.fillBDDescripteurTexte();
+		controlDescripteurs.fillBDDescripteurSon();
+		controlDescripteurs.fillBDDescripteurImage();
+		
+		controlProfil.FillBDProfils();
+	}
 
 	private void menu_choix_connexion() {
 		// TODO Auto-generated method stub
 		do{
+			
 			System.out.println("\nMenu de choix connexion :  \n1- Se connecter\n2- Créer un compte");
 			choix = scanner.nextInt();
 			if ( (choix!= 1) && (choix!= 2)) {
@@ -357,15 +373,14 @@ public class BoundaryNaviguer {
 	}
 
 
-	
+
 	public static void  main(String[] args) {
 		
 	BoundaryNaviguer boundaryNaviguer = new BoundaryNaviguer() ;	
 	boundaryNaviguer.menu_choix_connexion();
-
+	
+	
 	}
-
-
 	
 
 }

@@ -8,6 +8,7 @@ import model.Descripteur;
 import model.DescripteurImage;
 import model.DescripteurSon;
 import model.DescripteurTexte;
+import model.Profil;
 import control.ControlRechercher;
 
 public class BoundaryRechercher {
@@ -57,7 +58,7 @@ public class BoundaryRechercher {
 	
 	
 	
-	public void effectuerRechercheMotCle(){
+	public void effectuerRechercheMotCle(Profil pro){
 		Clavier clavier = new Clavier();
 		System.out.println("Saisissez un ou plusieurs mot-clé(s) (séparés par des espaces, si un mot n'est pas voulu mettre - devant (exemple : -chez))");
 		String motCle=clavier.entrerClavierString();
@@ -67,7 +68,7 @@ public class BoundaryRechercher {
 		
 		
 		List<DescripteurTexte> resultat  = this.controlRechercher.lancerRechercheMotCle(motCle, seuil);
-	
+		
 		for(DescripteurTexte d : resultat){
 			System.out.println(d.toString());
 		}
@@ -88,18 +89,6 @@ public class BoundaryRechercher {
 		for(DescripteurImage d : resultat){
 			System.out.println(d.getId() + " : " + d.toString());
 		}
-	}
-	
-	
-	
-	
-	
-	public static void main(String[] args)
-	{
-		ControlRechercher controlRechercher=new ControlRechercher();
-		BoundaryRechercher boundaryRechercher=new BoundaryRechercher(controlRechercher);
-		boundaryRechercher.effectuerRechercheFichier();
-		
 	}
 	
 }

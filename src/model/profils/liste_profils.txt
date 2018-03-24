@@ -1,22 +1,2 @@
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> </profil>
-<profil> <identifiant> bob.jose </identifiant> <password> denis </password> <type> utilisateur </type> </profil>
+<profil> <identifiant> julien.passama </identifiant> <password> pwd </password> <type> utilisateur </type> <historique> SALUT NIQUE TA MERE FDP </historique> </profil> 
+<profil> <identifiant> k.k </identifiant> <password> k </password> <type> utilisateur </type> <historique> </historique> </profil>

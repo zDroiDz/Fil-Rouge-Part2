@@ -10,7 +10,6 @@ import control.ControlProfil;
 public class BDProfil {
 	
 	private Map<Integer,Profil> lesProfils;
-	ControlProfil controlProfil = new ControlProfil();
 	
 	private BDProfil() {
 		this.lesProfils=new HashMap<>();
@@ -28,7 +27,7 @@ public class BDProfil {
 
 	    public  void ajouterUtilisateur(Profil user)
 	    {
-	    	this.controlProfil.addProfil(user);
+	    	
 	        this.lesProfils.put(this.lesProfils.size(),user);
 	    }
 
