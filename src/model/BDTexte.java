@@ -34,8 +34,10 @@ public class BDTexte {
     public  void ajouterDescripteurTexte(DescripteurTexte descripteur)
     {
         this.listeDescripteursTexte.put(listeDescripteursTexte.size(),descripteur);
-
     }
+    
+    
+    
 
     
     public List<String> getDescripteurs(String motCle,int seuil){

@@ -4,7 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
+import model.BDImage;
+import model.BDSon;
 import model.BDTexte;
 import model.DescripteurTexte;
 
@@ -17,6 +20,9 @@ public class ControlDescripteurs {
 	private static final String PATH_LISTE_BASE_TEXTE= System.getProperty("user.dir")+"/src/model/base_texte/liste_base_texte.txt";
 	
 	private BDTexte bdTexte=BDTexte.getInstance();
+	private BDSon bdSon=BDSon.getInstance();
+	private BDImage bdImage=BDImage.getInstance();
+	
 	
 	public void fillBDDescripteurTexte()
 	{
@@ -75,6 +81,8 @@ public class ControlDescripteurs {
     		catch (Exception e){
     		System.out.println(e.toString());
     		}
+		
+		setPathTexte();
 	}
 	
 	public void fillBDDescripteurSon()
@@ -87,7 +95,7 @@ public class ControlDescripteurs {
 		
 	}
 	
-	public void setPath()
+	public void setPathTexte()
 	{
 		
 		try{
@@ -103,23 +111,37 @@ public class ControlDescripteurs {
     			
     			if(recupTab[4].length()!=0 && recupTab.length!=0)
     			{
-    				System.out.println(recupTab[1]);
         			
-        			DescripteurTexte desc=bdTexte.getDescripteurTexte(Integer.parseInt(recupTab[1]));
+    				DescripteurTexte desc=bdTexte.getDescripteurTexte(Integer.parseInt(recupTab[1]));
         			if(desc!=null)
         			{
         				desc.setPath(recupTab[4]);
         			}
-        			
     			}
-    			
-    		
     		}
     		buff.close(); 
     		}		
     		catch (Exception e){
     		System.out.println(e.toString());
     		}
+	}
+	
+	
+	public String visualiserDescripteursTexte()
+	{
+		String monArray=this.bdTexte.toString();
+		return monArray;
+	}
+	public String visualiserDescripteursSon()
+	{
+		String monArray=this.bdSon.toString();
+		return monArray;
+	}
+	
+	public String visualiserDescripteursImage()
+	{
+		String monArray=this.bdImage.toString();
+		return monArray;
 	}
 
 }

@@ -68,18 +68,7 @@ public class BoundaryRechercher {
 	/* N'oubliez pas d'ajouter le moteur souahité */
 		
 	}
-	
-	
-	
-	
-	
-	public static void main(String[] args)
-	{
-		ControlRechercher controlRechercher=new ControlRechercher();
-		BoundaryRechercher boundaryRechercher=new BoundaryRechercher(controlRechercher);
-		boundaryRechercher.effectuerRechercheFichier();
-		
-	}
+
 	
 }
 
