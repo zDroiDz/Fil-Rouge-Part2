@@ -5,13 +5,12 @@ public class Admin extends Profil {
 
 	
 	public Admin(String nom, String prenom ,String mdp) {
-		super(nom, prenom, mdp);
+		super(prenom, nom, mdp);
+		this.definirAdmin();
 	}
 	
-	public boolean isGerant(){
-		return getAdmin();
-	}
-	public void definirGerant(){
+
+	public void definirAdmin(){
 		setAdmin();
 	}
 }

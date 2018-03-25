@@ -3,6 +3,7 @@ package control;
 import java.util.List;
 
 import model.BDHistorique;
+import model.Descripteur;
 
 
 
@@ -29,4 +30,6 @@ public class ControlHistorique {
 	public String toString() {
 		return ("Affichage BD : " + BDhistorique.toString() + "\n");
 	}
+
+	
 }

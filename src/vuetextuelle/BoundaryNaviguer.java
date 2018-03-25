@@ -4,15 +4,41 @@ package vuetextuelle;
 import java.util.Scanner;
 
 import control.ControlCreerProfil;
+import control.ControlDescripteurs;
+import control.ControlHistorique;
+import control.ControlProfil;
+import control.ControlRechercher;
 import control.ControlSIdentifier;
+import model.BDProfil;
 import model.Profil;
 
 
 public class BoundaryNaviguer {
 	
+	
+	
 	Scanner scanner = new Scanner(System.in);
 	Profil profil ;
 	int choix = -1 ;
+	
+	private ControlHistorique controlHistorique = new ControlHistorique();
+	ControlProfil controlProfil = new ControlProfil();
+
+	private ControlRechercher controlRechercher = new ControlRechercher(controlHistorique, controlProfil );
+	
+	private BoundaryRechercher boundaryRechercher = new BoundaryRechercher(controlRechercher);
+	
+	public BoundaryNaviguer()
+	{
+		ControlProfil controlProfil=new ControlProfil();
+		ControlDescripteurs controlDescripteurs= new ControlDescripteurs();
+		
+		controlDescripteurs.fillBDDescripteurTexte();
+		controlDescripteurs.fillBDDescripteurSon();
+		controlDescripteurs.fillBDDescripteurImage();
+		
+		controlProfil.FillBDProfils();
+	}
 	
 	
 	//vérifie que les fichiers pour la recherche sont la (descripteurs)
@@ -45,7 +71,7 @@ public class BoundaryNaviguer {
 				break ;
 		}
 		
-		if(profil.getAdmin()){
+		if(profil.isAdmin()){
 			menu_base_admin();
 		}else{
 			menu_utilisateur();
@@ -53,7 +79,7 @@ public class BoundaryNaviguer {
 	}
 	
 
-	/* menu de base quand on arrive dans l'api */
+	/* menu de base quand l'admin arrive dans l'api */
 	void menu_base_admin() {
 
 	   System.out.println("\nMenu principal : \n1 - Administrateur\n2 - Utilisateur\n3 - Quitter\n" );
@@ -81,34 +107,42 @@ public class BoundaryNaviguer {
 	      }
 
 	   }else if(choix == 3){
+		  System.out.println("\n Au revoir !");
 	      System.exit(0) ;
 	   }
+	   
+	   menu_base_admin();
 	}
 
+	/*
+	 * 
+	 */
 	void menu_administrateur(int verif) {
 
 
-	String mdp ; 
-
-	//s'identifier
-
-
-
-	System.out.println("\nMenu administrateur :\n1 - Lancer indexation\n2 - Configuration\n3 - Visualiser descripteurs\n4 - Retour au menu principal\n" );
+	System.out.println("\nMenu administrateur :\n1 - Lancer indexation\n2 - Configuration\n3 - Visualiser descripteurs\n4 - Créer administrateur\n5 - Retour au menu principal\n" );
 
 	do {
 
 	  choix = this.scanner.nextInt();
 
-	  if ( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) ) {
+	  if ( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) ) {
 	    System.out.println("Probleme de saisie, veuillez recommencer.\n" );
 	  }
 
-	} while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) );
+	} while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) );
 
 	//indexation
 	   if (choix == 1) {
 	      System.out.println("Lancement de l'indexation !\n" );
+	      try {
+			wait(500);
+			System.out.println("Indexation terminée !");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	      System.out.println("Inde");
 	      //rmThenStartIndexation();
 	      //indexImage();
 	      //resetAndIndex();
@@ -121,67 +155,22 @@ public class BoundaryNaviguer {
 	//menu visualiser descripteurs
 	   }else if (choix == 3 ) {
 	     menu_visualiserdesc();
-
+	     
+	   }else if(choix == 4){
+		   ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
+		   BoundaryCreerProfilAdmin boundaryCreerProfilAdmin=new BoundaryCreerProfilAdmin(controlCreerProfil );
+		   boundaryCreerProfilAdmin.creerProfil();
 	     //retour au menu principal
-	   } else if(choix == 4){
+	   } else if(choix == 5){
 	     menu_base_admin();
 	   }
 
-
-
 	}
 
-	void menu_comparaison(){
-	  System.out.println("\nMenu recherche par comparaison : \n1 - Texte\n2 - Son\n3 - Image\n4 - Retour\n" );
-	
-	  do {
 
-		  choix = this.scanner.nextInt();
-
-	    if ( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) ) {
-	      System.out.println("Probleme de saisie, veuillez recommencer.\n" );
-	    }
-
-	  } while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) );
-
-
-	   String requete ;
-	  //Comparaison texte
-	     if (choix == 1 ) {
-	        System.out.println("Saisissez le chemin du fichier à comparer (.xml)\n" );
-	    		requete = this.scanner.nextLine();
-	    		//indexFileToCompare(requete);
-
-	  //Comparaison son
-	     }else if (choix == 2) {
-	        System.out.println("Saisissez le chemin du fichier à comparer (.bin)\n" );
-	        requete = this.scanner.nextLine();
-	  			//compare(requete);
-
-	  //menu comparaison image
-	     }else if (choix == 3 ) {
-	      System.out.println("Saisissez le chemin du fichier à comparer (.txt)\n" );
-	      requete = this.scanner.nextLine();
-	      //searchImage(requete);
-
-	       //retour au menu utilisateur
-	     } else if(choix == 4){
-	       menu_utilisateur();
-	     }
-
-	     menu_utilisateur();
-
-	}
-
-	void menu_recherche_motcle(){
-	    System.out.println("\nRecherche par mot-clé.\nVeuillez entrer un mot clé : \n" );
-	    String mot ;
-	    mot = this.scanner.nextLine();
-	  	//byword(mot);
-
-	    menu_utilisateur();
-	}
-
+	/**
+	 * 
+	 */
 	void menu_visualiserdesc() {
 	    System.out.println("\nMenu visualiser descripteurs : \n1 - Texte\n2 - Son\n3 - Image\n4 - Retour\n" );
 	    
@@ -215,6 +204,9 @@ public class BoundaryNaviguer {
 	       menu_administrateur(1);
 	}
 
+	/**
+	 * 
+	 */
 	void menu_configuration() {
 	  System.out.println("\nMenu configuration : \n1 - Texte\n2 - Son\n3 - Image\n4 - Retour\n" );
 	  
@@ -254,10 +246,12 @@ public class BoundaryNaviguer {
 	     menu_administrateur(1);
 	}
 
+	/**
+	 * 
+	 */
 	void menu_configuration_son() {
 	System.out.println("\nMenu configuration son\n1 - Nombre d'échantillons\n2 - Nombre de fenetres\n3 - Retour\n" );
 
-	
 
 	do {
 	  choix = scanner.nextInt();
@@ -322,37 +316,60 @@ public class BoundaryNaviguer {
 	menu_administrateur(1);
 	}
 
+	/**
+	 * 
+	 */
 	void menu_utilisateur() {
 
-	   System.out.println("\nMenu utilisateur : \n1 - Recherche par mot-clé\n2 - Recherche par comparaison\n3 - Retour au menu principal\n" );
+	   System.out.println("\nMenu utilisateur : \n1 - Recherche par mot-clé\n2 - Recherche par plage de couleur\n3 - Recherche par fichier\n4 - Consulter historique\n5 - Retour au menu principal\n6 - Quitter" );
 	
 	   //entrée du menu
 	   do {
 
 	     choix = scanner.nextInt();
 
-	     if ( (choix != 1 ) && (choix != 2) && (choix != 3) ) {
+	     if ( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) && (choix != 6)) {
 	       System.out.println("Probleme de saisie, veuillez recommencer.\n" );
 	     }
 
-	   } while( (choix != 1 ) && (choix != 2) && (choix != 3) );
+	   } while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) && (choix != 6));
 
 	//après premier choix
 
 	//recherche par mot clé
 	   if (choix == 1) {
-	      menu_recherche_motcle();
+		   
+		   boundaryRechercher.effectuerRechercheMotCle(profil);
 
-	//menu comparaison
-	   }else if (choix == 2 ) {
-	      menu_comparaison();
-
-	//Retour
+	   }else if(choix == 2){
+		   
+		   boundaryRechercher.effectuerRecherchePlageCouleur(profil);
+		   
 	   }else if (choix == 3 ) {
-
-	     menu_base_admin();
+		   
+	     boundaryRechercher.effectuerRechercheFichier(profil);
+	     
+	   }else if(choix == 4){
+		
+		ControlHistorique controlHistorique = new ControlHistorique();
+		BoundaryHistorique  boundaryHistorique = new BoundaryHistorique(controlHistorique);
+		boundaryHistorique.consulterHistorique();
+	//Retour
+	   }else if (choix == 5 ) {
+			if(profil.isAdmin()){
+				menu_base_admin();
+			}else{
+				System.out.println("Accès interdit ! Vous n'êtes pas administrateur !");
+				menu_utilisateur();
+			}
+	     
+	   }else if(choix == 6){
+		   
+		   System.out.println("\n Au revoir !");
+		   System.exit(0);
 	   }
 
+	   menu_utilisateur();
 
 	}
 

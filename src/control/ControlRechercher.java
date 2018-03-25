@@ -10,13 +10,19 @@ import model.Descripteur;
 import model.DescripteurImage;
 import model.DescripteurSon;
 import model.DescripteurTexte;
+import model.Profil;
 
 public class ControlRechercher {
 	
 	private BDTexte bdTexte=BDTexte.getInstance();
 	private BDImage bdimage = BDImage.getInstance();
+	private ControlHistorique controlHistorique ; 
+	private ControlProfil controlProfil;
 	
-	public ControlRechercher(){	
+	
+	public ControlRechercher(ControlHistorique controlHistorique,ControlProfil controlProfil){
+			this.controlHistorique = controlHistorique ;
+			this.controlProfil=controlProfil;
 	}
 	
 	
@@ -64,13 +70,31 @@ public class ControlRechercher {
 		
 	}	
 	
-	public List<DescripteurTexte> lancerRechercheMotCle(String motCle,int seuil){
-		List<DescripteurTexte> listeDescripteursRecherche=new ArrayList<>();
+	public List<DescripteurTexte> lancerRechercheMotCle(String motCle,int seuil, Profil profil){
 		
-	    listeDescripteursRecherche = bdTexte.getDescripteurs(motCle, seuil);
+		
+		List<DescripteurTexte> listeDescripteursRecherche= bdTexte.getDescripteurs(motCle, seuil);
+		
+		//si la session est en mode historique
+				if(profil.isHistorique()){
+					
+					List<String> histo = new ArrayList<>();	
+					for(DescripteurTexte d : listeDescripteursRecherche){
+						histo.add(d.toString());
+					}
+					this.controlHistorique.ajouterHistorique(motCle, histo);
+					String chaine=motCle+": ";
+					for(int i=0;i<histo.size();i++)
+					{
+						chaine+=histo.get(i).toString()+";";
+					}
+					
+					chaine+="|";
+					
+					this.controlProfil.addHistoricContent(profil, chaine);
+					
+				}
 	    
-		
-
 		return listeDescripteursRecherche;
 		
 	}
