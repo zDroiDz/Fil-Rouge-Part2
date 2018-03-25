@@ -22,6 +22,10 @@ private Map<String,Integer> map;
 	public String toString() {
 		return "DescripteurTexte [map=" + map + "]"+super.toString();
 	}
+	
+	public boolean exists(String motCle){
+		return this.map.containsKey(motCle);
+	}
 
 	public boolean checkSeuil(String motCle, int seuil) 
 	{

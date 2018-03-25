@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import control.ControlHistorique;
+import model.Descripteur;
 
 public class BoundaryHistorique {
 

@@ -69,7 +69,7 @@ public class ControlProfil {
 			    BufferedWriter bw = new BufferedWriter(fw);
 			    PrintWriter out = new PrintWriter(bw))
 			{
-				if(profil.getAdmin()){
+				if(profil.isAdmin()){
 				    out.println("<profil> <identifiant> "+profil.getIdentifiant()+" </identifiant> <password> "+profil.getMDP()+" </password> <type> administrateur </type> <historique> </historique> </profil>");
 
 				}else{
@@ -135,7 +135,7 @@ public class ControlProfil {
 			{
 					for(int i=0;i<fileContent.size();i++)
 					{
-						out.println(fileContent.get(i));
+						out.println(fileContent.get(i)+";");
 					}
 				    
 			} catch (IOException e) {

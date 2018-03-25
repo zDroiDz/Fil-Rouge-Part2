@@ -36,6 +36,7 @@ public class BoundarySIdentifier {
 				switch (choix) {
 				case 1:
 					System.out.println("Vous avez choisi une session avec historique");
+					profilUser.setHistorique();
 					break;
 				case 0:
 					System.out.println("Vous avez choisi une session sans historique");

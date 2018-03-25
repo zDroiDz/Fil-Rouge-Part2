@@ -84,27 +84,27 @@ public class ControlDescripteurs {
 	{
 		 		 	   
 		    	//tableau Bleu   
-		    	this.bdimage.addTabB(new DescripteurImage(0, "03.jpg", System.getProperty("user.dir")+"\\src\\TEST_RGB\\03.jpg",1));
-		    	this.bdimage.addTabB(new DescripteurImage(1,"05.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\05.jpg",2));
-		    	this.bdimage.addTabB(new DescripteurImage(2,"06.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\06.jpg",2));
-		    	this.bdimage.addTabB(new DescripteurImage(3,"07.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\07.jpg",2));
-		    	this.bdimage.addTabB(new DescripteurImage(4,"45.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\45.jpg",3));
+		    	this.bdimage.addTabB(new DescripteurImage(0, "03.jpg", System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\03.jpg",1));
+		    	this.bdimage.addTabB(new DescripteurImage(1,"05.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\05.jpg",2));
+		    	this.bdimage.addTabB(new DescripteurImage(2,"06.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\06.jpg",2));
+		    	this.bdimage.addTabB(new DescripteurImage(3,"07.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\07.jpg",2));
+		    	this.bdimage.addTabB(new DescripteurImage(4,"45.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\45.jpg",3));
 
 
 		    	
 		    	//tableau Rouge
 		    	
-		    	this.bdimage.addTabR(new DescripteurImage(0,"40.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\40.jpg",1));
-		    	this.bdimage.addTabR(new DescripteurImage(1,"38.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\38.jpg",2));
-		    	this.bdimage.addTabR(new DescripteurImage(2,"36.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\36.jpg",3));
+		    	this.bdimage.addTabR(new DescripteurImage(0,"40.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\40.jpg",1));
+		    	this.bdimage.addTabR(new DescripteurImage(1,"38.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\38.jpg",2));
+		    	this.bdimage.addTabR(new DescripteurImage(2,"36.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\36.jpg",3));
 
 		   	
 		    	
 		    	//tableau Vert
 		    	
-		    	this.bdimage.addTabG(new DescripteurImage(0,"39.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\39.jpg",1));
-		    	this.bdimage.addTabG(new DescripteurImage(1,"35.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\35.jpg",2));
-		    	this.bdimage.addTabG(new DescripteurImage(2,"32.jpg",System.getProperty("user.dir")+"\\src\\TEST_RGB\\32.jpg",3));
+		    	this.bdimage.addTabG(new DescripteurImage(0,"39.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\39.jpg",1));
+		    	this.bdimage.addTabG(new DescripteurImage(1,"35.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\35.jpg",2));
+		    	this.bdimage.addTabG(new DescripteurImage(2,"32.jpg",System.getProperty("user.dir")+"\\src\\model\\TEST_RGB\\32.jpg",3));
 
 		    	
 		    	

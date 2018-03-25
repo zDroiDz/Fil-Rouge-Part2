@@ -12,29 +12,17 @@ import model.BDProfil ;
 
 public class ControlCreerProfil {
 	private FabriqueProfil fabriqueProfil ;
-	private BDProfil bdProfil =BDProfil.getInstance();
 	private ControlProfil controlProfil=new ControlProfil();
+	private BDProfil bdProfil =BDProfil.getInstance();
+	
 	public ControlCreerProfil() {
 		this.fabriqueProfil = new FabriqueProfil();
 		
 	}
-	public Profil creerProfil(ProfilUtilisateur profilUtilisateur ,String nom ,String prenom ,String mdp)
+	public Profil creerProfil(ProfilUtilisateur profilUtilisateur ,String prenom ,String nom ,String mdp)
 	{
-		Profil profil = null ;
-		switch (profilUtilisateur)
-		{
-		case UTILISATEUR :
-			profil = this.fabriqueProfil.getProfil(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);
-			bdProfil.ajouterUtilisateur(profil);
-			controlProfil.addProfil(profil);
-		    break;
-		case ADMIN	:
-			profil = this.fabriqueProfil.getProfil(ProfilUtilisateur.ADMIN, nom, prenom, mdp);
-			profil.definirAdmin();
-			bdProfil.ajouterUtilisateur(profil);
-			controlProfil.addProfil(profil);
-		    break;
-		}
+		Profil profil  = this.fabriqueProfil.getProfil(profilUtilisateur, prenom, nom, mdp);
+		controlProfil.addProfil(profil);
 		
 		return profil ;
 	

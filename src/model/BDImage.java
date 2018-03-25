@@ -80,29 +80,5 @@ public class BDImage {
     }
     
     
-  
-    
-    /*public DescripteurImage getDescripteurImage(){
-    	return this.descripteurImage;
-    }*/
-
-  /*  public DescripteurImage getDescripteurImage(int numDesc)
-    {
-        return listeDescripteursImage.get(numDesc);
-    }
-
-
-    public  void ajouterDescripteurImage(DescripteurImage descripteur)
-    {
-        this.listeDescripteursImage.put(listeDescripteursImage.size(),descripteur);
-
-    }
-    
-    public void get
-
-    public String toString()
-    {
-        return listeDescripteursImage.toString();
-    }*/
 
 }

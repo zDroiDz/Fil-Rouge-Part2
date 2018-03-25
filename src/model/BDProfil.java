@@ -27,7 +27,6 @@ public class BDProfil {
 
 	    public  void ajouterUtilisateur(Profil user)
 	    {
-	    	
 	        this.lesProfils.put(this.lesProfils.size(),user);
 	    }
 
