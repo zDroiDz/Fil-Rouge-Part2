@@ -48,11 +48,11 @@ public class ControlProfil {
 		
     			switch (type) {
 				case "utilisateur":
-					Utilisateur ut=new Utilisateur(nomPrenom[1], nomPrenom[0], mdp);
+					Utilisateur ut=new Utilisateur(nomPrenom[0], nomPrenom[1], mdp);
 					bdProfil.ajouterUtilisateur(ut);
 					break;
 				case "administrateur":
-					Admin ad=new Admin(nomPrenom[1], nomPrenom[0], mdp);
+					Admin ad=new Admin(nomPrenom[0], nomPrenom[1], mdp);
 					bdProfil.ajouterUtilisateur(ad);
 					break;
 				}

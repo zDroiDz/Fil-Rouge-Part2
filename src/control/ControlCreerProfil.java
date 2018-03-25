@@ -19,9 +19,9 @@ public class ControlCreerProfil {
 		this.fabriqueProfil = new FabriqueProfil();
 		
 	}
-	public Profil creerProfil(ProfilUtilisateur profilUtilisateur ,String nom ,String prenom ,String mdp)
+	public Profil creerProfil(ProfilUtilisateur profilUtilisateur ,String prenom ,String nom ,String mdp)
 	{
-		Profil profil  = this.fabriqueProfil.getProfil(profilUtilisateur, nom, prenom, mdp);
+		Profil profil  = this.fabriqueProfil.getProfil(profilUtilisateur, prenom, nom, mdp);
 		controlProfil.addProfil(profil);
 		
 		return profil ;

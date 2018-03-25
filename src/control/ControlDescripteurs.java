@@ -70,6 +70,7 @@ public class ControlDescripteurs {
     		}
     		buff.close(); 
     		if(descripteurSon != null){
+    			descripteurSon.setSize(ligneM, colonneM);
 				this.bdSon.ajouterDescripteurSon(descripteurSon);
 			}
     		}		

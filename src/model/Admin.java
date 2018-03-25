@@ -4,7 +4,7 @@ public class Admin extends Profil {
 
 
 	
-	public Admin(String nom, String prenom ,String mdp) {
+	public Admin(String prenom, String nom ,String mdp) {
 		super(prenom, nom, mdp);
 		this.definirAdmin();
 	}

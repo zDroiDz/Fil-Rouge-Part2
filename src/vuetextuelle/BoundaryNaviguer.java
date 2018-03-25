@@ -27,15 +27,21 @@ public class BoundaryNaviguer {
 	private ControlRechercher controlRechercher = new ControlRechercher(controlHistorique, controlProfil );
 	
 	private BoundaryRechercher boundaryRechercher = new BoundaryRechercher(controlRechercher);
+
+	private ControlDescripteurs controlDescripteurs = new ControlDescripteurs();
+	private BoundaryVisualiserDescripteurs boundaryVisualiserDescripteurs = new BoundaryVisualiserDescripteurs(controlDescripteurs);
+	
 	
 	public BoundaryNaviguer()
 	{
 		ControlProfil controlProfil=new ControlProfil();
 		ControlDescripteurs controlDescripteurs= new ControlDescripteurs();
+		ControlHistorique controlHistorique=new ControlHistorique();
 		
 		controlDescripteurs.fillBDDescripteurTexte();
 		controlDescripteurs.fillBDDescripteurSon();
 		controlDescripteurs.fillBDDescripteurImage();
+		
 		
 		controlProfil.FillBDProfils();
 	}
@@ -51,26 +57,33 @@ public class BoundaryNaviguer {
 	private void menu_choix_connexion() {
 		// TODO Auto-generated method stub
 		do{
-			System.out.println("\nMenu de choix connexion :  \n1- Se connecter\n2- Créer un compte");
-			choix = scanner.nextInt();
-			if ( (choix!= 1) && (choix!= 2)) {
-			       System.out.println("Probleme de saisie, veuillez recommencer.\n" );
-			     }
-		}while(choix != 1 && choix!= 2);
-		
-		switch(choix){
-			case 1 :
-				ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
-				BoundarySIdentifier boundarySIdentifier = new BoundarySIdentifier(controlSIdentifier);
-				profil = boundarySIdentifier.connexion();
-				break;
-			case 2:
-				ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
-				BoundaryCreerProfilUtilisateur boundaryCreerProfilUtilisateur=new BoundaryCreerProfilUtilisateur(controlCreerProfil );
-				profil = boundaryCreerProfilUtilisateur.creerProfil();	
-				break ;
-		}
-		
+			
+			
+			do{
+				System.out.println("\nMenu de choix connexion :  \n1- Se connecter\n2- Créer un compte");
+				choix = scanner.nextInt();
+				if ( (choix!= 1) && (choix!= 2)) {
+				       System.out.println("Probleme de saisie, veuillez recommencer.\n" );
+				     }
+			}while(choix != 1 && choix!= 2);
+			
+			switch(choix){
+				case 1 :
+					ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
+					BoundarySIdentifier boundarySIdentifier = new BoundarySIdentifier(controlSIdentifier);
+					profil = boundarySIdentifier.connexion();
+					if(profil != null ){
+						controlHistorique.FillBDHistorique(profil);	
+					}
+					
+					break;
+				case 2:
+					ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
+					BoundaryCreerProfilUtilisateur boundaryCreerProfilUtilisateur=new BoundaryCreerProfilUtilisateur(controlCreerProfil );
+					profil = boundaryCreerProfilUtilisateur.creerProfil();	
+					break ;
+			}
+		}while(profil == null);
 		if(profil.isAdmin()){
 			menu_base_admin();
 		}else{
@@ -135,13 +148,7 @@ public class BoundaryNaviguer {
 	//indexation
 	   if (choix == 1) {
 	      System.out.println("Lancement de l'indexation !\n" );
-	      try {
-			wait(500);
-			System.out.println("Indexation terminée !");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	     
 	      System.out.println("Inde");
 	      //rmThenStartIndexation();
 	      //indexImage();
@@ -174,32 +181,8 @@ public class BoundaryNaviguer {
 	void menu_visualiserdesc() {
 	    System.out.println("\nMenu visualiser descripteurs : \n1 - Texte\n2 - Son\n3 - Image\n4 - Retour\n" );
 	    
-	    do {
+		this.boundaryVisualiserDescripteurs.visualiserDescripteurs();
 
-	      choix = scanner.nextInt();
-
-	      if ((choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) ) {
-	        System.out.println("Probleme de saisie, veuillez recommencer.\n" );
-	      }
-
-	    } while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) );
-
-	    //Visualisation texte
-	       if (choix == 1) {
-	          System.out.println("Visualisation descripteurs texte\n" );
-	        //  system("cat ../EXTERN_FILES/database/base_texte/base_descripteur_texte.txt");
-	    //visualisation son
-	       }else if (choix == 2 ) {
-	          System.out.println("Visualisation descripteurs son\n" );
-	        //  system("cat ../EXTERN_FILES/database/base_son/base_descripteur_son.txt");
-	    //visualisation image
-	       }else if (choix == 3 ) {
-	        System.out.println("Visualisation descripteurs image\n" );
-	       // system("cat ../EXTERN_FILES/database/base_image/base_descripteur_image.txt");
-	         //retour au menu admin
-	       } else if(choix == 4 ){
-	         menu_administrateur(1);
-	       }
 
 	       menu_administrateur(1);
 	}

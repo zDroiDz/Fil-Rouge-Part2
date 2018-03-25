@@ -24,7 +24,7 @@ public class BoundaryCreerProfilUtilisateur {
 		System.out.println("Veuillez entrez votre mot de passe");
 		String mdp = clavier.entrerClavierString();
 		
-	   return this.controlCreerProfil.creerProfil(ProfilUtilisateur.UTILISATEUR, nom, prenom, mdp);
+	   return this.controlCreerProfil.creerProfil(ProfilUtilisateur.UTILISATEUR, prenom, nom, mdp);
 				
 		
 	}
