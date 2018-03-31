@@ -15,7 +15,7 @@ public class BoundarySIdentifier {
 		this.controlSIdentifier=controlSIdentifier;
 	}
 	
-	public void connexion()
+	public Profil connexion()
 	{
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Veuillez saisir votre idendifiant (prenom.nom)");
@@ -36,6 +36,7 @@ public class BoundarySIdentifier {
 				switch (choix) {
 				case 1:
 					System.out.println("Vous avez choisi une session avec historique");
+					profilUser.setHistorique();
 					break;
 				case 0:
 					System.out.println("Vous avez choisi une session sans historique");
@@ -48,6 +49,6 @@ public class BoundarySIdentifier {
 			System.out.println("Ce compte n'existe pas identification echouée");
 		}
 		
-		
+		return profilUser;
 	}
 }

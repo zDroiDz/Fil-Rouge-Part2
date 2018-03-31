@@ -1,5 +1,5 @@
 package model;
 
 public enum ProfilUtilisateur {
- ADMIN, UTILISATEUR;
+ ADMIN, UTILISATEUR, ADMING;
 }

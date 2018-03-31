@@ -31,7 +31,7 @@ public abstract class Profil {
 		this.admin=true;
 	}
 	
-	public boolean getAdmin() {
+	public boolean isAdmin() {
 		return this.admin;
 	}
 	
@@ -40,15 +40,28 @@ public abstract class Profil {
 		return this.identifiant;
 	}
 	
+	public void definirAdmin(){
+		this.admin = true ;
+	}
+	
 	public String getMDP()
 	{
 		return this.mdp;
+	}
+	
+	public void setHistorique(){
+		this.isHistorique = true ;
 	}
 
 	@Override
 	public String toString() {
 		return "Profil [identifiant=" + identifiant + ", mdp=" + mdp + ", nom=" + nom + ", prenom=" + prenom
 				+ ", admin=" + admin + ", historique=" + historique + ", isHistorique=" + isHistorique + "]";
+	}
+
+
+	public boolean isHistorique() {
+		return this.isHistorique;
 	}
 	
 	

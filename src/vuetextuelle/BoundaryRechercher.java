@@ -2,24 +2,28 @@ package vuetextuelle;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 import model.Descripteur;
 import model.DescripteurImage;
 import model.DescripteurSon;
 import model.DescripteurTexte;
+import model.Profil;
+import control.ControlHistorique;
 import control.ControlRechercher;
 
 public class BoundaryRechercher {
 	
 	private  ControlRechercher controlRechercher;
-	
+	private ControlHistorique controlHistorique = new ControlHistorique();
 	
 	public BoundaryRechercher(ControlRechercher controlRechercher){
 		this.controlRechercher = controlRechercher;
 	}
 	
-	public void effectuerRechercheFichier(){
+	public void effectuerRechercheFichier(Profil profil){
 		int typeFichier, seuil;
 		Descripteur descripteur ;
 		List<String> resultat=new ArrayList<>();
@@ -38,7 +42,7 @@ public class BoundaryRechercher {
 		switch(typeFichier){
 		case 1:
 			 descripteur =(DescripteurTexte) controlRechercher.genererDescripteurTexte(fichier);
-			resultat=controlRechercher.effectuerRechercheTexte((DescripteurTexte) descripteur,seuil);
+			 resultat=controlRechercher.effectuerRechercheTexte((DescripteurTexte) descripteur,seuil);
 			break;
 		case 2:
 			 descripteur =(DescripteurImage) controlRechercher.genererDescripteurImage(fichier);
@@ -52,34 +56,59 @@ public class BoundaryRechercher {
 			System.out.println("Erreur");
 		}
 		
-		System.out.println("Resutat de la recherche"+resultat);
+		System.out.println("Resutat de la recherche : \n"+resultat);
 	}
 	
 	
 	
-	public void effectuerRechercheMotCle(){
+	public void effectuerRechercheMotCle(Profil profil){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Saisissez un ou plusieurs mot-clé(s) (séparés par des espaces, si un mot n'est pas voulu mettre - devant (exemple : -chez))");
+		String motCle= scanner.nextLine();
+		 int seuil ;
+		
+		 do{
+			 try {
+					System.out.println("Saisissez le seuil");
+			         seuil= scanner.nextInt();
+			    } catch (InputMismatchException e) {
+			        System.out.println("Saisie incorrecte ");
+			        seuil = -1 ;
+			    } 
+			 scanner.nextLine(); // clears the buffer
+		 }while(seuil == -1);
+			
+		 
+		
+		List<DescripteurTexte> resultat  = this.controlRechercher.lancerRechercheMotCle(motCle, seuil, profil);
+		
+		
+		
+		for(DescripteurTexte d : resultat){
+			System.out.println(d.toString());
+		}
+		
+	}
+	
+	
+
+	public void effectuerRecherchePlageCouleur(Profil profil){
 		Clavier clavier = new Clavier();
-		System.out.println("Saisissez un mot clé");
-		String motCle=clavier.entrerClavierString();
+		System.out.println("Saisissez (un entier) la plage de couleur souahitée ( 1 : rouge, 2 : vert , 3 : bleu) ");
+		int couleur = clavier.entrerClavierInt();
+		System.out.println("Saisissez le seuil pour la recherche");
+		int seuil = clavier.entrerClavierInt();
 		
-		System.out.println("Saisissez le seuil");
-		int seuil=clavier.entrerClavierInt();
+		List<DescripteurImage> resultat =  this.controlRechercher.lancerRecherchePlageCouleurs(couleur, seuil);
 		
-	/* N'oubliez pas d'ajouter le moteur souahité */
 		
+		System.out.println("Résultats de la recherche : ");
+		for(DescripteurImage d : resultat){
+			System.out.println(d.getId() + " : " + d.toString());
+		}
 	}
 	
-	
-	
-	
-	
-	public static void main(String[] args)
-	{
-		ControlRechercher controlRechercher=new ControlRechercher();
-		BoundaryRechercher boundaryRechercher=new BoundaryRechercher(controlRechercher);
-		boundaryRechercher.effectuerRechercheFichier();
-		
-	}
+
 	
 }
 

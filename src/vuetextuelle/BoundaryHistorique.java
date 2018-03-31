@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import control.ControlHistorique;
+import model.Descripteur;
 
 public class BoundaryHistorique {
 
@@ -28,9 +29,9 @@ public class BoundaryHistorique {
 		
 		do {
 			entreeClavier = clavier.entrerClavierInt();
-			if(entreeClavier >= listeRecherche.size())
+			if(entreeClavier >= listeRecherche.size() || entreeClavier < 0)
 				System.out.println("Taille incorrect: Veuillez entrer une valeur dans la liste");
-		}while(entreeClavier >= listeRecherche.size());
+		}while(entreeClavier >= listeRecherche.size() || entreeClavier < 0);
 		
 		ArrayList<String> historiqueRecherche = (ArrayList<String>) controlHistorique.consulterHistoriqueRecherche(entreeClavier);
 		
