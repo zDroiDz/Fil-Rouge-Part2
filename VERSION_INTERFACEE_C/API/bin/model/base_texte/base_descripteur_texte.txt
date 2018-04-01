@@ -1,0 +1,84 @@
+<debut> <id> 1 </id> <mots> chercheurs 5 ; souris 4 ; cellules 20 ; souches 9 ; Institut 3 ; chez 3 ; musculaires 4 ; adultes 4 ; leur 4 ;   </mots> </fin>
+<debut> <id> 2 </id> <mots> comportement 3 ;   </mots> </fin>
+<debut> <id> 3 </id> <mots> Abidjan 4 ; rêve 3 ; victoire 4 ; pays 3 ;   </mots> </fin>
+<debut> <id> 4 </id> <mots> étude 4 ; cette 3 ; plus 6 ;   </mots> </fin>
+<debut> <id> 5 </id> <mots> Jean-Christophe 5 ; Bette 4 ; quatre 3 ; était 3 ; bateau 3 ; monde 3 ;   </mots> </fin>
+<debut> <id> 6 </id> <mots> circoncision 10 ; risque 4 ; infection 7 ; virus 3 ; sida 4 ; essai 4 ; protection 3 ; mais 3 ; ANRS 3 ; étude 6 ; chez 3 ; hommes 8 ; résultats 4 ; avant 3 ; comme 3 ; Afrique 4 ; Bertran 3 ; mois 3 ; groupe 3 ;   </mots> </fin>
+<debut> <id> 7 </id> <mots> Guillaume 4 ; Néry 5 ; plus 6 ; mètres 5 ; était 3 ; record 4 ; monde 5 ; dont 3 ;   </mots> </fin>
+<debut> <id> 8 </id> <mots> Juan 5 ; Pablo 5 ; Montoya 5 ; Grand 4 ; Prix 4 ; Italie 3 ; circuit 3 ; Monza 4 ; Renault 9 ; place 3 ; monde 5 ; pilotes 5 ; Fernando 4 ; Alonso 3 ; Giancarlo 4 ; Fisichella 3 ; championnat 3 ; épreuves 3 ; McLaren 6 ; Kimi 6 ; Räikkönen 4 ; Toyota 4 ; Schumacher 3 ; Ferrari 4 ; course 5 ; points 8 ; après 3 ; moins 3 ; saison 4 ; être 3 ; podium 3 ; plus 5 ; dont 5 ; deux 3 ;   </mots> </fin>
+<debut> <id> 9 </id> <mots> théâtre 29 ; Festival 9 ; Avignon 10 ; ministère 3 ; Robert 3 ; Abirached 3 ; spectacles 3 ; années 4 ; français 4 ; cette 7 ; deux 3 ; être 3 ; public 14 ; comme 3 ; populaire 3 ; tout 3 ; bien 4 ; était 4 ; veut 3 ; mais 3 ; certains 3 ; aussi 4 ; cela 5 ; plus 9 ;   </mots> </fin>
+<debut> <id> 10 </id> <mots> quatre 3 ; SACD 7 ; musique 3 ; groupe 4 ; Landed 4 ;   </mots> </fin>
+<debut> <id> 11 </id> <mots> Visa 5 ; festival 3 ;   </mots> </fin>
+<debut> <id> 12 </id> <mots> Prague 5 ; Journées 3 ; patrimoine 5 ; mois 3 ; septembre 4 ; historiques 3 ; France 4 ; pays 3 ; République 3 ; tchèque 4 ; palais 5 ;   </mots> </fin>
+<debut> <id> 13 </id> <mots> Illinois 3 ; Sufjan 4 ; Stevens 4 ; disque 3 ; Feel 3 ; plus 6 ;   </mots> </fin>
+<debut> <id> 14 </id> <mots> athlètes 6 ; DécaNation 3 ; leurs 3 ; être 3 ; équipe 3 ; France 3 ; saut 4 ; était 3 ; euros 4 ;   </mots> </fin>
+<debut> <id> 15 </id> <mots> 2003 4 ; contamination 4 ; maïs 8 ; 2004 4 ; région 4 ; Mexique 3 ; cette 4 ; variétés 3 ; transgéniques 3 ; lignées 3 ; plus 4 ; résultats 3 ; Chapela 4 ; Quist 3 ; transgènes 5 ;   </mots> </fin>
+<debut> <id> 16 </id> <mots> élimination 3 ; Bleus 4 ; équipe 6 ; France 17 ; Coupe 7 ; monde 5 ; 2006 4 ; Allemagne 3 ; match 5 ; Irlande 3 ; groupe 5 ; serait 3 ; deux 5 ; rencontres 3 ; matches 5 ; leur 4 ; millions 5 ; droits 3 ; Victoriano 3 ; euros 4 ;   </mots> </fin>
+<debut> <id> 17 </id> <mots> vaccination 9 ; personnes 10 ; aviaire 7 ; contre 5 ; virus 10 ; grippe 8 ; plus 5 ; notamment 3 ; chez 4 ; âgées 3 ; risque 3 ; aujourd 3 ; H5N1 3 ; pandémie 3 ; auprès 3 ; couverture 5 ; vaccinale 5 ; professionnels 3 ; autorités 3 ; être 4 ; peut 3 ; fait 3 ; experts 4 ; stock 3 ; usage 3 ;   </mots> </fin>
+<debut> <id> 18 </id> <mots>   </mots> </fin>
+<debut> <id> 19 </id> <mots> député 3 ; fédération 3 ; Francis 6 ; Delattre 5 ; sports 4 ; équestres 3 ; ministère 4 ; Serge 4 ; Lecomte 4 ; équipe 3 ;   </mots> </fin>
+<debut> <id> 20 </id> <mots> Carlos 4 ; Carmo 5 ; fado 26 ; Amalia 4 ; sans 4 ;   </mots> </fin>
+<debut> <id> 21 </id> <mots> mission 3 ; Deep 4 ; Impact 4 ; comète 8 ; cette 4 ; violence 3 ; Tempel 7 ; collision 3 ; sonde 5 ; lors 3 ; espace 3 ; autre 3 ; comètes 3 ; plus 4 ; très 4 ; autres 3 ;   </mots> </fin>
+<debut> <id> 22 </id> <mots> équipe 3 ; France 5 ; président 3 ; demandé 3 ; joueurs 3 ; sujet 3 ;   </mots> </fin>
+<debut> <id> 23 </id> <mots> paysagiste 4 ;   </mots> </fin>
+<debut> <id> 24 </id> <mots> effet 8 ; réchauffement 4 ; sols 11 ; carbone 15 ; chercheurs 4 ; climatique 4 ; cours 3 ; régions 4 ; zones 4 ; moins 3 ; également 4 ; organique 3 ; Arrouays 3 ; terrains 3 ; être 3 ;   </mots> </fin>
+<debut> <id> 25 </id> <mots> Jules 3 ; comme 4 ; sans 3 ; scène 3 ;   </mots> </fin>
+<debut> <id> 26 </id> <mots>   </mots> </fin>
+<debut> <id> 27 </id> <mots> Angleterre 3 ; plus 3 ;   </mots> </fin>
+<debut> <id> 28 </id> <mots> réalité 5 ; virtuelle 5 ; recherche 3 ; Archéopôle 3 ; public 3 ; institut 3 ; pièces 3 ; archéologiques 4 ; technologies 3 ; données 4 ; peut 3 ; être 4 ;   </mots> </fin>
+<debut> <id> 29 </id> <mots> Katrina 3 ; navette 4 ; NASA 5 ; mars 3 ; 2006 4 ; vols 3 ; même 3 ; spatial 3 ; avant 3 ;   </mots> </fin>
+<debut> <id> 30 </id> <mots> directement 3 ; polluants 3 ; plus 4 ; deux 3 ; combustion 3 ; Granier 4 ; autres 4 ;   </mots> </fin>
+<debut> <id> 31 </id> <mots> Agassi 8 ; face 3 ; joueur 3 ; plus 7 ; Roger 8 ; Federer 9 ; mondial 4 ; année 3 ; Andre 7 ; remporter 3 ; tournoi 7 ; Grand 7 ; Clijsters 3 ; premier 4 ; Chelem 6 ; deux 4 ; finale 5 ; Roland-Garros 3 ; match 5 ; Open 4 ; victoire 3 ; Américain 4 ; début 3 ; service 4 ;   </mots> </fin>
+<debut> <id> 32 </id> <mots> plus 4 ; septembre 3 ; Michelin 3 ; fait 3 ; pilote 3 ; course 3 ;   </mots> </fin>
+<debut> <id> 33 </id> <mots> Jean-Marie 7 ; Sevestre 9 ; littérature 3 ; titres 5 ; rentrée 6 ; Montpellier 4 ; Sauramps 5 ; librairie 9 ; avons 3 ; livre 4 ;   </mots> </fin>
+<debut> <id> 34 </id> <mots> Oberon 3 ;   </mots> </fin>
+<debut> <id> 35 </id> <mots> Susheela 7 ; Raman 9 ; culture 4 ; tamoule 3 ; Mills 5 ; Music 3 ; Crocodiles 4 ; chanteuse 3 ; carnatique 3 ;   </mots> </fin>
+<debut> <id> 36 </id> <mots> plus 6 ; championnats 3 ; Caire 3 ; équipe 5 ; depuis 3 ; Stéphane 3 ; Traineau 3 ;   </mots> </fin>
+<debut> <id> 37 </id> <mots> astronomes 3 ; explosion 5 ; plus 7 ; gamma 3 ; milliards 5 ; univers 4 ; septembre 3 ; années 3 ; être 3 ;   </mots> </fin>
+<debut> <id> 38 </id> <mots> accidents 4 ; cérébraux 4 ; urgence 3 ; plus 5 ; cause 4 ; prise 3 ; charge 4 ; personnes 3 ; moins 6 ; infarctus 3 ; dont 3 ; artère 3 ; ischémie 4 ; thrombolyse 3 ; trois 4 ; heures 3 ; risque 3 ; fait 3 ; imagerie 3 ; cérébrale 6 ; troubles 7 ;   </mots> </fin>
+<debut> <id> 39 </id> <mots> Real 3 ; Madrid 3 ; club 7 ; football 4 ; Mais 4 ; avoir 4 ; cette 3 ; communication 4 ; Michael 4 ; Essien 3 ;   </mots> </fin>
+<debut> <id> 40 </id> <mots> goutte 4 ; huile 3 ;   </mots> </fin>
+<debut> <id> 41 </id> <mots> plans 3 ; pandémie 3 ; plus 3 ; docteur 4 ; Stohr 4 ; grippe 5 ; pays 7 ;   </mots> </fin>
+<debut> <id> 42 </id> <mots> effet 3 ; géologiques 3 ; devrait 3 ; charbon 3 ; capture 5 ; stockage 4 ; plus 5 ; coût 3 ; tonnes 3 ;   </mots> </fin>
+<debut> <id> 43 </id> <mots> effet 3 ; géologiques 3 ; devrait 3 ; charbon 3 ; capture 5 ; stockage 4 ; plus 5 ; coût 3 ; tonnes 3 ;   </mots> </fin>
+<debut> <id> 44 </id> <mots> Preljocaj 4 ; Opéra 3 ;   </mots> </fin>
+<debut> <id> 45 </id> <mots> Robert 12 ; Wise 12 ; réalisateur 3 ; Side 4 ; Welles 3 ; West 3 ; Story 3 ; film 13 ; films 3 ; deux 3 ; plus 4 ; succès 6 ; scène 3 ;   </mots> </fin>
+<debut> <id> 46 </id> <mots> Théâtre 3 ; Champs-Elysées 3 ; acoustique 5 ; travaux 3 ; salle 3 ; scène 3 ; être 4 ;   </mots> </fin>
+<debut> <id> 47 </id> <mots> Lille 4 ; Benfica 3 ; mercredi 3 ; équipe 3 ; Claude 3 ; Puel 3 ; Turin 3 ; groupe 3 ;   </mots> </fin>
+<debut> <id> 48 </id> <mots> sélectionneur 3 ; équipe 8 ; France 7 ; championnat 3 ; fait 5 ; cette 4 ; basket 6 ; joueurs 3 ;   </mots> </fin>
+<debut> <id> 49 </id> <mots> quasar 6 ; comme 8 ; sans 5 ; astronomes 3 ; galaxie 4 ; leur 4 ; plus 3 ;   </mots> </fin>
+<debut> <id> 50 </id> <mots> sonde 8 ; échantillons 4 ; astéroïde 4 ; Terre 6 ; exploration 3 ; spatiale 3 ; Japonais 3 ; tout 3 ; comète 3 ; plus 10 ; mission 5 ; Hayabusa 4 ; surface 4 ; kilomètres 3 ; Itokawa 6 ; Michel 3 ;   </mots> </fin>
+<debut> <id> 51 </id> <mots> Anouk 3 ; Aimée 3 ; plus 6 ; cette 3 ; deux 4 ; même 3 ;   </mots> </fin>
+<debut> <id> 52 </id> <mots> prévision 8 ; inondations 3 ; France 7 ; ministère 3 ; Météo 4 ;   </mots> </fin>
+<debut> <id> 53 </id> <mots> voix 3 ; Girija 7 ; Devi 8 ; musique 4 ; Théâtre 4 ; Ville 5 ; plus 3 ; Chaurasia 4 ;   </mots> </fin>
+<debut> <id> 54 </id> <mots> équipe 4 ; cardiaque 9 ; mouton 4 ; greffe 5 ; cellules 29 ; souches 15 ; pourraient 3 ; être 5 ; chez 11 ; embryonnaires 9 ; infarctus 8 ; vers 3 ; privilège 3 ; Menasché 3 ; leur 3 ; plus 7 ; moutons 3 ;   </mots> </fin>
+<debut> <id> 55 </id> <mots> Slovénie 3 ; France 7 ; barrage 3 ; Parker 3 ; matches 3 ; très 4 ; Français 4 ; deux 5 ; deuxième 5 ; points 3 ;   </mots> </fin>
+<debut> <id> 56 </id> <mots>   </mots> </fin>
+<debut> <id> 57 </id> <mots> visiteurs 3 ;   </mots> </fin>
+<debut> <id> 58 </id> <mots>   </mots> </fin>
+<debut> <id> 59 </id> <mots> France 3 ; champions 5 ; monde 3 ; Europe 3 ; match 3 ; équipe 4 ; Claude 3 ; Bergeaud 3 ; Bleus 3 ; Tony 4 ; Parker 3 ;   </mots> </fin>
+<debut> <id> 60 </id> <mots> fertilité 3 ; masculine 3 ; exposition 5 ; présents 3 ; plus 4 ;   </mots> </fin>
+<debut> <id> 61 </id> <mots> Paulo 5 ; Cartoucherie 3 ; Ivaldo 3 ; Bertazzo 3 ;   </mots> </fin>
+<debut> <id> 62 </id> <mots> même 5 ; exploitation 4 ; autres 4 ; agricole 4 ; champs 3 ; agriculteurs 3 ; Mais 4 ; leur 4 ; fait 4 ; Chantal 3 ; faut 3 ; père 3 ; étais 4 ; très 4 ; toujours 3 ; début 4 ;   </mots> </fin>
+<debut> <id> 63 </id> <mots> architectes 13 ; postes 5 ; plus 4 ; architecture 8 ; agence 4 ; année 3 ; profession 5 ; entreprises 3 ; activité 3 ; bâtiment 3 ; agences 4 ;   </mots> </fin>
+<debut> <id> 64 </id> <mots> Girodet 12 ; Musée 3 ; Louvre 6 ; artiste 3 ; même 4 ; David 4 ; peut 3 ; jusqu 4 ; comme 3 ; cette 3 ; toile 4 ; plus 4 ;   </mots> </fin>
+<debut> <id> 65 </id> <mots> aviaire 3 ; vaccin 6 ; Malte 3 ; contre 8 ; pandémie 4 ; production 3 ; vaccins 3 ; virus 11 ; chez 4 ; H5N1 5 ; millions 4 ; recherche 3 ; doses 3 ;   </mots> </fin>
+<debut> <id> 66 </id> <mots> clubs 4 ; football 9 ; supporteurs 3 ; stades 5 ; plus 7 ; championnat 3 ; britannique 5 ; Premier 3 ; League 4 ; fréquentation 4 ; prix 6 ; entre 4 ; saison 10 ; moins 3 ; matches 6 ;   </mots> </fin>
+<debut> <id> 67 </id> <mots> leur 3 ;   </mots> </fin>
+<debut> <id> 68 </id> <mots> Stanger 4 ; Américain 4 ; France 12 ; Français 4 ; pays 3 ; américain 3 ; tout 4 ; Paris 4 ;   </mots> </fin>
+<debut> <id> 69 </id> <mots> Lituanie 3 ; France 3 ; leur 3 ; points 5 ;   </mots> </fin>
+<debut> <id> 70 </id> <mots> effet 7 ; serre 3 ; Europe 4 ; 2003 4 ; plus 4 ; végétation 4 ; carbone 4 ; forêts 3 ; écosystèmes 3 ; réchauffement 3 ;   </mots> </fin>
+<debut> <id> 71 </id> <mots> aviaire 4 ; homme 3 ; grippe 3 ;   </mots> </fin>
+<debut> <id> 72 </id> <mots> Manu 4 ; Katché 6 ; disque 3 ; jazz 6 ; sans 3 ;   </mots> </fin>
+<debut> <id> 73 </id> <mots> tête 4 ; mais 4 ; entraîneur 3 ;   </mots> </fin>
+<debut> <id> 74 </id> <mots> Boonen 3 ; avait 4 ; Tour 4 ; était 3 ;   </mots> </fin>
+<debut> <id> 75 </id> <mots> Lens 7 ; Louvre 8 ; région 7 ; projet 3 ; Sanaa 3 ; musée 3 ; être 3 ; président 3 ; cette 3 ; dont 3 ;   </mots> </fin>
+<debut> <id> 76 </id> <mots> Stade 19 ; France 15 ; clubs 4 ; enceinte 4 ; Saint-Denis 5 ; trois 5 ; matches 4 ; Lille 9 ; Ligue 6 ; champions 5 ; septembre 3 ; français 7 ; championnat 3 ; rugby 6 ; politique 3 ; football 4 ; cette 3 ; stade 4 ; depuis 3 ; aussi 3 ; résidant 4 ; consortium 4 ; places 5 ; Simonin 3 ; personnes 3 ; Guazzini 3 ;   </mots> </fin>
+<debut> <id> 77 </id> <mots> Scorsese 3 ; Cinémathèque 4 ;   </mots> </fin>
+<debut> <id> 78 </id> <mots> Voyager 10 ; système 8 ; solaire 9 ; sonde 5 ; aura 5 ; plus 14 ; atteindre 3 ; décembre 3 ; Soleil 6 ; engin 3 ; avait 4 ; première 3 ; cette 6 ; choc 8 ; terminal 4 ; Pioneer 3 ; distance 3 ; kilomètres 3 ; notre 5 ; particules 3 ; milieu 3 ; devant 3 ; sans 4 ; vers 3 ; panne 3 ;   </mots> </fin>
+<debut> <id> 79 </id> <mots> Hossegor 4 ; Kelly 4 ; Slater 4 ; septième 4 ; titre 3 ; était 5 ; avait 6 ; première 3 ; avant 3 ;   </mots> </fin>
+<debut> <id> 80 </id> <mots> Robyn 5 ; Orlin 4 ; danseurs 3 ; pièce 3 ; sida 5 ; aussi 3 ; plus 3 ;   </mots> </fin>
+<debut> <id> 81 </id> <mots> Ososphère 7 ; électronique 3 ; Strasbourg 4 ; festival 3 ; musique 3 ; deux 3 ; septembre 3 ; octobre 5 ; heures 3 ;   </mots> </fin>
+<debut> <id> 82 </id> <mots> homme 4 ; Sophocle 3 ; Rome 3 ; plus 3 ; Œdipe 12 ; Colone 7 ; scène 5 ; Mario 4 ; Martone 4 ; metteur 3 ; histoire 3 ;   </mots> </fin>
+<debut> <id> 83 </id> <mots> calotte 3 ; superficie 6 ; était 3 ; septembre 4 ; plus 7 ; faible 3 ; NSIDC 3 ; dernières 4 ; effectuées 3 ; Arctique 6 ; glace 4 ;   </mots> </fin>
+<debut> <id> 84 </id> <mots>   </mots> </fin>
