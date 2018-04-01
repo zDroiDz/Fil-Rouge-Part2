@@ -3,41 +3,20 @@ package test;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import control.ControlIndexation;
+
 public class testLinux {
 	
 	public static void main(String[] args) {
+		ControlIndexation controlIndexation=new ControlIndexation();
+		//controlIndexation.lancerIndexation();
 		
-		String s;
-        Process p;
-        try {
-        	   System.out.println("test");
-        	   Process proc = Runtime.getRuntime().exec("./api");                        
-        	   proc.waitFor();
-        	   System.out.println("salut");
-        } catch (Exception e) {}
-    }
-	
-	
-	
-	public String indexer()
-	{
-		String message = "";
+		String pathTexte="03-Des_chercheurs_parviennent_à_régénérer.xml";
+		String pathSon="jingle_fi.bin";
 		
-		return message;
-	}
-	
-	public void compareTextes(String path)
-	{
+		controlIndexation.compareTextes(pathTexte);
 		
-	}
-	
-	public void compareSons(String path)
-	{
-		
-	}
-	
-	public void compareImages(String path)
-	{
+		controlIndexation.compareSons(pathSon);
 		
 	}
 	

@@ -774,14 +774,14 @@ void compareFiles()
     printf("document d'id %d a %d mots en commun sur avec votre fichier\n",tabID2[k],tabOccurences2[k]);
     k++;
   }
-
+/*
   if(cpt4>0)
   {
     printf("\naffichage des documents dans l'ordre décroissant:\n");
   }
+*/
 
-
-  sort(tabOccurences2,tabID2,cpt4);
+  //sort(tabOccurences2,tabID2,cpt4);
 
   /*
   if(tabID!=NULL)

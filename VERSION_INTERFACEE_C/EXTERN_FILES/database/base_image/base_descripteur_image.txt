@@ -1,5 +1,5 @@
 NB_BIT_RGB: 3
-NB_BIT_NB: 3
+NB_BIT_NB: 4
 <id> 0 </id>
 <type> RGB </type>
 <nbcolonne> 200 </nbcolonne>
@@ -5779,7 +5779,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 994;
-0x07: 19726;
+0x0f: 19726;
 </valeurs>
 
 <id> 51 </id>
@@ -5789,7 +5789,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 942;
-0x07: 19778;
+0x0f: 19778;
 </valeurs>
 
 <id> 52 </id>
@@ -5799,8 +5799,8 @@ NB_BIT_NB: 3
 <nbvaleur> 3 </nbvaleur>
 <valeurs>
 0x00: 986;
-0x06: 64;
-0x07: 19670;
+0x0c: 64;
+0x0f: 19670;
 </valeurs>
 
 <id> 53 </id>
@@ -5810,7 +5810,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 7285;
-0x01: 11283;
+0x03: 11283;
 </valeurs>
 
 <id> 54 </id>
@@ -5820,7 +5820,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 8166;
-0x01: 11246;
+0x03: 11246;
 </valeurs>
 
 <id> 55 </id>
@@ -5830,7 +5830,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 8120;
-0x01: 12769;
+0x03: 12769;
 </valeurs>
 
 <id> 56 </id>
@@ -5840,7 +5840,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 5037;
-0x03: 11347;
+0x07: 11347;
 </valeurs>
 
 <id> 57 </id>
@@ -5850,7 +5850,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 3583;
-0x03: 12801;
+0x07: 12801;
 </valeurs>
 
 <id> 58 </id>
@@ -5860,7 +5860,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 3111;
-0x05: 12249;
+0x0b: 12249;
 </valeurs>
 
 <id> 59 </id>
@@ -5870,7 +5870,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 4019;
-0x05: 11341;
+0x0b: 11341;
 </valeurs>
 
 <id> 60 </id>
@@ -5880,7 +5880,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 3881;
-0x05: 11479;
+0x0b: 11479;
 </valeurs>
 
 <id> 61 </id>
@@ -5890,7 +5890,7 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 5263;
-0x03: 11121;
+0x07: 11121;
 </valeurs>
 
 <id> 62 </id>
@@ -5900,6 +5900,6 @@ NB_BIT_NB: 3
 <nbvaleur> 2 </nbvaleur>
 <valeurs>
 0x00: 5270;
-0x03: 15130;
+0x07: 15130;
 </valeurs>
 
