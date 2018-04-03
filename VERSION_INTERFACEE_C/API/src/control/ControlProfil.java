@@ -126,7 +126,6 @@ public class ControlProfil {
     		System.out.println(e.toString());
     		}
 		
-		System.out.println(fileContent.toString());
 		
 		try(FileWriter fw = new FileWriter(PATH_LISTE_PROFIL);
 			    BufferedWriter bw = new BufferedWriter(fw);

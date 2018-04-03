@@ -3,6 +3,8 @@ package vuetextuelle;
 
 import java.util.Scanner;
 
+import control.ControlChangerModeRecherche;
+import control.ControlConfigurer;
 import control.ControlCreerProfil;
 import control.ControlDescripteurs;
 import control.ControlHistorique;
@@ -25,9 +27,16 @@ public class BoundaryNaviguer {
 	ControlProfil controlProfil = new ControlProfil();
 
 	private ControlRechercher controlRechercher = new ControlRechercher(controlHistorique, controlProfil );
-	
 	private BoundaryRechercher boundaryRechercher = new BoundaryRechercher(controlRechercher);
+
+	private ControlDescripteurs controlDescripteurs = new ControlDescripteurs();
+	private BoundaryVisualiserDescripteurs boundaryVisualiserDescripteurs = new BoundaryVisualiserDescripteurs(controlDescripteurs);
 	
+	private ControlChangerModeRecherche controlChangerModeRecherche = new ControlChangerModeRecherche();
+	private BoundaryChangerModeRecherche boundaryChangerModeRecherche = new BoundaryChangerModeRecherche(controlChangerModeRecherche);
+
+	private ControlConfigurer controlConfigurer = new ControlConfigurer();
+	private BoundaryConfigurer boundaryConfigurer =new BoundaryConfigurer(controlConfigurer);
 	
 	public BoundaryNaviguer()
 	{
@@ -37,10 +46,10 @@ public class BoundaryNaviguer {
 		
 		controlDescripteurs.fillBDDescripteurTexte();
 		controlDescripteurs.fillBDDescripteurSon();
-		controlDescripteurs.fillBDDescripteurImage();
-		
-		
+	
 		controlProfil.FillBDProfils();
+	
+		controlConfigurer.setup();
 	}
 	
 	
@@ -54,27 +63,33 @@ public class BoundaryNaviguer {
 	private void menu_choix_connexion() {
 		// TODO Auto-generated method stub
 		do{
-			System.out.println("\nMenu de choix connexion :  \n1- Se connecter\n2- Créer un compte");
-			choix = scanner.nextInt();
-			if ( (choix!= 1) && (choix!= 2)) {
-			       System.out.println("Probleme de saisie, veuillez recommencer.\n" );
-			     }
-		}while(choix != 1 && choix!= 2);
-		
-		switch(choix){
-			case 1 :
-				ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
-				BoundarySIdentifier boundarySIdentifier = new BoundarySIdentifier(controlSIdentifier);
-				profil = boundarySIdentifier.connexion();
-				controlHistorique.FillBDHistorique(profil);
-				break;
-			case 2:
-				ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
-				BoundaryCreerProfilUtilisateur boundaryCreerProfilUtilisateur=new BoundaryCreerProfilUtilisateur(controlCreerProfil );
-				profil = boundaryCreerProfilUtilisateur.creerProfil();	
-				break ;
-		}
-		
+			
+			
+			do{
+				System.out.println("\nMenu de choix connexion :  \n1- Se connecter\n2- Créer un compte");
+				choix = scanner.nextInt();
+				if ( (choix!= 1) && (choix!= 2)) {
+				       System.out.println("Probleme de saisie, veuillez recommencer.\n" );
+				     }
+			}while(choix != 1 && choix!= 2);
+			
+			switch(choix){
+				case 1 :
+					ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
+					BoundarySIdentifier boundarySIdentifier = new BoundarySIdentifier(controlSIdentifier);
+					profil = boundarySIdentifier.connexion();
+					if(profil != null ){
+						controlHistorique.FillBDHistorique(profil);	
+					}
+					
+					break;
+				case 2:
+					ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
+					BoundaryCreerProfilUtilisateur boundaryCreerProfilUtilisateur=new BoundaryCreerProfilUtilisateur(controlCreerProfil );
+					profil = boundaryCreerProfilUtilisateur.creerProfil();	
+					break ;
+			}
+		}while(profil == null);
 		if(profil.isAdmin()){
 			menu_base_admin();
 		}else{
@@ -124,29 +139,23 @@ public class BoundaryNaviguer {
 	void menu_administrateur(int verif) {
 
 
-	System.out.println("\nMenu administrateur :\n1 - Lancer indexation\n2 - Configuration\n3 - Visualiser descripteurs\n4 - Créer administrateur\n5 - Retour au menu principal\n" );
+	System.out.println("\nMenu administrateur :\n1 - Lancer indexation\n2 - Configuration\n3 - Visualiser descripteurs\n4 - Changer mode recherche\n5 - Créer administrateur\n6 - Retour au menu principal\n" );
 
 	do {
 
 	  choix = this.scanner.nextInt();
 
-	  if ( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) ) {
+	  if ( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) && (choix != 6) ) {
 	    System.out.println("Probleme de saisie, veuillez recommencer.\n" );
 	  }
 
-	} while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) );
+	} while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) && (choix != 5) && (choix != 6) );
 
 	//indexation
 	   if (choix == 1) {
 	      System.out.println("Lancement de l'indexation !\n" );
-	      try {
-			wait(500);
-			System.out.println("Indexation terminée !");
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      System.out.println("Inde");
+	     
+	      System.out.println("Indexation terminée !");
 	      //rmThenStartIndexation();
 	      //indexImage();
 	      //resetAndIndex();
@@ -161,14 +170,17 @@ public class BoundaryNaviguer {
 	     menu_visualiserdesc();
 	     
 	   }else if(choix == 4){
+		   this.boundaryChangerModeRecherche.changerModeRecherche();
+	   }else if(choix == 5){
 		   ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
 		   BoundaryCreerProfilAdmin boundaryCreerProfilAdmin=new BoundaryCreerProfilAdmin(controlCreerProfil );
 		   boundaryCreerProfilAdmin.creerProfil();
 	     //retour au menu principal
-	   } else if(choix == 5){
+	   } else if(choix == 6){
 	     menu_base_admin();
 	   }
 
+	   menu_administrateur(1);
 	}
 
 
@@ -178,32 +190,8 @@ public class BoundaryNaviguer {
 	void menu_visualiserdesc() {
 	    System.out.println("\nMenu visualiser descripteurs : \n1 - Texte\n2 - Son\n3 - Image\n4 - Retour\n" );
 	    
-	    do {
+		this.boundaryVisualiserDescripteurs.visualiserDescripteurs();
 
-	      choix = scanner.nextInt();
-
-	      if ((choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) ) {
-	        System.out.println("Probleme de saisie, veuillez recommencer.\n" );
-	      }
-
-	    } while( (choix != 1 ) && (choix != 2) && (choix != 3) && (choix != 4) );
-
-	    //Visualisation texte
-	       if (choix == 1) {
-	          System.out.println("Visualisation descripteurs texte\n" );
-	        //  system("cat ../EXTERN_FILES/database/base_texte/base_descripteur_texte.txt");
-	    //visualisation son
-	       }else if (choix == 2 ) {
-	          System.out.println("Visualisation descripteurs son\n" );
-	        //  system("cat ../EXTERN_FILES/database/base_son/base_descripteur_son.txt");
-	    //visualisation image
-	       }else if (choix == 3 ) {
-	        System.out.println("Visualisation descripteurs image\n" );
-	       // system("cat ../EXTERN_FILES/database/base_image/base_descripteur_image.txt");
-	         //retour au menu admin
-	       } else if(choix == 4 ){
-	         menu_administrateur(1);
-	       }
 
 	       menu_administrateur(1);
 	}
@@ -227,20 +215,18 @@ public class BoundaryNaviguer {
 	  //configuration texte
 	     if (choix == 1) {
 	        System.out.println("Configuration texte\n" );
-	        System.out.println("Saisissez le nombre d'occurences : \n" );
-	        int nbocc = this.scanner.nextInt() ;
+	        this.boundaryConfigurer.configureTxt();
 	        
-	        //modifConfig(nbocc, "txt_nboccurrences:");
 
 	  //configuration son
 	     }else if (choix == 2 ) {
 	        System.out.println("Configuration son\n" );
-	        menu_configuration_son();
+	        this.boundaryConfigurer.configureSon();
 
 	  //configuration image
 	     }else if (choix == 3 ) {
 	      System.out.println("Configuration image\n" );
-	        menu_configuration_image();
+	      	this.boundaryConfigurer.configureImage();
 
 	       //retour au menu admin
 	     } else if(choix == 4 ){

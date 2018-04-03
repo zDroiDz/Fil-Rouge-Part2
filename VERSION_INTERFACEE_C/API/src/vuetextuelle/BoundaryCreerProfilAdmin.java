@@ -15,10 +15,11 @@ public class BoundaryCreerProfilAdmin {
 	public void creerProfil()
 	{
 		Clavier clavier =new Clavier();
+
+		System.out.println("Veuillez entrez prenom : ");
+		String prenom=clavier.entrerClavierString();
 		System.out.println("Veuillez entrez le nom : ");
 		String nom=clavier.entrerClavierString();
-		System.out.println("Veuillez entrez prenom prenom : ");
-		String prenom=clavier.entrerClavierString();
 		System.out.println("Veuillez entrez le mot de passe : ");
 		String mdp = clavier.entrerClavierString();
 		

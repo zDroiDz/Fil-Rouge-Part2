@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,47 +9,26 @@ import java.util.Map;
 
 public class DescripteurImage extends Descripteur {
 	
-	/*private int tabR[][];
-	private int tabG[][];
-	private int tabB[][];*/
+	private String couleurDominante;
 	
 	private int seuilCouleur ;
+	private int avgColor[];
 	
-	public DescripteurImage(int id ,String nomFichier, String path, int seuil ){
+	public DescripteurImage(int id ,String nomFichier, String path, int seuil,int tabAvg[],String coul){
 		super();
 		super.id = id ;
 		super.nomFichier = nomFichier ;
 		super.path = path ;
 		this.seuilCouleur= seuil;
-	}
-	
-	   
-	  public boolean checkPlage(int seuil) {
-		
-		  return this.seuilCouleur >= seuil ;
-		  
-	}
-	
-	
-	/**
-	 * @return the seuilCouleur
-	 */
-	public int getSeuilCouleur() {
-		return seuilCouleur;
+		this.avgColor=tabAvg;
+		this.couleurDominante=coul;
 	}
 
-
-	/**
-	 * @param seuilCouleur the seuilCouleur to set
-	 */
-	public void setSeuilCouleur(int seuilCouleur) {
-		this.seuilCouleur = seuilCouleur;
+	@Override
+	public String toString() {
+		return "DescripteurImage [couleurDominante=" + couleurDominante + ", seuilCouleur=" + seuilCouleur
+				+ ", avgColor=" + Arrays.toString(avgColor) + "]";
 	}
 
-
-	public String toString(){
-		return super.nomFichier ;
-	}
-	
 
 }

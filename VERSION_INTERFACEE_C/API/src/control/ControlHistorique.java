@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import model.BDHistorique;
 import model.Descripteur;
@@ -67,7 +66,6 @@ public class ControlHistorique {
 					for(int i=0;i<decoup.length-1;i++)
 					{
 						ArrayList<String> arrayList=new ArrayList<>();
-						System.out.println(decoup[i]);
 						
 						String[] motcle=decoup[i].split(":");
 						arrayList.add(motcle[1]);

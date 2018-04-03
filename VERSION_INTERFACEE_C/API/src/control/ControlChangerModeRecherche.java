@@ -2,14 +2,21 @@ package control;
 
 public class ControlChangerModeRecherche {
 
-	public ControlChangerModeRecherche(){
+	private boolean modeOuvert = false ;
+	
+	public void setMode(int choix){
+		if(choix == 1 && this.modeOuvert != true){
+			this.modeOuvert = true ;
+			
+		}else if(choix == 2 && this.modeOuvert != false){
+			this.modeOuvert = false ;
+		}
 		
-	}
-	
-	
-	public boolean setMode(int choix){
-		boolean changement = false;
-		return changement;
+		if(this.modeOuvert){
+			System.out.println("Le mode actuel est : ouvert !");
+		}else{
+			System.out.println("Le mode actuel est : fermé !");
+		}
 	}
 
 }

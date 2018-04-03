@@ -55,11 +55,6 @@ public class ControlRechercher {
 	}
 	
 	
-	public List<DescripteurImage> lancerRecherchePlageCouleurs(int couleur, int seuil){
-		return this.bdimage.getDescripteurs(couleur, seuil);
-		
-	}
-	
 	public List<String> effectuerRechercheSon(DescripteurSon descripteurSon ,int seuil){
 		List<String> resultatSon =new ArrayList<>();
 		

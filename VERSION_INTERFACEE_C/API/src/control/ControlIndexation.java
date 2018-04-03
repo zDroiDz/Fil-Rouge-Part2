@@ -1,9 +1,76 @@
 package control;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+/*
+ * liste des commandes :
+ * ./apiJAVA indexation => lance l'indexation
+ * 
+ * ./apiJAVA comparaison texte $chemin => lance la comparaison
+ * ./apiJAVA comparaison son $chemin => lance la comparaison
+ * ./apiJAVA comparaison image $chemin => lance la comparaison
+ * 
+ */
+
 public class ControlIndexation {
 	
 	public boolean lancerIndexation() {
-		//Inserer ici l'interfa�age C
-		return true;
+		String s;
+        Process p;
+        try {
+        	   Process proc = Runtime.getRuntime().exec("./apiJAVA indexation");                        
+        	   proc.waitFor();
+        	   return true;
+        } catch (Exception e) {
+        	
+        }
+        
+        return false;
+	}
+	
+	public void compareTextes(String path)
+	{
+		String cmd="./apiJAVA comparaison texte ";
+		cmd+=path;
+		
+		 String s;
+	     Process p;
+	     try {
+	            p = Runtime.getRuntime().exec(cmd);
+	            BufferedReader br = new BufferedReader(
+	                new InputStreamReader(p.getInputStream()));
+	            while ((s = br.readLine()) != null)
+	                System.out.println(s);
+	            p.waitFor();
+	            System.out.println ("exit: " + p.exitValue());
+	            p.destroy();
+	        } catch (Exception e) {}                                                                                                                                           
+		
+	}
+	
+	public void compareSons(String path)
+	{
+		String cmd="./apiJAVA comparaison son ";
+		cmd+=path;
+		
+		 String s;
+	     Process p;
+	     try {
+	            p = Runtime.getRuntime().exec(cmd);
+	            BufferedReader br = new BufferedReader(
+	                new InputStreamReader(p.getInputStream()));
+	            while ((s = br.readLine()) != null)
+	                System.out.println(s);
+	            p.waitFor();
+	            System.out.println ("exit: " + p.exitValue());
+	            p.destroy();
+	        } catch (Exception e) {}   
+	}
+	
+	public void compareImages(String path)
+	{
+		/* je sais pas comment vous avez géré l'affichage dans le c*/
 	}
 }

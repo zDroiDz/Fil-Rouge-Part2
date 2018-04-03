@@ -1,6 +1,7 @@
 package vuetextuelle;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import control.ControlConfigurer;
@@ -16,46 +17,87 @@ public class BoundaryConfigurer {
 	}
 	
 	public void configureTxt(){
-		System.out.println("Saisissez le nombre d'occurences pour les fichiers texte ");
-		int nbOccTxt  = this.scanner.nextInt();	
+		int nbOccTxt  ;
+		 
+		do{
+			 try {
+					System.out.println("Saisissez le nombre d'occurences pour les fichiers texte ");
+					nbOccTxt= scanner.nextInt();
+			    } catch (InputMismatchException e) {
+			        System.out.println("Saisie incorrecte ");
+			        nbOccTxt = -1 ;
+			    } 
+			 scanner.nextLine(); // clears the buffer
+		 }while(nbOccTxt == -1);
+		
 		this.controlConfigurer.setNbOccTxt(nbOccTxt);
 	}
 	
 	public void configureSon(){
-		System.out.println("Saisissez le nombre d'échantillons");
-		int nbEch  = this.scanner.nextInt();	
+		
+		int nbEch;
+		
+		do{
+			 try {
+				 System.out.println("Saisissez le nombre d'échantillons");
+					nbEch= scanner.nextInt();
+			    } catch (InputMismatchException e) {
+			        System.out.println("Saisie incorrecte ");
+			        nbEch = -1 ;
+			    } 
+			 scanner.nextLine(); // clears the buffer
+		 }while(nbEch == -1);
+		
+		
 		this.controlConfigurer.setNbEch(nbEch);
 		
-		System.out.println("Saisissez le nombre d'intervalles");
-		int nbInter  = this.scanner.nextInt();	
+		int nbInter;
+		do{
+			 try {
+
+					System.out.println("Saisissez le nombre d'intervalles");
+					nbInter= scanner.nextInt();
+			    } catch (InputMismatchException e) {
+			        System.out.println("Saisie incorrecte ");
+			        nbInter = -1 ;
+			    } 
+			 scanner.nextLine(); // clears the buffer
+		 }while(nbInter == -1);
+		
 		this.controlConfigurer.setNbIntervalles(nbInter);
 	}
 	
 	public void configureImage(){
-		System.out.println("Saisissez le nombre de bits significatifs pour les images en noir et blanc ");
-		int nbBitsNB  = this.scanner.nextInt();	
+		int nbBitsNB  ;
+		do{
+			 try {
+				 System.out.println("Saisissez le nombre de bits significatifs pour les images en noir et blanc ");
+				 nbBitsNB= scanner.nextInt();
+			    } catch (InputMismatchException e) {
+			        System.out.println("Saisie incorrecte ");
+			        nbBitsNB = -1 ;
+			    } 
+			 scanner.nextLine(); // clears the buffer
+		 }while(nbBitsNB == -1);
+		
 		this.controlConfigurer.setNbBitsNb(nbBitsNB);
 		
-		System.out.println("Saisissez le nombre de bits significatifs pour les images en couleur ");
-		int nbBitsCouleur  = this.scanner.nextInt();	
+		int nbBitsCouleur;	
+		
+		do{
+			 try {
+				 	System.out.println("Saisissez le nombre de bits significatifs pour les images en couleur ");
+				 	nbBitsCouleur= scanner.nextInt();
+			    } catch (InputMismatchException e) {
+			        System.out.println("Saisie incorrecte ");
+			        nbBitsCouleur = -1 ;
+			    } 
+			 scanner.nextLine(); // clears the buffer
+		 }while(nbBitsCouleur == -1);
+		
 		this.controlConfigurer.setNbBitsCouleur(nbBitsCouleur);
 	}
 	
-	public static void main(String[] args){
-		
-		ControlConfigurer controlConfigurer = new ControlConfigurer() ;
-		
-		BoundaryConfigurer boundaryConfigurer = new BoundaryConfigurer(controlConfigurer);
-		//boundaryConfigurer.configureImage();
-		//boundaryConfigurer.configureSon();
-		//boundaryConfigurer.configureTxt();
-		controlConfigurer.setup();
-		System.out.println(controlConfigurer.getNbOccTxt());
-		System.out.println(controlConfigurer.getNbEch());
-		System.out.println(controlConfigurer.getNbIntervalles());
-		System.out.println(controlConfigurer.getNbBitsNb());
-		System.out.println(controlConfigurer.getNbBitsCouleur());
-		
-	}
+	
 
 }
