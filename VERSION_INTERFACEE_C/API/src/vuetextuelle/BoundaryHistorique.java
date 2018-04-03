@@ -29,9 +29,9 @@ public class BoundaryHistorique {
 		
 		do {
 			entreeClavier = clavier.entrerClavierInt();
-			if(entreeClavier >= listeRecherche.size() || entreeClavier < 0)
+			if(entreeClavier >= listeRecherche.size())
 				System.out.println("Taille incorrect: Veuillez entrer une valeur dans la liste");
-		}while(entreeClavier >= listeRecherche.size() || entreeClavier < 0);
+		}while(entreeClavier >= listeRecherche.size());
 		
 		ArrayList<String> historiqueRecherche = (ArrayList<String>) controlHistorique.consulterHistoriqueRecherche(entreeClavier);
 		

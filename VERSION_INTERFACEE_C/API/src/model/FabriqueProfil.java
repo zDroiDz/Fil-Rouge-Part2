@@ -1,7 +1,7 @@
 package model;
 
 public class FabriqueProfil {
-	 public Profil getProfil( ProfilUtilisateur profilUtilisateur,String prenom, String nom, String mdp)
+	 public Profil getProfil( ProfilUtilisateur profilUtilisateur,String nom, String prenom, String mdp)
 	 
 		{
 			 
@@ -9,11 +9,11 @@ public class FabriqueProfil {
 		 switch (profilUtilisateur)
 		 {
 		 case UTILISATEUR:
-			 profil=new Utilisateur(prenom,nom,mdp);
+			 profil=new Utilisateur(nom,prenom,mdp);
 			 break;
 			 
 		 default :
-			 profil =new Admin(prenom,nom,mdp);
+			 profil =new Admin(nom,prenom,mdp);
 			 break;
 			 
 		 }

@@ -7,9 +7,15 @@ import java.util.Map;
 
 
 public class BDImage {
-
 	
+	/*Map<Integer,DescripteurImage> listeDescripteursImage;
 
+    private BDImage()
+    {
+        this.listeDescripteursImage=new HashMap<>();
+    }
+*/
+	
 	List<DescripteurImage> tabR = new ArrayList<>() ;
 	List<DescripteurImage> tabG = new ArrayList<>() ;
 	List<DescripteurImage> tabB = new ArrayList<>() ;
@@ -73,13 +79,6 @@ public class BDImage {
     	this.tabG.add(d);
     }
     
-    /* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "BDImage [tabR=" + tabR + ", tabG=" + tabG + ", tabB=" + tabB + "]";
-	}
     
 
 }

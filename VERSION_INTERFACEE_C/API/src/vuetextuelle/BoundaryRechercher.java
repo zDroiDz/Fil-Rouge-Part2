@@ -2,7 +2,6 @@ package vuetextuelle;
 
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -65,20 +64,10 @@ public class BoundaryRechercher {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Saisissez un ou plusieurs mot-clé(s) (séparés par des espaces, si un mot n'est pas voulu mettre - devant (exemple : -chez))");
 		String motCle= scanner.nextLine();
-		 int seuil ;
 		
-		 do{
-			 try {
-					System.out.println("Saisissez le seuil");
-			         seuil= scanner.nextInt();
-			    } catch (InputMismatchException e) {
-			        System.out.println("Saisie incorrecte ");
-			        seuil = -1 ;
-			    } 
-			 scanner.nextLine(); // clears the buffer
-		 }while(seuil == -1);
-			
-		 
+		System.out.println("Saisissez le seuil");
+		int seuil= scanner.nextInt();
+		
 		
 		List<DescripteurTexte> resultat  = this.controlRechercher.lancerRechercheMotCle(motCle, seuil, profil);
 		

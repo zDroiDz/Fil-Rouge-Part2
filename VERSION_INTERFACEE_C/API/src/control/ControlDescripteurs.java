@@ -70,7 +70,6 @@ public class ControlDescripteurs {
     		}
     		buff.close(); 
     		if(descripteurSon != null){
-    			descripteurSon.setSize(ligneM, colonneM);
 				this.bdSon.ajouterDescripteurSon(descripteurSon);
 			}
     		}		
@@ -225,6 +224,11 @@ public class ControlDescripteurs {
 		return monArray;
 	}
 	
-
+	public static void main(String[] args){
+		ControlDescripteurs controlDescripteurs = new ControlDescripteurs();
+		controlDescripteurs.fillBDDescripteurSon();
+		BDSon bdSon = BDSon.getInstance();
+		System.out.println(bdSon.toString());
+	}
 
 }

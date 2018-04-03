@@ -36,7 +36,7 @@ public class BDSon {
 
 	@Override
 	public String toString() {
-		String retour = ""; 
+		String retour = "aaa"; 
 		
 		for(DescripteurSon ds : this.listeDescripteursSon.values()){
 			System.out.println("\n Descripteur \n");

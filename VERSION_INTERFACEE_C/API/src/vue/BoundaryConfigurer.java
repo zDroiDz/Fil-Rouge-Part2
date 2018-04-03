@@ -1,6 +1,4 @@
-package vuetextuelle;
-
-
+package vue;
 import java.util.Scanner;
 
 import control.ControlConfigurer;

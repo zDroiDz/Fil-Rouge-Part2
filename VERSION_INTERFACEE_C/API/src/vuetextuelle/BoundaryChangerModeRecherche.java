@@ -23,7 +23,12 @@ public class BoundaryChangerModeRecherche {
 		System.out.println("2 : mode ferme");
 		choix=clavier.entrerClavierInt();
 		
-		controlChangerModeRecherche.setMode(choix);
+		if(controlChangerModeRecherche.setMode(choix)){
+			System.out.println("Changement de mode reussi");
+		}
+		else {
+			System.out.println("Probleme lors du changement de mode : mode inchange");
+		}
 
 	}
 
