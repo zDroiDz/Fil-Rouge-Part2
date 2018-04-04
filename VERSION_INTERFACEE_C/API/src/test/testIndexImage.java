@@ -7,7 +7,7 @@ public class testIndexImage {
 	
 	public static void main(String[] args) {
 		ControlIndexationImage controlIndexationImage=new ControlIndexationImage();
-		controlIndexationImage.indexImg();
+		controlIndexationImage.indexAllImgs();
 		
 		BDImage bdImage=BDImage.getInstance();
 		System.out.println(bdImage.toString());

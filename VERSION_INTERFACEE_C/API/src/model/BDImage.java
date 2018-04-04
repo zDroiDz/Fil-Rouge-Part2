@@ -24,6 +24,11 @@ public class BDImage {
     {
         this.listeDescripteurImage.put(listeDescripteurImage.size(),descripteur);
     }
+    
+    public DescripteurImage getDescripteurImage(int id)
+    {
+    	return this.listeDescripteurImage.get(id);
+    }
 
 	@Override
 	public String toString() {

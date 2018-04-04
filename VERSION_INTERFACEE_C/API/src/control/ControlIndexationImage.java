@@ -24,7 +24,7 @@ public class ControlIndexationImage {
 		
 	}
 
-	public void indexImg()
+	public void indexAllImgs()
 	{
 		/* parcours de toutes les images du répertoire */
 		File folder = new File(PATH_REPERTOIRE_CIBLE);
@@ -83,15 +83,18 @@ public class ControlIndexationImage {
 				        f.setVisible(true);
 				        affichage d'une frame de la couleur moyenne
 				        */
+						
+						String tabint[]=listOfFiles[i].getName().split("\\.");
+						
+						int id=Integer.parseInt(tabint[0]);
 				        
-				        DescripteurImage descripteurImage=new DescripteurImage(0, listOfFiles[i].getName(), listOfFiles[i].getName(), 0, tab, couleur);
+				        DescripteurImage descripteurImage=new DescripteurImage(id, listOfFiles[i].getName(), listOfFiles[i].getPath(), 0, tab, couleur);
 						bdImage.ajouterDescripteurImage(descripteurImage);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 		        }
-		        
 		        
 		      } 
 		    }

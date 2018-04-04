@@ -26,8 +26,14 @@ public class DescripteurImage extends Descripteur {
 
 	@Override
 	public String toString() {
-		return "DescripteurImage [couleurDominante=" + couleurDominante + ", seuilCouleur=" + seuilCouleur
+		return super.toString()+"DescripteurImage [couleurDominante=" + couleurDominante + ", seuilCouleur=" + seuilCouleur
 				+ ", avgColor=" + Arrays.toString(avgColor) + "]";
+	}
+	
+	
+	public int getTab(int composante)
+	{
+		return this.avgColor[composante];
 	}
 
 
