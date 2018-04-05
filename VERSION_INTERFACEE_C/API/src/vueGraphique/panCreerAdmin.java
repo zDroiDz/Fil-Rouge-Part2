@@ -1,0 +1,83 @@
+package vueGraphique;
+
+
+import java.awt.Font;
+
+import javax.swing.JPanel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JLabel;
+
+public class panCreerAdmin extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	 private Font policeTitre=new Font( "Calibri", Font.BOLD,36);
+	private JTextField prenom;
+	private JTextField nom;
+	private JTextField mdp;
+	private JTextField confMdp;
+	public panCreerAdmin() {
+		
+		JLabel lblNewLabel = new JLabel("Creer un admin ?");
+		lblNewLabel.setFont(policeTitre);
+		
+		prenom = new JTextField();
+		
+		prenom.setColumns(10);
+		
+		nom = new JTextField();
+		nom.setColumns(10);
+		
+		mdp = new JTextField();
+		mdp.setColumns(10);
+		
+		confMdp = new JTextField();
+		confMdp.setColumns(10);
+		
+		JButton creerCompte = new JButton("Creer un  compte admin");
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(46)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(confMdp, Alignment.LEADING)
+							.addComponent(mdp, Alignment.LEADING)
+							.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+								.addComponent(prenom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGap(26)
+								.addComponent(nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(258, Short.MAX_VALUE)
+					.addComponent(creerCompte)
+					.addGap(45))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(39)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(prenom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(mdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(confMdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(29)
+					.addComponent(creerCompte)
+					.addContainerGap(65, Short.MAX_VALUE))
+		);
+		setLayout(groupLayout);
+
+	}
+}
