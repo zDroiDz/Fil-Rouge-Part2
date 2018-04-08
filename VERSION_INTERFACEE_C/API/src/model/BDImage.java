@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +10,7 @@ import java.util.Map;
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import control.ControlIndexationImage;
+import sun.security.krb5.internal.crypto.Des;
 
 
 public class BDImage {
@@ -81,20 +84,79 @@ public class BDImage {
 		return triBulles(PositionScore, descripteurPosition);
 	}
 	
-	public List<DescripteurImage> rechercheCouleur(String composante,int pourcentage,int ecartMax)
+	public DescripteurImage[] rechercheCouleur(String composante,int pourcentage)
 	{
 		
-		return null;
-	}
-	
-	public static void main(String[] args) {
+		ArrayList<Float> arrayScore=new ArrayList<>();
+		ArrayList<DescripteurImage> arrayDesc=new ArrayList<>();
+		int cpt=0;
+		for(DescripteurImage d:listeDescripteurImage.values())
+		{
+			int red=d.getComposante(0);
+			int green=d.getComposante(1);
+			int blue=d.getComposante(2);
+			
+			switch (composante) {
+			case "R":
+				float percentRed=(red*100)/(red+green+blue);
+				if(percentRed>pourcentage)
+				{
+					arrayScore.add(percentRed);
+					arrayDesc.add(d);
+					cpt++;
+				}
+				break;
+			case "G":
+				float percentGreen=(green*100)/(red+green+blue);
+				if(percentGreen>pourcentage)
+				{
+					arrayScore.add(percentGreen);
+					arrayDesc.add(d);
+					cpt++;
+				}
+				break;
+			case "B":
+				float percentBlue=(blue*100)/(red+green+blue);
+				if(percentBlue>pourcentage)
+				{
+					arrayScore.add(percentBlue);
+					arrayDesc.add(d);
+					cpt++;
+				}
+				break;
+
+			default:
+				break;
+			}
+		}
+		float[] tabScores=new float[cpt];
+		DescripteurImage[] tabDesc= new DescripteurImage[cpt];
+		for(int i=0;i<arrayScore.size();i++)
+		{
+			tabScores[i]=arrayScore.get(i);
+			tabDesc[i]=arrayDesc.get(i);
+		}
+		ArrayList<DescripteurImage> reversor= new ArrayList<>();
 		
-		ControlIndexationImage controlIndexationImage= new ControlIndexationImage();
-		controlIndexationImage.indexAllImgs();
-		int tab[]= {200,156,127};
-		DescripteurImage descripteurImage=new DescripteurImage(0, "salut", "salut", 0, tab, "RED");
-		BDImage bdImage=BDImage.getInstance();
-		bdImage.compareDescripteur(descripteurImage);
+		DescripteurImage[] tabDescInv=triBulles(tabScores, tabDesc);
+		
+		for(int i=0;i<tabDescInv.length;i++)
+		{
+			reversor.add(tabDescInv[i]);
+		}
+		
+		Collections.reverse(reversor);
+		
+		
+		DescripteurImage[] tabDescOrdered=new DescripteurImage[cpt];
+		
+		for(int i=0;i<tabDescOrdered.length;i++)
+		{
+			tabDescOrdered[i]=reversor.get(i);
+			System.out.println(reversor.get(i));
+		}
+		
+		return tabDescOrdered;
 	}
 	
 	
@@ -126,4 +188,5 @@ public class BDImage {
 	    return tab2;
 	    
 	}
+	
 }
