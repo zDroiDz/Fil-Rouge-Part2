@@ -27,7 +27,6 @@ public class ControlFiles {
 		
 	}
 	
-	
 	public String recupTxtOrXMLFile()
 	{
 		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
@@ -42,7 +41,6 @@ public class ControlFiles {
 		}
 		return null;
 	}
-	
 	
 	public String recupImgFile()
 	{
@@ -63,7 +61,7 @@ public class ControlFiles {
 	public void drawAverageColor(DescripteurImage descripteurImage)
 	{
 		JFrame f = new JFrame();
-        f.getContentPane().setBackground(new Color(descripteurImage.getTab(0), descripteurImage.getTab(1), descripteurImage.getTab(2)));
+		f.getContentPane().setBackground(new Color(descripteurImage.getComposante(0), descripteurImage.getComposante(1), descripteurImage.getComposante(2)));
         f.setSize(new Dimension(300, 200));
         f.setVisible(true);
         /*affichage d'une frame de la couleur moyenne*/
@@ -71,8 +69,6 @@ public class ControlFiles {
 	
 	public void drawImage(String path)
 	{
-		 
-
 	        BufferedImage image;
 			try {
 				image = ImageIO.read(new File(path));
@@ -97,6 +93,7 @@ public class ControlFiles {
         JFrame frame = new JFrame();
         frame.setSize(width+19, height+48);
         frame.setVisible(true);
+        frame.setResizable(false);
         return frame;
     }
 	

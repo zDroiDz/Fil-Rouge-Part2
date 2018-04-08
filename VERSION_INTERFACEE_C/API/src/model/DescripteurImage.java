@@ -31,10 +31,11 @@ public class DescripteurImage extends Descripteur {
 	}
 	
 	
-	public int getTab(int composante)
+	public int getComposante(int composante)
 	{
 		return this.avgColor[composante];
 	}
+	
 
 
 }

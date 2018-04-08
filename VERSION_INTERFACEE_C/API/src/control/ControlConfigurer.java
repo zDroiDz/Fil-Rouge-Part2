@@ -14,6 +14,8 @@ import model.Moteur;
 
 public class ControlConfigurer {
 
+	private static final String PATH_FICHIER_CONFIG= "../EXTERN_FILES/configuration.config";
+
 	
 	int nbOccTxt ;
 	int nbEch ;
@@ -35,7 +37,7 @@ public class ControlConfigurer {
 	}
 	public void setNbOccTxt(int nbOccTxt) {
 		this.nbOccTxt = nbOccTxt;
-		this.updateFile();
+		//this.updateFile();
 	}
 	public int getNbEch() {
 		return nbEch;
@@ -49,27 +51,36 @@ public class ControlConfigurer {
 	}
 	public void setNbIntervalles(int nbIntervalles) {
 		this.nbIntervalles = nbIntervalles;
-		this.updateFile();
+		//this.updateFile();
 	}
 	public int getNbBitsNb() {
 		return nbBitsNb;
 	}
 	public void setNbBitsNb(int nbBitsNb) {
 		this.nbBitsNb = nbBitsNb;
-		this.updateFile();
+		//this.updateFile();
 	}
 	public int getNbBitsCouleur() {
 		return nbBitsCouleur;
 	}
 	public void setNbBitsCouleur(int nbBitsCouleur) {
 		this.nbBitsCouleur = nbBitsCouleur;
+		//this.updateFile();
+	}
+	
+	public void configureAll(int nbOccTxt, int nbEch, int nbIntervalles, int nbBitsNB, int nbBitsCouleur){
+		this.setNbOccTxt(nbOccTxt);
+		this.setNbEch(nbEch);
+		this.setNbIntervalles(nbIntervalles);
+		this.setNbBitsNb(nbBitsNB);
+		this.setNbBitsCouleur(nbBitsCouleur);
 		this.updateFile();
 	}
 	
 	public void setup(){
 		 
 		try{
-		InputStream flux=new FileInputStream("C:\\Users\\PhilPC\\Desktop\\UPSSITECH\\Projets\\FIL ROUGE 2\\DEV\\fil_rouge\\src\\configuration.config"); 
+		InputStream flux=new FileInputStream(PATH_FICHIER_CONFIG); 
 		InputStreamReader lecture=new InputStreamReader(flux);
 		BufferedReader buff=new BufferedReader(lecture);
 		String ligne;
@@ -111,7 +122,7 @@ public class ControlConfigurer {
 
 		try {
 			FileOutputStream writer;
-			writer = new FileOutputStream("C:\\Users\\PhilPC\\Desktop\\UPSSITECH\\Projets\\FIL ROUGE 2\\DEV\\fil_rouge\\src\\configuration.config");
+			writer = new FileOutputStream(PATH_FICHIER_CONFIG);
 			
 				writer.write(("<txt>\ntxt_nboccurrences: "+this.nbOccTxt+"\n</txt>\n<sound>\nechantillions: "+this.nbEch+"\nnbintervalles: "+this.nbIntervalles+"\n</sound>\n<image>\nNbBit_NB: "+this.nbBitsNb+"\nNbBit_RGB: "+this.nbBitsCouleur+"\n</image>").getBytes());
 			

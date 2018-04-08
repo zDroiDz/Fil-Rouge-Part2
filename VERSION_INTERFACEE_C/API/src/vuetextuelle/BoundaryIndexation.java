@@ -3,16 +3,16 @@ package vuetextuelle;
 
 
 
-import control.ControlIndexation;
+import control.ControlIndexationC;
 import control.ControlSIdentifier;
 
 
 public class BoundaryIndexation {
 	
-	ControlIndexation controlIndexation;
+	ControlIndexationC controlIndexation;
 	ControlSIdentifier controlSidentifier;
 	
-	public BoundaryIndexation(ControlIndexation controlIndexation, ControlSIdentifier controlSidentifier) {
+	public BoundaryIndexation(ControlIndexationC controlIndexation, ControlSIdentifier controlSidentifier) {
 		this.controlIndexation = controlIndexation;
 	}
 	
@@ -29,7 +29,7 @@ public class BoundaryIndexation {
 			motDePasse = clavier.entrerClavierString();
 			//valide = controlSidentifier.Sidentifier(identifiant, motDePasse);
 			if(!valide)
-				System.out.println("L'indentification n'a pas été faite ! Avez-vous entrer le bon couple indentifiant/mot de passse ?");
+				System.out.println("L'indentification n'a pas ï¿½tï¿½ faite ! Avez-vous entrer le bon couple indentifiant/mot de passse ?");
 		}while(!valide);
 		
 		if(valide) {
@@ -41,9 +41,9 @@ public class BoundaryIndexation {
 	public boolean lancerIndexation() {
 		boolean succes = controlIndexation.lancerIndexation();
 		if(succes)
-			System.out.println("Indexation effectuee avec succès !");
+			System.out.println("Indexation effectuee avec succï¿½s !");
 		else
-			System.out.println("Indexation échouée");
+			System.out.println("Indexation ï¿½chouï¿½e");
 		return succes;
 	}
 	

@@ -8,6 +8,7 @@ import java.awt.MenuItem;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +16,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+
+import com.sun.javafx.css.converters.PaintConverter;
+
+import control.ControlConfigurer;
+import control.ControlDescripteurs;
+import control.ControlHistorique;
+import control.ControlIndexationC;
+import control.ControlProfil;
+import control.ControlSIdentifier;
+import model.BDProfil;
+import model.Profil;
 
 public class FrameClient extends JFrame {
 
@@ -24,66 +36,156 @@ public class FrameClient extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel panContents = new JPanel();
 	private JPanel panAccueil = new JPanel();
-	private JMenuBar barreMenu ;
+
+	public static Profil profil = null ;
+	private JMenuBar barreMenuAdmin ;
+	private JMenuBar barreMenuUser ;
+	
 	CardLayout cartes ;
+	
+	private ControlConfigurer controlConfigurer = new ControlConfigurer();
+	private PanConfigurer panConfigurer = new PanConfigurer(controlConfigurer )  ;
+	private PanRechercher panRechercher = new PanRechercher() ;
+	
+	private PanSIdentifier panSIdentifier = new PanSIdentifier();
+	
+
+	private ControlHistorique controlHistorique = new ControlHistorique();
+	private PanHistorique panHistorique = null ; 
+	
+	ControlProfil controlProfil = new ControlProfil();
+	ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
+	ControlDescripteurs controlDescripteurs = new ControlDescripteurs();
+
 	
 	public FrameClient(){
 		
+		
 		this.setTitle("Moteur de recherche");
-		this.setSize(900,720);
+		this.setSize(850,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		controlProfil.FillBDProfils();
+		controlDescripteurs.fillBDDescripteurSon();
+		controlDescripteurs.fillBDDescripteurTexte();
 		this.cartes = new CardLayout();
-		this.barreMenu = new JMenuBar();
+		this.barreMenuAdmin = new JMenuBar();
+		this.barreMenuUser = new JMenuBar();
+		
+		this.controlConfigurer.setup();
+		this.panConfigurer.initialisation();
+		//
+		panRechercher.initialisation();
+		panRechercher.lancerRecherche();
 		
 		this.panContents.setLayout(cartes);
+		this.panContents.add(this.panConfigurer, "CONFIGURER" );
+		//
+		
+
+		this.panContents.add(panSIdentifier,"SIdentifier");
+		this.panContents.add(panRechercher,"Rechercher");
+		
 		
 		this.getContentPane().add(this.panContents);
-		this.setJMenuBar(this.barreMenu);
-		
-		initialisationAcceuil();
 		
 		
-		//intialisationMenuAdmin();
+		
+		JLabel texteAccueil = new JLabel("Bienvenu dans le moteur de recherche");
+		texteAccueil.setFont(new Font("Calibri", Font.BOLD, 24));
+		this.panAccueil.add(texteAccueil);
+		initialisationMenuAdmin();
 		initialisationMenuUser();
 		
-		this.setVisible(true);
+		identification();
 		
+		
+		
+	}
+	
+	private void identification() {
+		cartes.show(panContents, "SIdentifier");
+		
+		
+		
+		
+		JButton boutonOK = this.panSIdentifier.getBoutonOk();
+		
+			boutonOK.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					profil = controlSIdentifier.SIdentifier(panSIdentifier.getLogin(), panSIdentifier.getMdp());
+					
+					
+					initialisationAcceuil();
+					
+				}
+			
+				
+			});
+		
+		
+		JButton boutonCreerCompte  = this.panSIdentifier.getBoutonCreerCompte();
+		
+		boutonCreerCompte.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+	
+		this.setVisible(true);
 	}
 
 
 	private void initialisationAcceuil() {
-		// TODO Auto-generated method stub
-		JLabel texteAccueil = new JLabel("Bienvenu dans le moteur de recherche");
-		texteAccueil.setFont(new Font("Calibri", Font.BOLD, 24));
 		
-	    this.panAccueil.add(texteAccueil);
+		
+		if(profil.isAdmin()) {
+			//intialisationMenuAdmin();
+			this.setJMenuBar(this.barreMenuAdmin);
+			this.barreMenuAdmin.setVisible(true);
+		}else {
+			//initialisationMenuUser();
+			this.setJMenuBar(this.barreMenuUser);
+			this.barreMenuUser.setVisible(true);
+			
+		}
+		
+		// TODO Auto-generated method stub
+		
+		
+	   
 
 		this.panAccueil.setVisible(true);
 		
 		this.panContents.add(panAccueil, "ECRAN_ACCUEIL");
 
-	    cartes.show(panContents, "ECRAN_ACCUEIL");    
+	    cartes.show(panContents, "ECRAN_ACCUEIL");   
 
-		
 	}
 	
 	private void initialisationMenuUser(){
 		JMenuItem recherche = new JMenuItem("Recherche");
 		JMenuItem historique = new JMenuItem("Consulter historique");
-		JMenuItem deconnexion = new JMenuItem("Se déconnecter");
+		JMenuItem deconnexion = new JMenuItem("Se dï¿½connecter");
 		
 		JMenu menuRecherche = new JMenu("Recherche");
 		JMenu menuHistorique = new JMenu("Historique");
-		JMenu menuDeconnexion = new JMenu("Déconnexion");
+		JMenu menuDeconnexion = new JMenu("Dï¿½connexion");
 		
 		menuRecherche.add(recherche);
 		menuHistorique.add(historique);
 		menuDeconnexion.add(deconnexion);
 		
-		this.barreMenu.add(menuRecherche);
-		this.barreMenu.add(menuHistorique);
-		this.barreMenu.add(menuDeconnexion);
+		this.barreMenuUser.add(menuRecherche);
+		this.barreMenuUser.add(menuHistorique);
+		this.barreMenuUser.add(menuDeconnexion);
 		
 	}
 
@@ -91,14 +193,15 @@ public class FrameClient extends JFrame {
 	/**
 	 * 
 	 */
-	private void intialisationMenuAdmin() {
+	private void initialisationMenuAdmin() {
 		// TODO Auto-generated method stub
 
 		JMenuItem configuration = new JMenuItem("Configuration / Indexation");
-		JMenuItem creerAdmin = new JMenuItem("Créer Administrateur");
+		JMenuItem creerAdmin = new JMenuItem("CrÃ©er Administrateur");
 		JMenuItem recherche = new JMenuItem("Recherche");
 		JMenuItem historique = new JMenuItem("Consulter historique");
-		JMenuItem deconnexion = new JMenuItem("Se déconnecter");
+		JMenuItem deconnexion = new JMenuItem("Se dÃ©connecter");
+		//JMenuItem visualiserDescripteur = new JMenuItem("Visualiser descripteurs");
 		JCheckBoxMenuItem modeOuvert = new JCheckBoxMenuItem("Mode Ouvert");
 		JCheckBoxMenuItem modeFerme = new JCheckBoxMenuItem("Mode Ferme");
 		
@@ -106,11 +209,8 @@ public class FrameClient extends JFrame {
 		JMenu menuHistorique = new JMenu("Historique");
 		JMenu menuConfigurer = new JMenu("Configurer");
 		JMenu sousMenuChoix = new JMenu("Choix mode");
-		JMenu menuDeconnexion = new JMenu("Déconnexion");
+		JMenu menuDeconnexion = new JMenu("DÃ©connexion");
 	
-		
-		
-
 		
 		//---------MenuItems------
 		
@@ -121,7 +221,7 @@ public class FrameClient extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("test");
+				cartes.show(panContents, "Rechercher");
 			}
 			
 		});
@@ -132,17 +232,30 @@ public class FrameClient extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(panHistorique == null) {
+					panHistorique = new PanHistorique(controlHistorique, profil);
+					panHistorique.initialisation();
+					panContents.add(panHistorique, "HISTORIQUE");
+				}
 				
+				cartes.show(panContents, "HISTORIQUE");
 			}
 			
 		});
 		
-		//appel déconnexion
+		//appel dï¿½connexion
 		deconnexion.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				if(profil.isAdmin()) {
+					barreMenuAdmin.setVisible(false);
+				}else {
+					barreMenuUser.setVisible(false);
+				}
+				FrameClient.profil = null ;
+				cartes.show(panContents, "SIdentifier");
 				
 			}
 			
@@ -154,7 +267,7 @@ public class FrameClient extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				cartes.show(panContents, "CONFIGURER");
 			}
 			
 		});
@@ -169,6 +282,15 @@ public class FrameClient extends JFrame {
 			}
 			
 		});
+		
+	/*	visualiserDescripteur.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});*/
 		
 		
 		//JCheckBox
@@ -193,7 +315,7 @@ public class FrameClient extends JFrame {
 				if(modeOuvert.isSelected()){
 					modeOuvert.setSelected(false);
 				}
-				System.out.println("Mode fermé");
+				System.out.println("Mode fermï¿½");
 			}
 			
 			
@@ -203,17 +325,17 @@ public class FrameClient extends JFrame {
 		sousMenuChoix.add(modeFerme);
 		menuConfigurer.add(configuration);
 		menuConfigurer.add(creerAdmin);
+	//	menuConfigurer.add(visualiserDescripteur);
 		menuConfigurer.add(sousMenuChoix);
 		menuRecherche.add(recherche);
 		menuHistorique.add(historique);
 		menuDeconnexion.add(deconnexion);
 		
 		
-		this.barreMenu.add(menuRecherche);
-		this.barreMenu.add(menuHistorique);
-		this.barreMenu.add(menuConfigurer);
-		this.barreMenu.add(menuDeconnexion);
-		
+		this.barreMenuAdmin.add(menuRecherche);
+		this.barreMenuAdmin.add(menuHistorique);
+		this.barreMenuAdmin.add(menuConfigurer);
+		this.barreMenuAdmin.add(menuDeconnexion);
 	}
 	
 	public static void main(String[] args) {

@@ -6,7 +6,7 @@ public class DescripteurSon extends Descripteur {
 	
 	
 	public DescripteurSon() {
-		this.tab = new int[10000][10000];
+		this.tab = new int[2000][2000];
 	}
 	
 	/**

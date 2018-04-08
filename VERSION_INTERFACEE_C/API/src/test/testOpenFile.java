@@ -17,9 +17,9 @@ public class testOpenFile {
 		ControlFiles choice=new ControlFiles();
 		//System.out.println(choice.recupTxtOrXMLFile());
 		String path=choice.recupImgFile();
-		
+		System.out.println(path);
 		choice.drawImage(path);
-		choice.drawAverageColor(bdImage.getDescripteurImage(0));
+		//choice.drawAverageColor(bdImage.getDescripteurImage(0));
 		
 		
 	}
