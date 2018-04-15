@@ -1,0 +1,349 @@
+package vueGraphique;
+
+import java.awt.CardLayout;
+import java.awt.Font;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
+import com.sun.javafx.css.converters.PaintConverter;
+
+import control.ControlConfigurer;
+import control.ControlDescripteurs;
+import control.ControlHistorique;
+import control.ControlIndexationC;
+import control.ControlProfil;
+import control.ControlSIdentifier;
+import model.BDProfil;
+import model.Profil;
+
+public class FrameClient extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel panContents = new JPanel();
+	private JPanel panAccueil = new JPanel();
+
+	public static Profil profil = null ;
+	private JMenuBar barreMenuAdmin ;
+	private JMenuBar barreMenuUser ;
+	
+	CardLayout cartes ;
+	
+	private ControlConfigurer controlConfigurer = new ControlConfigurer();
+	private PanConfigurer panConfigurer = new PanConfigurer(controlConfigurer )  ;
+	private PanRechercher panRechercher = new PanRechercher() ;
+	
+	private PanSIdentifier panSIdentifier = new PanSIdentifier();
+	
+
+	private ControlHistorique controlHistorique = new ControlHistorique();
+	private PanHistorique panHistorique = null ; 
+	
+	ControlProfil controlProfil = new ControlProfil();
+	ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
+	ControlDescripteurs controlDescripteurs = new ControlDescripteurs();
+
+	
+	public FrameClient(){
+		
+		
+		this.setTitle("Moteur de recherche");
+		this.setSize(850,600);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		controlProfil.FillBDProfils();
+		controlDescripteurs.fillBDDescripteurSon();
+		controlDescripteurs.fillBDDescripteurTexte();
+		this.cartes = new CardLayout();
+		this.barreMenuAdmin = new JMenuBar();
+		this.barreMenuUser = new JMenuBar();
+		
+		this.controlConfigurer.setup();
+		this.panConfigurer.initialisation();
+		//
+
+
+		panRechercher.initialisation();
+		panRechercher.lancerRecherche();
+		
+		this.panContents.setLayout(cartes);
+		this.panContents.add(this.panConfigurer, "CONFIGURER" );
+		//
+		
+
+		this.panContents.add(panSIdentifier,"SIdentifier");
+		this.panContents.add(panRechercher,"Rechercher");
+		
+		
+		this.getContentPane().add(this.panContents);
+		this.setJMenuBar(this.barreMenuAdmin);
+		this.setJMenuBar(this.barreMenuUser);
+		
+		initialisationMenuAdmin();
+		initialisationMenuUser();
+		
+		identification();
+		
+		
+		
+	}
+	
+	private void identification() {
+		cartes.show(panContents, "SIdentifier");
+		
+		this.setVisible(true);
+		
+		
+		JButton boutonOK = this.panSIdentifier.getBoutonOk();
+		
+			boutonOK.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					profil = controlSIdentifier.SIdentifier(panSIdentifier.getLogin(), panSIdentifier.getMdp());
+					
+
+					if(profil.isAdmin()) {
+						//intialisationMenuAdmin();
+						barreMenuAdmin.setVisible(true);
+					}else {
+						//initialisationMenuUser();
+						barreMenuUser.setVisible(true);
+						
+					}
+					initialisationAcceuil();
+					
+				}
+			
+				
+			});
+		
+		
+		JButton boutonCreerCompte  = this.panSIdentifier.getBoutonCreerCompte();
+		
+		boutonCreerCompte.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+	
+		
+	}
+
+
+	private void initialisationAcceuil() {
+		
+		
+		
+		// TODO Auto-generated method stub
+		JLabel texteAccueil = new JLabel("Bienvenu dans le moteur de recherche");
+		texteAccueil.setFont(new Font("Calibri", Font.BOLD, 24));
+		
+	    this.panAccueil.add(texteAccueil);
+
+		this.panAccueil.setVisible(true);
+		
+		this.panContents.add(panAccueil, "ECRAN_ACCUEIL");
+
+	    cartes.show(panContents, "ECRAN_ACCUEIL");   
+
+		
+	}
+	
+	private void initialisationMenuUser(){
+		JMenuItem recherche = new JMenuItem("Recherche");
+		JMenuItem historique = new JMenuItem("Consulter historique");
+		JMenuItem deconnexion = new JMenuItem("Se d�connecter");
+		
+		JMenu menuRecherche = new JMenu("Recherche");
+		JMenu menuHistorique = new JMenu("Historique");
+		JMenu menuDeconnexion = new JMenu("D�connexion");
+		
+		menuRecherche.add(recherche);
+		menuHistorique.add(historique);
+		menuDeconnexion.add(deconnexion);
+		
+		this.barreMenuUser.add(menuRecherche);
+		this.barreMenuUser.add(menuHistorique);
+		this.barreMenuUser.add(menuDeconnexion);
+		this.barreMenuUser.setVisible(false);
+		
+	}
+
+
+	/**
+	 * 
+	 */
+	private void initialisationMenuAdmin() {
+		// TODO Auto-generated method stub
+
+		JMenuItem configuration = new JMenuItem("Configuration / Indexation");
+		JMenuItem creerAdmin = new JMenuItem("Créer Administrateur");
+		JMenuItem recherche = new JMenuItem("Recherche");
+		JMenuItem historique = new JMenuItem("Consulter historique");
+		JMenuItem deconnexion = new JMenuItem("Se déconnecter");
+		//JMenuItem visualiserDescripteur = new JMenuItem("Visualiser descripteurs");
+		JCheckBoxMenuItem modeOuvert = new JCheckBoxMenuItem("Mode Ouvert");
+		JCheckBoxMenuItem modeFerme = new JCheckBoxMenuItem("Mode Ferme");
+		
+		JMenu menuRecherche = new JMenu("Recherche");
+		JMenu menuHistorique = new JMenu("Historique");
+		JMenu menuConfigurer = new JMenu("Configurer");
+		JMenu sousMenuChoix = new JMenu("Choix mode");
+		JMenu menuDeconnexion = new JMenu("Déconnexion");
+	
+		
+		
+
+		
+		//---------MenuItems------
+		
+		//appel pan recherche
+
+		recherche.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cartes.show(panContents, "Rechercher");
+			}
+			
+		});
+		
+		//appel pan historique
+		historique.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(panHistorique == null) {
+					panHistorique = new PanHistorique(controlHistorique, profil);
+					panHistorique.initialisation();
+					panContents.add(panHistorique, "HISTORIQUE");
+				}
+				
+				cartes.show(panContents, "HISTORIQUE");
+			}
+			
+		});
+		
+		//appel d�connexion
+		deconnexion.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(profil.isAdmin()) {
+					barreMenuAdmin.setVisible(false);
+				}else {
+					barreMenuUser.setVisible(false);
+				}
+				FrameClient.profil = null ;
+				cartes.show(panContents, "SIdentifier");
+				
+			}
+			
+		});
+		
+		//appel pan configuration
+		configuration.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				cartes.show(panContents, "CONFIGURER");
+			}
+			
+		});
+		
+		//appel pan creer admin
+		creerAdmin.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("test");
+			}
+			
+		});
+		
+	/*	visualiserDescripteur.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});*/
+		
+		
+		//JCheckBox
+		modeOuvert.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				if(modeFerme.isSelected()){
+					modeFerme.setSelected(false);
+				}
+				System.out.println("Mode ouvert");
+			}
+			
+		});
+		
+		modeFerme.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(modeOuvert.isSelected()){
+					modeOuvert.setSelected(false);
+				}
+				System.out.println("Mode ferm�");
+			}
+			
+			
+		});
+		
+		sousMenuChoix.add(modeOuvert);
+		sousMenuChoix.add(modeFerme);
+		menuConfigurer.add(configuration);
+		menuConfigurer.add(creerAdmin);
+	//	menuConfigurer.add(visualiserDescripteur);
+		menuConfigurer.add(sousMenuChoix);
+		menuRecherche.add(recherche);
+		menuHistorique.add(historique);
+		menuDeconnexion.add(deconnexion);
+		
+		
+		this.barreMenuAdmin.add(menuRecherche);
+		this.barreMenuAdmin.add(menuHistorique);
+		this.barreMenuAdmin.add(menuConfigurer);
+		this.barreMenuAdmin.add(menuDeconnexion);
+		this.barreMenuAdmin.setVisible(false);
+	}
+	
+	public static void main(String[] args) {
+		FrameClient laframe = new FrameClient();
+	}
+
+}

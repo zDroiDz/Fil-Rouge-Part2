@@ -1,0 +1,184 @@
+package vueGraphique;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+
+import control.ControlSIdentifier;
+import model.Profil;
+
+import javax.swing.JLabel;
+
+public class PanSIdentifier extends JPanel {
+	
+	ControlSIdentifier controlSIdentifier = new ControlSIdentifier();
+	
+	private JTextField login = new JTextField();
+	private JPasswordField password = new JPasswordField() ;
+
+	/**
+	 * Create the panel.
+	 */
+	private Profil profil = null ;
+	 private Font policeTitre=new Font( "Calibri", Font.BOLD,36);
+	private JTextField prenom;
+
+	
+	private JTextField nom;
+	private JTextField mdp;
+	private JTextField confMdp;
+	private JLabel lblNewLabel_1;
+	private JButton buttonOk ;
+	private JButton creerCompte = new JButton("Creer un compte");
+	public PanSIdentifier() {
+		
+		
+		login.setColumns(10);
+		
+	
+		password.setColumns(10);
+		
+		buttonOk = new JButton("Ok");
+		
+		JLabel lblLogin = new JLabel("login");
+		
+		JLabel lblPassword = new JLabel("password");
+		
+		JLabel lblNewLabel = new JLabel("Creer un compte ?");
+		lblNewLabel.setFont(policeTitre);
+		
+		prenom = new JTextField();
+		prenom.setColumns(10);
+		
+		nom = new JTextField();
+		nom.setColumns(10);
+		
+		mdp = new JTextField();
+		mdp.setColumns(10);
+		
+		confMdp = new JTextField();
+		confMdp.setColumns(10);
+		
+		
+		
+		lblNewLabel_1 = new JLabel("Welcome to Brick'nSoft");
+		lblNewLabel.setFont(policeTitre);
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(46)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(mdp)
+									.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(prenom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addGap(36)
+										.addComponent(nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addComponent(confMdp))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(107)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblLogin)
+									.addGap(81)
+									.addComponent(lblPassword))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(login, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(35)
+									.addComponent(buttonOk, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)))
+					.addContainerGap(52, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(277, Short.MAX_VALUE)
+					.addComponent(creerCompte)
+					.addGap(60))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(143)
+					.addComponent(lblNewLabel_1)
+					.addContainerGap(198, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(30)
+					.addComponent(lblNewLabel_1)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(login, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(buttonOk))
+					.addGap(4)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblLogin)
+						.addComponent(lblPassword))
+					.addGap(18)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(prenom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(mdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(confMdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(creerCompte)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		setLayout(groupLayout);
+
+		
+		
+		
+		
+	}
+	
+	
+	
+	public JButton getBoutonOk() {
+		return this.buttonOk ;
+	}
+	
+	public JButton getBoutonCreerCompte() {
+		return this.creerCompte ;
+	}
+	
+	public String getLogin() {
+		return this.login.getText() ;
+	}
+	
+	public String getPasswordConnection() {
+		return this.password.getText();
+	}
+	
+	public Profil getProfil() {
+		return this.profil;
+	}
+	public String getPrenom() {
+		return prenom.getText();
+	}
+
+	public String getNom() {
+		return nom.getText();
+	}
+	
+	public String getPasswordCreation() {
+	  return this.mdp.getText();
+	}
+	
+	
+}

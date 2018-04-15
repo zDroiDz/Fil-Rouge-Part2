@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="control.ControlRechercher"/>
+<fullyQualifiedTypeName name="control.ControlHistorique"/>
+<fullyQualifiedTypeName name="control.ControlProfil"/>
+<fullyQualifiedTypeName name="javax.swing.JMenuItem"/>
+<fullyQualifiedTypeName name="model.BDTexte"/>
+<fullyQualifiedTypeName name="model.DescripteurTexte"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="vueGraphique.FrameClient"/>
+<fullyQualifiedTypeName name="javax.swing.JMenuBar"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="model.ThreadModeOuvert"/>
+<fullyQualifiedTypeName name="control.ControlIndexationC"/>
+<fullyQualifiedTypeName name="control.ControlDescripteurs"/>
+<fullyQualifiedTypeName name="model.ProfilUtilisateur"/>
+<fullyQualifiedTypeName name="vueGraphique.PanCreerAdmin"/>
+<fullyQualifiedTypeName name="control.ControlCreerProfil"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="model.DescripteurImage"/>
+<fullyQualifiedTypeName name="control.ControlIndexationImage"/>
+</qualifiedTypeNameHistroy>

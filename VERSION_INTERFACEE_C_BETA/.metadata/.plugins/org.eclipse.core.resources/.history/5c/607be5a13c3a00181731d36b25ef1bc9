@@ -1,0 +1,327 @@
+package vueGraphique;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.List;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+/*import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;*/
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.BoxLayout;
+import javax.swing.JFileChooser;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
+import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.JScrollPane;
+import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import control.ControlIndexationC;
+
+import java.awt.Color;
+import java.io.File;
+import java.util.ArrayList;
+
+import javax.swing.JSpinner;
+import javax.swing.JRadioButton;
+import javax.swing.JDesktopPane;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JScrollBar;
+import javax.swing.JList;
+
+public class PanRechercher extends JPanel {
+
+	//private JPanel this;
+	private JPanel panel;
+	private JPanel buttonRadion ;
+	private JPanel searchImages;
+	private JPanel   panelFichierSearcher;
+//JtextFields
+	private JTextField textField;
+	private JTextField stockerChemin;
+	 /*Boutton Uttilis� */
+	private JButton buttonRechercher;
+	private JButton openButton;
+   /*Image Import� pour rechercher */
+	private ImageIcon searchButton ;
+	//les box utilis�es pour l'organisation
+	Box boxMiseEnpageButtonRadion =Box.createVerticalBox();
+	Box boxMiseEnpageTextSeuil =Box.createHorizontalBox();
+	Box boxMiseEnpageFileSearch =Box.createHorizontalBox();
+	Box slidersImage = Box.createVerticalBox();
+    private JComboBox choixTypeRecherche ;
+    private ButtonGroup group;
+    private  JSpinner spinner;
+    private JPanel panelTexteSeuil;
+    /*importer un fichier pour lancer la recherche */
+    JFileChooser fc;
+    private JList<String> list;
+    
+    ControlIndexationC controlIndexationC = new ControlIndexationC();
+    
+    public PanRechercher(){
+  
+   }
+   public void initialisation(){
+		this.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setLayout(null);
+		fc = new JFileChooser();
+		searchButton = new ImageIcon("1.png");
+	    choixTypeRecherche = new JComboBox();
+	    buttonRechercher = new JButton();
+	    openButton=new JButton();
+	    buttonRadion = new JPanel();
+	    panelTexteSeuil = new JPanel();
+	    panelFichierSearcher=new JPanel();
+	   searchImages=new JPanel();
+		group = new ButtonGroup();
+		textField = new JTextField();
+		spinner = new JSpinner();
+		buttonRadion.setVisible(false);
+		 panelFichierSearcher.setVisible(false);
+		 panelTexteSeuil.setVisible(true);
+		 searchImages.setVisible(false);
+	    	
+    
+  }
+  	public void lancerRecherche(){
+  		
+  		
+		JRadioButton son = new JRadioButton("Son");
+		JRadioButton image= new JRadioButton("image");
+		JRadioButton text = new JRadioButton("text");
+	    
+		
+		choixTypeRecherche.setBounds(35, 36, 92, 20);
+		this.add(choixTypeRecherche);
+	
+		choixTypeRecherche.addItem("motsCles");
+		choixTypeRecherche.addItem("RechercheParFichier");
+		choixTypeRecherche.addItem("ImageParCurseur");
+	  
+		buttonRechercher.setIcon(searchButton);
+		buttonRechercher.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(son.isSelected()) {
+					controlIndexationC.compareSons(stockerChemin.getText());
+				}
+			}
+		});
+		buttonRechercher.setBounds(357, 36, 29, 20);
+		this.add(buttonRechercher);
+	
+		buttonRadion.setBounds(35, 67, 92, 155);
+		this.add(buttonRadion);
+		buttonRadion.setLayout(new BoxLayout(buttonRadion, BoxLayout.X_AXIS));
+		
+		group.add(text);
+		group.add(son);
+		group.add(image);
+		
+		boxMiseEnpageButtonRadion.add(text);
+		boxMiseEnpageButtonRadion.add(son);
+		boxMiseEnpageButtonRadion.add(image);
+		buttonRadion.add(boxMiseEnpageButtonRadion);
+		
+		panelTexteSeuil.setBounds(143, 30, 204, 62);
+	
+		boxMiseEnpageTextSeuil.createRigidArea(new Dimension(50,0));
+	
+		panelFichierSearcher.setBounds(143, 30, 204, 30);
+		boxMiseEnpageFileSearch.createRigidArea(new Dimension(50,0));  	
+		textField.setColumns(10);
+		boxMiseEnpageTextSeuil.add(textField);
+		boxMiseEnpageTextSeuil.add(spinner);
+		panelTexteSeuil.add(boxMiseEnpageTextSeuil);
+		
+		openButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 if (e.getSource() == openButton) {
+			            int returnVal = fc.showOpenDialog(PanRechercher.this);
+
+			            if (returnVal == JFileChooser.APPROVE_OPTION) {
+			                File file = fc.getSelectedFile();
+			                stockerChemin.setText(file.getAbsolutePath());
+			          
+			                 
+			            } else {
+			                
+			            }
+			            
+			    }
+				
+			}
+		});
+	    
+		this.add(panelTexteSeuil);
+		
+		
+		
+		buttonRadion.setVisible(false);
+		
+		
+		
+		panelFichierSearcher.setBounds(143, 30, 204, 30);
+        
+        stockerChemin=new JTextField();
+        stockerChemin.setColumns(10);
+        boxMiseEnpageFileSearch.add(stockerChemin);
+        boxMiseEnpageFileSearch.add(openButton);
+        panelFichierSearcher.add(boxMiseEnpageFileSearch);
+    
+        this.add(panelFichierSearcher);
+        
+        searchImages.setBounds(143, 30, 204, 150);
+        JSlider choixCouleurRouge =new JSlider(0,100,0);
+        choixCouleurRouge.setMinorTickSpacing(2);  
+        choixCouleurRouge.setMajorTickSpacing(20);  
+        choixCouleurRouge.setPaintTicks(true);  
+        choixCouleurRouge.setPaintLabels(true);  
+        slidersImage.add(choixCouleurRouge);
+        
+        slidersImage.createRigidArea(new Dimension (20,0));
+        JSlider choixCouleurBleu =new JSlider(0,100,0);
+        choixCouleurBleu.setMinorTickSpacing(2);  
+        choixCouleurBleu.setMajorTickSpacing(20);  
+        choixCouleurBleu.setPaintTicks(true);  
+        choixCouleurBleu.setPaintLabels(true);
+        slidersImage.add(choixCouleurBleu);
+        slidersImage.createRigidArea(new Dimension (20,0));
+       // choixCouleurPourcentage.setLabelTable(choixCouleurPourcentage.createStandardLabels(10));
+        JSlider choixCouleurVert =new JSlider(0,100,0);
+        choixCouleurVert.setMinorTickSpacing(2);  
+        choixCouleurVert.setMajorTickSpacing(20);  
+        choixCouleurVert.setPaintTicks(true);  
+        choixCouleurVert.setPaintLabels(true);
+        slidersImage.add(choixCouleurVert);
+        slidersImage.createRigidArea(new Dimension (20,0));
+        
+        
+        searchImages.add(slidersImage);
+        
+        this.add(searchImages);
+        
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(156, 228, 212, 154);
+        add(scrollPane);
+        
+        
+       
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        listModel.addElement("Algeria");
+        listModel.addElement("France");
+        listModel.addElement("USA");
+        listModel.addElement("India");
+        listModel.addElement("Vietnam");
+        listModel.addElement("Canada");
+        listModel.addElement("Denmark");
+        listModel.addElement("France");
+        listModel.addElement("Great Britain");
+        listModel.addElement("Japan");
+        list = new JList<>(listModel);
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        scrollPane.setViewportView(list);
+        
+        list.addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				// TODO Auto-generated method stub
+				 if(!e.getValueIsAdjusting()) {
+			            final ArrayList<String> selectedValuesList = (ArrayList<String>) list.getSelectedValuesList();
+			            System.out.println(selectedValuesList);
+			        }
+				
+			}
+		});
+        
+        
+       
+        
+        
+        choixTypeRecherche.addActionListener(new ActionListener() {
+			
+        	
+			public void actionPerformed(ActionEvent arg0) {
+				int numeroChoix=choixTypeRecherche.getSelectedIndex();
+				if(numeroChoix == 0){
+					// System.out.println(numeroChoix);
+					 buttonRadion.setVisible(false);
+					 panelTexteSeuil.setVisible(true);
+					 panelFichierSearcher.setVisible(false);
+					 searchImages.setVisible(false);
+					   
+				    
+				}
+				
+				else if(numeroChoix ==1){
+			        slidersImage.createRigidArea(new Dimension (20,0));
+			        // choixCouleurPourcentage.setLabelTable(choixCouleurPourcentage.createStandardLabels(10));
+			         JSlider choixCouleurVert =new JSlider(0,100,0);
+			         choixCouleurVert.setMinorTickSpacing(2);  
+			         choixCouleurVert.setMajorTickSpacing(20);  
+			         choixCouleurVert.setPaintTicks(true);  
+			         choixCouleurVert.setPaintLabels(true);
+			         slidersImage.add(choixCouleurVert);
+			         slidersImage.createRigidArea(new Dimension (20,0));
+			         
+			         
+			         searchImages.add(slidersImage);
+			         
+					// System.out.println(numeroChoix);
+					 buttonRadion.setVisible(true);
+					 panelFichierSearcher.setVisible(true);
+					 panelTexteSeuil.setVisible(false);
+					 searchImages.setVisible(false);
+					
+				}
+				
+				else if(numeroChoix ==2){
+					 buttonRadion.setVisible(false);
+					 panelFichierSearcher.setVisible(false);
+					 panelTexteSeuil.setVisible(false);
+					 searchImages.setVisible(true);
+				}
+			}
+		});
+        
+        
+        
+	   
+      this.setVisible(true);
+        
+	
+	}
+	
+	public void searchImgaes(){
+		choixTypeRecherche.setSelectedIndex(1);
+		
+	}
+	
+	
+	
+}
