@@ -17,6 +17,9 @@ import model.Profil;
 
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class PanSIdentifier extends JPanel {
 	
@@ -38,142 +41,113 @@ public class PanSIdentifier extends JPanel {
 	private JLabel lblNewLabel_1;
 	private JButton buttonOk = new JButton("Ok"); ;
 	private JButton creerCompte = new JButton("Creer un compte");
+	private JLabel lblIdentifiantOuMot = new JLabel("Identifiant ou mot de passe incorrect !");
+	
 	
 	/**
 	 * 
 	 */
 	public PanSIdentifier() {
+		setLayout(null);
 		
 		
-		login.setColumns(10);
-		
-	
-		password.setColumns(10);
-		
-				
-		JLabel lblLogin = new JLabel("login");
-		
-		JLabel lblPassword = new JLabel("password");
-		
-		JLabel lblNewLabel = new JLabel("Creer un compte ?");
-		lblNewLabel.setFont(policeTitre);
-		
-		
-		prenom.setColumns(10);
-		
-		
-		nom.setColumns(10);
-		
-		
-		mdp.setColumns(10);
-		
-
-		confMdp.setColumns(10);
-		
+		lblIdentifiantOuMot.setBounds(252, 136, 272, 15);
+		lblIdentifiantOuMot.setForeground(Color.RED);
+		lblIdentifiantOuMot.setVisible(false);
+		add(lblIdentifiantOuMot);
 		
 		
 		lblNewLabel_1 = new JLabel("Welcome to Brick'nSoft");
+		lblNewLabel_1.setBounds(299, 31, 163, 15);
+		add(lblNewLabel_1);
+		
+				
+		JLabel lblLogin = new JLabel("Identifiant");
+		lblLogin.setBounds(189, 78, 126, 15);
+		add(lblLogin);
+		login.setBounds(189, 105, 151, 19);
+		
+		
+		login.setColumns(10);
+		add(login);
+		
+		JLabel lblPassword = new JLabel("Mot de passe");
+		lblPassword.setBounds(420, 78, 130, 15);
+		add(lblPassword);
+		password.setBounds(420, 105, 151, 19);
+		
+	
+		password.setColumns(10);
+		add(password);
+		buttonOk.setBounds(624, 102, 53, 25);
+		add(buttonOk);
+		
+		
+		
+				
+				this.buttonOk.addActionListener(new ActionListener() {
+		
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						if(FrameClient.profil == null) {
+							lblIdentifiantOuMot.setVisible(true);
+						}
+					}
+					
+				});
+		
+	
+		
+		JLabel lblNewLabel = new JLabel("Creer un compte ?");
+		lblNewLabel.setBounds(204, 187, 783, 43);
 		lblNewLabel.setFont(policeTitre);
+		lblNewLabel.setFont(policeTitre);
+		add(lblNewLabel);
+		prenom.setBounds(387, 290, 151, 19);
+		
+		
+		prenom.setColumns(10);
+		add(prenom);
+		nom.setBounds(214, 290, 151, 19);
+		
+		
+		nom.setColumns(10);
+		add(nom);
 		
 		JLabel labelVerifMdp = new JLabel("Les champs doivent etre identique ! ");
+		labelVerifMdp.setBounds(576, 338, 395, 131);
 		labelVerifMdp.setForeground(Color.RED);
 		labelVerifMdp.setVisible(false);
+		add(labelVerifMdp);
+		mdp.setBounds(214, 353, 324, 19);
 		
-		JLabel lblIdentifiantOuMot = new JLabel("Identifiant ou mot de passe incorrect !");
-		lblIdentifiantOuMot.setForeground(Color.RED);
-		lblIdentifiantOuMot.setVisible(false);
 		
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(46)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-											.addComponent(mdp)
-											.addGroup(groupLayout.createSequentialGroup()
-												.addComponent(prenom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addGap(36)
-												.addComponent(nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-											.addComponent(confMdp))
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(labelVerifMdp, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addContainerGap(38, Short.MAX_VALUE)
-								.addComponent(lblLogin)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-									.addComponent(lblIdentifiantOuMot)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(login, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(lblPassword)
-										.addPreferredGap(ComponentPlacement.UNRELATED)
-										.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-										.addGap(18)
-										.addComponent(buttonOk, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)))
-								.addGap(93)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(143)
-							.addComponent(lblNewLabel_1))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(107)
-							.addComponent(creerCompte)))
-					.addGap(0))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(30)
-					.addComponent(lblNewLabel_1)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblLogin)
-						.addComponent(login, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblPassword, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(buttonOk, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addGap(4)
-					.addComponent(lblIdentifiantOuMot)
-					.addGap(18)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(prenom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(nom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(mdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(confMdp, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(creerCompte)
-							.addGap(45))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(110)
-							.addComponent(labelVerifMdp, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(74))))
-		);
-		setLayout(groupLayout);
+		mdp.setColumns(10);
+		add(mdp);
+		confMdp.setBounds(214, 413, 324, 19);
+		
 
+		confMdp.setColumns(10);
+		add(confMdp);
+		creerCompte.setBounds(296, 444, 151, 25);
+		add(creerCompte);
 		
-		this.buttonOk.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if(FrameClient.profil == null) {
-					lblIdentifiantOuMot.setVisible(true);
-				}
-			}
-			
-		});
+		JLabel labelPrenomCreation = new JLabel("Prenom");
+		labelPrenomCreation.setBounds(214, 262, 70, 15);
+		add(labelPrenomCreation);
+		
+		JLabel labelNomCreation = new JLabel("Nom");
+		labelNomCreation.setBounds(387, 262, 70, 15);
+		add(labelNomCreation);
+		
+		JLabel lblMotDePasseCreation = new JLabel("Mot de passe");
+		lblMotDePasseCreation.setBounds(214, 326, 114, 15);
+		add(lblMotDePasseCreation);
+		
+		JLabel lblConfirmationMotDe = new JLabel("Confirmation mot de passe");
+		lblConfirmationMotDe.setBounds(214, 386, 233, 15);
+		add(lblConfirmationMotDe);
 		
 		
 		this.creerCompte.addActionListener(new ActionListener() {
