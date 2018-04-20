@@ -1,0 +1,7 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+
+public class PanRechercheSonComparaisonFichier extends JPanel{
+
+}

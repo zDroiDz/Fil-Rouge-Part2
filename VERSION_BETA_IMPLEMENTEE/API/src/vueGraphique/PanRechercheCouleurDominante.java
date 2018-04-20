@@ -1,0 +1,282 @@
+package vueGraphique;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
+import control.ControlRechercher;
+import model.DescripteurImage;
+
+public class PanRechercheCouleurDominante extends JPanel {
+
+	private ControlRechercher controlRechercher = new ControlRechercher();
+	private Font policeTitre = new Font("Calibri", Font.BOLD, 24);
+	private Font policeParagraphe = new Font("Calibri", Font.HANGING_BASELINE, 16);
+
+	// jpanels de mise en page GLOBALE
+	private JPanel panTop = new JPanel();
+	private JPanel panLeft = new JPanel();
+	private JPanel panCenter = new JPanel();
+	// fin
+
+	// composants du panTop
+	private JLabel title = new JLabel("Recherche par couleur dominante");
+	private JLabel titleLeft = new JLabel("Paramétrisation");
+	private JLabel titleMidle = new JLabel("Resultats");
+	private JLabel titleRight = new JLabel("Visualisations");
+	// fin
+
+	// composants du panLeft
+
+	private JLabel labelChoixCouleur = new JLabel("choix de la composante :");
+	private JRadioButton jradioR = new JRadioButton("Red");
+	private JRadioButton jradioG = new JRadioButton("Green");
+	private JRadioButton jradioB = new JRadioButton("Blue");
+
+	private ButtonGroup group = new ButtonGroup();
+
+	private Box boiteVerticaleGauche = Box.createVerticalBox();
+	private Box boxTexteComposante = Box.createHorizontalBox();
+	private Box boxChoixComposante = Box.createHorizontalBox();
+	private Box boxtitleleft = Box.createHorizontalBox();
+
+	private JLabel labelChoixSeuil = new JLabel("choix du seuil");
+	private JSlider choixSeuil = new JSlider(0, 100, 0);
+	private Box boxTexteSeuil = Box.createHorizontalBox();
+	private Box boxChoixSeuil = Box.createHorizontalBox();
+	private JButton bouttonLancerRecherche = new JButton("lancer recherche");
+	private JLabel messageErreur = new JLabel("veuillez sélectionner une composante");
+
+	// fin
+
+	// composants du panCenter
+
+	private JPanel panCenterLeft = new JPanel();
+	private JPanel panCenterRight = new JPanel();
+	private JPanel panCenterBottom = new JPanel();
+
+	private JLabel labelTexteResultat = new JLabel("Résultats de la recherche :");
+
+	private JComboBox<String> comboBox = new JComboBox<>();
+
+	private JButton bouttonvisualiserImage = new JButton("Visualiser");
+	private JButton effacerRecherche = new JButton("Effacer Recherche");
+
+	private Box boxResultats = Box.createVerticalBox();
+	private Box boxVisualisation = Box.createVerticalBox();
+
+	private JLabel labelTexteAverage = new JLabel("Aperçu de la couleur moyenne :");
+	private JLabel labelTexteImage = new JLabel("Aperçu de l'image :");
+
+	private JLabel averageLabelColor = new JLabel(
+			"         \n         \n          \n         \n          \n         \n         \n         \n");
+
+	private JLabel visualisationImage = new JLabel();
+
+	// fin
+
+	// mise en page (obligé de faire ici sinon les new décalent l'initialisation
+	private Component espacement1 = Box.createRigidArea(new Dimension(0, 30));
+	private Component espacement2 = Box.createRigidArea(new Dimension(0, 30));
+	private Component espacement3 = Box.createRigidArea(new Dimension(0, 30));
+
+	private Component espacement4 = Box.createRigidArea(new Dimension(0, 50));
+	private Component espacement5 = Box.createRigidArea(new Dimension(0, 50));
+	private Component espacement6 = Box.createRigidArea(new Dimension(0, 50));
+	//
+
+	// tableau des résultats
+	private DescripteurImage[] tableauResultats;
+	//
+
+	public PanRechercheCouleurDominante() {
+
+		this.setLayout(new BorderLayout());
+
+
+		panCenter.setLayout(new BorderLayout());
+		this.setVisible(true);
+	}
+
+	public void initialisation() {
+		// TODO Auto-generated method stub
+
+
+		// partie gauche
+
+		group.add(jradioR);
+		group.add(jradioG);
+		group.add(jradioB);
+
+		boxChoixComposante.add(jradioR);
+		boxChoixComposante.add(jradioG);
+		boxChoixComposante.add(jradioB);
+
+		labelChoixCouleur.setFont(policeParagraphe);
+		boxTexteComposante.add(labelChoixCouleur);
+
+		labelChoixSeuil.setFont(policeParagraphe);
+		boxTexteSeuil.add(labelChoixSeuil);
+		boxChoixSeuil.add(choixSeuil);
+
+		choixSeuil.setMinorTickSpacing(2);
+		choixSeuil.setMajorTickSpacing(10);
+		choixSeuil.setPaintTicks(true);
+		choixSeuil.setPaintLabels(true);
+
+		messageErreur.setFont(policeTitre);
+		messageErreur.setForeground(new Color(255, 0, 0));
+		messageErreur.setVisible(false);
+
+		bouttonLancerRecherche.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (jradioB.isSelected() || jradioG.isSelected() || jradioR.isSelected()) {
+					comboBox.removeAllItems();
+					panCenter.setVisible(true);
+					panCenterRight.setVisible(false);
+					panCenterLeft.setVisible(true);
+					messageErreur.setVisible(false);
+
+					DescripteurImage[] desc = null;
+					if (jradioB.isSelected()) {
+						desc = controlRechercher.rechercheCouleur("B", choixSeuil.getValue());
+					} else if (jradioR.isSelected()) {
+						desc = controlRechercher.rechercheCouleur("R", choixSeuil.getValue());
+					} else if (jradioG.isSelected()) {
+						desc = controlRechercher.rechercheCouleur("G", choixSeuil.getValue());
+					}
+					tableauResultats = desc;
+					for (int i = 0; i < desc.length; i++) {
+						comboBox.addItem(desc[i].getNomFichier());
+					}
+
+					if (desc.length == 0) {
+						bouttonvisualiserImage.setVisible(false);
+					} else {
+						bouttonvisualiserImage.setVisible(true);
+					}
+				} else {
+					messageErreur.setVisible(true);
+				}
+
+			}
+		});
+
+		titleLeft.setFont(policeTitre);
+		boxtitleleft.add(titleLeft);
+		boiteVerticaleGauche.add(titleLeft);
+		boiteVerticaleGauche.add(titleLeft);
+		boiteVerticaleGauche.add(espacement1);
+		boiteVerticaleGauche.add(boxTexteComposante);
+		boiteVerticaleGauche.add(boxChoixComposante);
+		boiteVerticaleGauche.add(espacement2);
+		boiteVerticaleGauche.add(boxTexteSeuil);
+		boiteVerticaleGauche.add(boxChoixSeuil);
+		boiteVerticaleGauche.add(espacement3);
+		boiteVerticaleGauche.add(bouttonLancerRecherche);
+		boiteVerticaleGauche.add(messageErreur);
+
+		title.setFont(policeTitre);
+
+		bouttonvisualiserImage.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				panCenterRight.setVisible(true);
+				System.out.println(comboBox.getSelectedItem());
+				System.out.println(comboBox.getSelectedIndex());
+
+				BufferedImage myPicture;
+				try {
+					myPicture = ImageIO.read(new File(tableauResultats[comboBox.getSelectedIndex()].getPath()));
+					visualisationImage.setIcon(new ImageIcon(myPicture));
+					averageLabelColor.setOpaque(true);
+					averageLabelColor
+							.setBackground(new Color(tableauResultats[comboBox.getSelectedIndex()].getComposante(0),
+									tableauResultats[comboBox.getSelectedIndex()].getComposante(1),
+									tableauResultats[comboBox.getSelectedIndex()].getComposante(2)));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+
+		titleMidle.setFont(policeTitre);
+		boxResultats.add(titleMidle);
+		labelTexteResultat.setFont(policeParagraphe);
+		boxResultats.add(labelTexteResultat);
+		boxResultats.add(comboBox);
+		boxResultats.add(espacement4);
+		boxResultats.add(bouttonvisualiserImage);
+
+		labelTexteAverage.setFont(policeParagraphe);
+
+		titleRight.setFont(policeTitre);
+		boxVisualisation.add(titleRight);
+
+		averageLabelColor.setMinimumSize(new Dimension(100, 100));
+
+		boxVisualisation.add(labelTexteAverage);
+		boxVisualisation.add(averageLabelColor);
+		boxVisualisation.add(espacement5);
+		labelTexteImage.setFont(policeParagraphe);
+		boxVisualisation.add(labelTexteImage);
+		boxVisualisation.add(visualisationImage);
+
+		effacerRecherche.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				panCenter.setVisible(false);
+			}
+		});
+		panCenterBottom.add(effacerRecherche);
+
+		panTop.add(title);
+		panLeft.add(boiteVerticaleGauche);
+		panCenterRight.add(boxVisualisation);
+		panCenterLeft.add(boxResultats);
+		panCenter.add(panCenterLeft, BorderLayout.WEST);
+		panCenter.add(panCenterRight, BorderLayout.CENTER);
+		panCenter.add(panCenterBottom, BorderLayout.SOUTH);
+
+		this.add(panTop, BorderLayout.NORTH);
+		this.add(panCenter, BorderLayout.CENTER);
+		this.add(panLeft, BorderLayout.WEST);
+
+		panCenter.setVisible(false);
+		this.repaint();
+	}
+
+}
