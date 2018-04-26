@@ -1,0 +1,134 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import control.ControlFiles;
+import control.ControlHistorique;
+import control.ControlIndexationC;
+import control.ControlProfil;
+import model.DescripteurTexte;
+
+import javax.swing.JFileChooser;
+import javax.swing.JList;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+
+public class PanRechercheSonComparaisonFichier extends JPanel {
+	
+	private JTextField textFieldPath = new JTextField();
+	JLabel lblFIchierTexte = new JLabel("Recherche fichier : Son");
+	private final JLabel lblNomDuFichier = new JLabel("Nom du fichier");
+	JLabel lblRsultats = new JLabel("Résultats");
+	
+	ControlIndexationC controlIndexationC = new ControlIndexationC();
+    ControlProfil controlProfil = new ControlProfil();
+    ControlHistorique controlHistorique = new ControlHistorique();
+	ControlFiles controlFiles = new ControlFiles();
+	Map<String, String> resultatHistoriqueSon = new HashMap<>();
+	JTextArea textAreaResultats = new JTextArea();
+	
+	DefaultListModel<String> model = new DefaultListModel<>();
+	JList<String> list = new JList(model);
+    JScrollPane jScrollPane = new JScrollPane(list);
+
+	
+	public PanRechercheSonComparaisonFichier() {
+		setLayout(null);
+		lblFIchierTexte.setFont(new Font("Dialog", Font.BOLD, 20));
+		
+		lblFIchierTexte.setBounds(251, 46, 373, 15);
+		add(lblFIchierTexte);
+		
+		
+		textFieldPath.setBounds(251, 160, 218, 19);
+		add(textFieldPath);
+		textFieldPath.setColumns(10);
+		
+		lblNomDuFichier.setBounds(251, 134, 123, 15);
+		
+		add(lblNomDuFichier);
+		
+		
+		lblRsultats.setBounds(251, 216, 70, 15);
+		add(lblRsultats);
+		
+		JButton btnRechercher = new JButton("Rechercher");
+		btnRechercher.setBounds(571, 157, 117, 25);
+		
+		btnRechercher.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String resultatSon = controlIndexationC.compareSons(textFieldPath.getText());
+				textAreaResultats.setText(resultatSon);
+				
+				model.clear();
+				
+				resultatHistoriqueSon.clear();
+				
+				resultatHistoriqueSon.put("Corpus_fi.bin", "../EXTERN_FILES/base_files/DATA_FIL_ROUGE_DEV/TEST_SON/corpus_fi.wav");
+				
+				model.addElement("corpus_fi.wav");		
+
+				
+				if(FrameClient.profil.isHistorique()) {
+					//ajout historique
+					String[] separation = textFieldPath.getText().split("/");
+					String nom = separation[separation.length-1];
+					RequeteRecherche requeteSon = new RequeteRecherche(nom, FrameClient.profil.getIdentifiant(), "Son fichier", resultatHistoriqueSon);
+					controlProfil.addHistoricContent(FrameClient.profil,requeteSon.getStockageBD());
+					controlHistorique.FillBDHistorique(FrameClient.profil);
+				}
+			}
+			
+		});
+		
+		add(btnRechercher);
+		
+				
+		JButton btnFileChooser = new JButton("......");
+		
+		btnFileChooser.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String chemin = controlFiles.recupBinFile();
+				textFieldPath.setText(chemin);
+			}
+			
+		});
+				
+		btnFileChooser.setBounds(498, 158, 50, 22);
+		add(btnFileChooser);
+		
+	
+		
+		textAreaResultats.setBounds(87, 278, 1, 1);
+		add(textAreaResultats);
+		
+		
+		jScrollPane.setBounds(350, 500, 218, 19);
+		add(jScrollPane);
+		
+	 
+	}
+}

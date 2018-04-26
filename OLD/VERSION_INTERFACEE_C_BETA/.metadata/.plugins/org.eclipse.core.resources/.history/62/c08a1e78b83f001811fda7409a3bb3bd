@@ -1,0 +1,61 @@
+package model;
+
+import control.ControlIndexationC;
+
+import java.io.File;
+import java.util.List;
+
+import control.ControlDescripteurs;
+
+public class ThreadModeOuvert extends Thread {
+	
+	private ControlIndexationC controlIndexationC ;
+	private ControlDescripteurs controlDescripteurs ;
+	
+	//permet de remonter au dossier source du projet
+	static String nomDossierReference = new File(System.getProperty("user.dir")).getParentFile().getName()
+	
+	private static final String PATH_DOSSIER_SON = nomDossierReference +"/src/model/base_texte/base_descripteur_texte.txt" ;
+	private static final String PATH_DOSSIER_IMAGE = nomDossierReference +"/src/model/base_texte/base_descripteur_texte.txt" ;
+	private static final String PATH_DOSSIER_TEXTE = nomDossierReference+"/src/model/base_texte/base_descripteur_texte.txt" ;
+	
+	private String[] files= new File("path du répertoire").list();
+	
+	
+	private boolean condition = true ;
+	
+/*	private List<DescripteurSon> sonReference = (List<DescripteurSon>) bdSon.listeDescripteursSon.values() ;
+	private List<DescripteurTexte> texteReference = (List<DescripteurTexte>) bdTexte.listeDescripteursTexte.values();
+	private List<DescripteurImage> imageReference = (List<DescripteurImage>) bdImage.listeDescripteurImage.values();
+	*/
+	
+	public ThreadModeOuvert(ControlIndexationC controlIndexationC, ControlDescripteurs controlDescripteurs) {
+		this.controlDescripteurs = controlDescripteurs;
+		this.controlIndexationC = controlIndexationC ;
+	}
+	
+	public void arret() {
+		this.condition = false ;
+	}
+	
+	public void run() {
+		
+	 do {
+			try {
+				Thread.sleep(6000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+		 
+	 }while(condition);
+	
+		
+		
+		
+		
+	}
+}

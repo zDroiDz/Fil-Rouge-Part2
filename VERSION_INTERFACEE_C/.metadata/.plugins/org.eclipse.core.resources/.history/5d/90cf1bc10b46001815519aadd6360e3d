@@ -1,0 +1,44 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JFileChooser;
+import javax.swing.JList;
+import java.awt.Font;
+
+public class PanRechercheTexteComparaisonFichier extends JPanel {
+	
+	private JTextField textFieldPath = new JTextField();
+	JList list = new JList();
+	JLabel lblFIchierTexte = new JLabel("Recherche fichier : Textes");
+	JFileChooser jFileChooser = new JFileChooser();
+	private final JLabel lblNomDuFichier = new JLabel("Nom du fichier");
+	
+	public PanRechercheTexteComparaisonFichier() {
+		setLayout(null);
+		lblFIchierTexte.setFont(new Font("Dialog", Font.BOLD, 20));
+		
+		lblFIchierTexte.setBounds(251, 46, 373, 15);
+		add(lblFIchierTexte);
+		
+		
+		textFieldPath.setBounds(251, 160, 218, 19);
+		add(textFieldPath);
+		textFieldPath.setColumns(10);
+		
+		jFileChooser.setBounds(481, 145, 50, 50);
+		add(jFileChooser);
+		
+		list.setBounds(251, 259, 229, 203);
+		add(new JScrollPane(list));
+		lblNomDuFichier.setBounds(251, 134, 123, 15);
+		
+		add(lblNomDuFichier);
+		
+		JLabel lblRsultats = new JLabel("Résultats");
+		lblRsultats.setBounds(251, 216, 70, 15);
+		add(lblRsultats);
+	}
+}

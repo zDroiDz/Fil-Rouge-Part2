@@ -1,0 +1,86 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextField;
+
+import model.DescripteurTexte;
+
+import javax.swing.JSpinner;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+
+public class PanRechercheTexteMotCle extends JPanel{
+	
+	
+	private JTextField textFieldMotCle = new JTextField();;
+	JLabel lblRsultats = new JLabel("Résultats");
+	JList list = new JList();
+    JScrollPane jScrollPane = new JScrollPane(list);
+	
+		public PanRechercheTexteMotCle() {
+			
+		setLayout(null);
+		
+		JLabel labelTitre = new JLabel("Recherche Mot-Clé");
+		labelTitre.setFont(new Font("Dialog", Font.BOLD, 20));
+		labelTitre.setBounds(270, 55, 222, 40);
+		add(labelTitre);
+		
+		JLabel lblEntrezUnMotcl = new JLabel("Entrez un Mot-Clé");
+		lblEntrezUnMotcl.setBounds(225, 145, 162, 15);
+		add(lblEntrezUnMotcl);
+		
+		
+		textFieldMotCle.setBounds(225, 172, 298, 19);
+		add(textFieldMotCle);
+		textFieldMotCle.setColumns(10);
+		
+		JSpinner SpinnerRessemblance = new JSpinner();
+		SpinnerRessemblance.setBounds(569, 165, 45, 33);
+		add(SpinnerRessemblance);
+		
+		jScrollPane.setBounds(225, 272, 308, 290);
+		add(jScrollPane);
+		
+		lblRsultats.setBounds(225, 242, 70, 15);
+		add(lblRsultats);
+		
+		JButton btnRechercher = new JButton("Rechercher");
+		btnRechercher.setBounds(654, 169, 117, 25);
+		
+		btnRechercher.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				java.util.List<DescripteurTexte> resultatMotCle = controlRechercher.lancerRechercheMotCle((String)textFieldMotCle.getText(), (int)spinner.getValue(), FrameClient.profil);
+				System.out.println((int)spinner.getValue());
+				Map<String, String> resultatHistoriqueMotCle = new HashMap<>();
+				
+				listModel.clear();
+				for(DescripteurTexte d : resultatMotCle){
+					listModel.addElement(d.getNomFichier());
+					resultatHistoriqueMotCle.put(d.getNomFichier(), d.getPath());
+				}
+				//ajout historique
+				RequeteRecherche requeteMotCle = new RequeteRecherche(textFieldMotCle.getText(), FrameClient.profil.getIdentifiant(), "Mot cle", resultatHistoriqueMotCle);
+				controlProfil.addHistoricContent(FrameClient.profil,requeteMotCle.getStockageBD());
+				controlHistorique.FillBDHistorique(FrameClient.profil);
+				
+			}
+		});
+		
+		add(btnRechercher);
+		
+		
+	}
+}

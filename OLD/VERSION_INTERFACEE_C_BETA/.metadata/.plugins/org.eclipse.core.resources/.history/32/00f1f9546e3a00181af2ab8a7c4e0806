@@ -1,0 +1,103 @@
+package control;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.BDTexte;
+import model.DescripteurTexte;
+
+/*
+ * liste des commandes :
+ * ./apiJAVA indexation => lance l'indexation
+ * 
+ * ./apiJAVA comparaison texte $chemin => lance la comparaison
+ * ./apiJAVA comparaison son $chemin => lance la comparaison
+ * ./apiJAVA comparaison image $chemin => lance la comparaison
+ * 
+ */
+
+public class ControlIndexationC {
+	
+	BDTexte bdTexte = BDTexte.getInstance();
+
+	
+	public boolean lancerIndexation() {
+		String s;
+        Process p;
+        try {
+        	   Process proc = Runtime.getRuntime().exec("./apiJAVA indexation");                        
+        	   proc.waitFor();
+        	   return true;
+        } catch (Exception e) {
+        	
+        }
+        
+        return false;
+	}
+	
+	public String getId(String input) {
+		String separation[] = input.split(" ");
+		return separation[2];
+	}
+	
+	public List<String> compareTextes(String path)
+	{
+		
+		List<String> resultat = new ArrayList<>();
+		String cmd="./apiJAVA comparaison texte ";
+		cmd+=path;
+		
+		 String s;
+	     Process p;
+	     try {
+	            p = Runtime.getRuntime().exec(cmd);
+	            BufferedReader br = new BufferedReader(
+	                new InputStreamReader(p.getInputStream()));
+	            while ((s = br.readLine()) != null) {
+	            	String mots[] = s.split(" ");
+	            	//
+	            	resultat.add(bdTexte.getDescripteurTexte(Integer.parseInt(this.getId(s))-1));
+	            	
+	            	System.out.println(s);
+	            }
+	                
+	            p.waitFor();
+	            System.out.println ("exit: " + p.exitValue());
+	            p.destroy();
+	        } catch (Exception e) {}                                                                                                                                           
+		
+	}
+	
+	public String compareSons(String path)
+	{
+		String cmd="./apiJAVA comparaison son ";
+		cmd+=path;
+		 String resultat = "" ;
+		 String s;
+	     Process p;
+	     try {
+	            p = Runtime.getRuntime().exec(cmd);
+	            BufferedReader br = new BufferedReader(
+	                new InputStreamReader(p.getInputStream()));
+	            while ((s = br.readLine()) != null) {
+	                //System.out.println(s);
+	                resultat += s ;
+	                resultat += "\n";
+	            }
+
+	            p.waitFor();
+	            System.out.println ("exit: " + p.exitValue());
+	            p.destroy();
+	        } catch (Exception e) {}   
+	     
+	     return resultat ;
+	}
+	
+	public void compareImages(String path)
+	{
+		/* je sais pas comment vous avez géré l'affichage dans le c*/
+	}
+}

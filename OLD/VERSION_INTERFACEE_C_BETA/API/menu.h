@@ -1,0 +1,11 @@
+int lire(char *chaine, int longueur);
+void viderBuffer();
+void menu_base();
+void menu_administrateur() ;
+void menu_utilisateur();
+void menu_comparaison();
+void menu_recherche_motcle();
+void menu_configuration();
+void menu_visualiserdesc();
+void menu_configuration_son();
+void menu_configuration_image();

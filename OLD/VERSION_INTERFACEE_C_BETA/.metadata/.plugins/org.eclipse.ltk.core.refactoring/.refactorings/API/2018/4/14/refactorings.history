@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;control.ControlIndexation&apos; to &apos;ControlIndexationC&apos;&#x0A;- Original project: &apos;API&apos;&#x0A;- Original element: &apos;control.ControlIndexation&apos;&#x0A;- Renamed element: &apos;control.ControlIndexationC&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ControlIndexation&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;control{ControlIndexation.java[ControlIndexation" matchStrategy="1" name="ControlIndexationC" qualified="false" references="true" similarDeclarations="false" stamp="1522927011516" textual="false" version="1.0"/>
+</session>

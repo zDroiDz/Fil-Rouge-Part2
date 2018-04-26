@@ -1,0 +1,9 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+
+public class PanRechercheTexteMotCle extends JPanel{
+	public PanRechercheTexteMotCle() {
+	}
+
+}

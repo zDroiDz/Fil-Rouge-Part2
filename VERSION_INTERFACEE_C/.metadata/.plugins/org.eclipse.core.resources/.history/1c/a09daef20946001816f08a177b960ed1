@@ -1,0 +1,33 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JFileChooser;
+import javax.swing.JList;
+
+public class PanRechercheTexteComparaisonFichier extends JPanel {
+	
+	private JTextField textFieldPath = new JTextField();
+	JList list = new JList();
+	JLabel lblFIchierTexte = new JLabel("Recherche fichier : Textes");
+	JFileChooser jFileChooser = new JFileChooser();
+	
+	public PanRechercheTexteComparaisonFichier() {
+		setLayout(null);
+		
+		lblFIchierTexte.setBounds(330, 94, 70, 15);
+		add(lblFIchierTexte);
+		
+		
+		textFieldPath.setBounds(204, 92, 114, 19);
+		add(textFieldPath);
+		textFieldPath.setColumns(10);
+		
+		jFileChooser.setBounds(225, 92, 50, 50);
+		add(jFileChooser);
+		
+		list.setBounds(213, 215, 197, 120);
+		add(list);
+	}
+}

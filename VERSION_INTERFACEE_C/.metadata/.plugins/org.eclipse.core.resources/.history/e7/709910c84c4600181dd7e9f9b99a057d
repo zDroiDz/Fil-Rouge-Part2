@@ -1,0 +1,355 @@
+package vueGraphique;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+
+import control.ControlFiles;
+import control.ControlIndexationImage;
+import control.ControlRechercher;
+import model.DescripteurImage;
+
+public class PanRechercheComparaisonImage extends JPanel{
+	
+	private ControlRechercher controlRechercher = new ControlRechercher();
+	private ControlFiles controlFiles= new ControlFiles();
+	private ControlIndexationImage controlIndexationImage= new ControlIndexationImage();
+	private Font policeTitre = new Font("Calibri", Font.BOLD, 24);
+	private Font policeParagraphe = new Font("Calibri", Font.HANGING_BASELINE, 16);
+
+	// jpanels de mise en page GLOBALE
+	private JPanel panTop = new JPanel();
+	private JPanel panLeft = new JPanel();
+	private JPanel panCenter = new JPanel();
+	// fin
+
+	// composants du panTop
+	private JLabel title = new JLabel("Recherche par couleur dominante");
+	private JLabel titleLeft = new JLabel("Param�trisation");
+	private JLabel titleMidle = new JLabel("R�sultats");
+	private JLabel titleRight = new JLabel("Visualisations");
+	private JLabel titleImgDonne=new JLabel("Votre Image");
+	// fin
+
+	// composants du panLeft
+
+	private JLabel labelChoixFichier = new JLabel("veuillez choisir un fichier :");
+	private JTextField textfieldPathFichier= new JTextField();
+	private JButton bouttonChoixFichier=new JButton("s�lectionner");
+	
+	
+
+	private Box boiteVerticaleGauche = Box.createVerticalBox();
+	private Box boxTexteComposante = Box.createHorizontalBox();
+	private Box boxChoixFichier = Box.createHorizontalBox();
+	private Box boxtitleleft = Box.createHorizontalBox();
+
+	private JLabel labelChoixSeuil = new JLabel("�cart de ressemblance maximal (%)");
+	private JSlider choixSeuil = new JSlider(0, 100, 0);
+	private Box boxTexteSeuil = Box.createHorizontalBox();
+	private Box boxChoixSeuil = Box.createHorizontalBox();
+	private JButton bouttonLancerRecherche = new JButton("lancer recherche");
+	private JLabel messageErreur = new JLabel("veuillez s�lectionner un fichier");
+
+	// fin
+
+	// composants du panCenter
+
+	private JPanel panCenterLeft = new JPanel();
+	private JPanel panCenterCenter=new JPanel();
+	private JPanel panCenterRight = new JPanel();
+	private JPanel panCenterBottom = new JPanel();
+	
+	
+	private JLabel labelTexteImageDonnee=new JLabel("votre image :");
+	private JLabel labelTexteAverageImageDonnee=new JLabel("Aper�u de la couleur moyenne :");
+	
+	private JLabel averageLabelColorImageDonnee = new JLabel(
+			"         \n         \n          \n         \n          \n         \n         \n         \n");
+
+	private JLabel visualisationImageDonnee = new JLabel();
+	
+	private Box boxImageDonnee=Box.createVerticalBox();
+
+	private JLabel labelTexteResultat = new JLabel("R�sultats de la recherche :");
+
+	private JComboBox<String> comboBox = new JComboBox<>();
+
+	private JButton bouttonvisualiserImage = new JButton("Visualiser");
+	private JButton effacerRecherche = new JButton("Effacer Recherche");
+
+	private Box boxResultats = Box.createVerticalBox();
+	private Box boxVisualisation = Box.createVerticalBox();
+
+	private JLabel labelTexteAverage = new JLabel("Aper�u de la couleur moyenne :");
+	private JLabel labelTexteImage = new JLabel("Aper�u de l'image :");
+
+	private JLabel averageLabelColor = new JLabel(
+			"         \n         \n          \n         \n          \n         \n         \n         \n");
+
+	private JLabel visualisationImage = new JLabel();
+
+	// fin
+
+	// mise en page (oblig� de faire ici sinon les new d�calent l'initialisation
+	private Component espacement1 = Box.createRigidArea(new Dimension(0, 30));
+	private Component espacement2 = Box.createRigidArea(new Dimension(0, 30));
+	private Component espacement3 = Box.createRigidArea(new Dimension(0, 30));
+
+	private Component espacement4 = Box.createRigidArea(new Dimension(0, 50));
+	private Component espacement5 = Box.createRigidArea(new Dimension(0, 50));
+	private Component espacement6 = Box.createRigidArea(new Dimension(0, 50));
+	//
+
+	// tableau des r�sultats
+	private DescripteurImage[] tableauResultats;
+	//
+
+	public PanRechercheComparaisonImage() {
+
+		this.setLayout(new BorderLayout());
+
+
+		panCenter.setLayout(new BorderLayout());
+		this.setVisible(true);
+		
+		bouttonChoixFichier.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						String chemin=controlFiles.recupImgFile();
+						textfieldPathFichier.setText(chemin);
+					}
+				});
+	}
+
+	public void initialisation() {
+		// TODO Auto-generated method stub
+
+		this.setMinimumSize(new Dimension(1000, 1000));
+		// partie gauche
+
+		labelChoixFichier.setFont(policeParagraphe);
+		boxTexteComposante.add(labelChoixFichier);
+		textfieldPathFichier.setText("");
+		textfieldPathFichier.setEditable(false);
+		boxChoixFichier.add(textfieldPathFichier);
+		boxChoixFichier.add(bouttonChoixFichier);
+		
+		
+
+		labelChoixSeuil.setFont(policeParagraphe);
+		boxTexteSeuil.add(labelChoixSeuil);
+		boxChoixSeuil.add(choixSeuil);
+
+		choixSeuil.setMinorTickSpacing(2);
+		choixSeuil.setMajorTickSpacing(10);
+		choixSeuil.setPaintTicks(true);
+		choixSeuil.setPaintLabels(true);
+
+		messageErreur.setFont(policeTitre);
+		messageErreur.setForeground(new Color(255, 0, 0));
+		messageErreur.setVisible(false);
+
+		bouttonLancerRecherche.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Map<String, String> resultatHistoriqueImage = new HashMap<>();
+
+				
+				if(textfieldPathFichier.getText().equals(""))
+				{
+					messageErreur.setVisible(true);
+				}
+				else
+				{
+					
+					
+					comboBox.removeAllItems();
+					panCenter.setVisible(true);
+					panCenterRight.setVisible(false);
+					panCenterLeft.setVisible(true);
+					messageErreur.setVisible(false);
+					DescripteurImage ledescTemp=controlIndexationImage.indexImage(textfieldPathFichier.getText());
+					
+					BufferedImage myPicture;
+					try {
+						myPicture = ImageIO.read(new File(ledescTemp.getPath()));
+						visualisationImageDonnee.setIcon(new ImageIcon(myPicture));
+						averageLabelColorImageDonnee.setOpaque(true);
+						averageLabelColorImageDonnee
+								.setBackground(new Color(ledescTemp.getComposante(0),ledescTemp.getComposante(1),ledescTemp.getComposante(2)));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					DescripteurImage[] temp=controlRechercher.compareDescripteurImage(ledescTemp,choixSeuil.getValue());
+					tableauResultats=new DescripteurImage[temp.length];
+					int cpt=0;
+					for(int i=0;i<temp.length;i++)
+					{
+						if(temp[i]!=null)
+						{
+							tableauResultats[cpt]=temp[i];
+							cpt++;
+						}
+					}
+					
+					if(tableauResultats.length==0)
+					{
+						bouttonvisualiserImage.setVisible(false);
+					}
+					else
+					{
+						for (int i = 0; i < tableauResultats.length; i++) {
+							if(tableauResultats[i]!=null)
+							{
+								comboBox.addItem(tableauResultats[i].getNomFichier());
+							}							
+						}
+					}
+					
+
+					//ajout historique
+					String[] separation = textfieldPathFichier.getText().split("/");
+					String nom = separation[separation.length-1];
+					RequeteRecherche requeteImage = new RequeteRecherche(nom, FrameClient.profil.getIdentifiant(), "Image fichier", resultatHistoriqueImage);
+					controlProfil.addHistoricContent(FrameClient.profil,requeteImage.getStockageBD());
+					controlHistorique.FillBDHistorique(FrameClient.profil);
+					//fin historique
+					
+				}
+				
+				repaint();
+				
+			}
+		});
+
+		titleLeft.setFont(policeTitre);
+		boxtitleleft.add(titleLeft);
+		boiteVerticaleGauche.add(titleLeft);
+		boiteVerticaleGauche.add(titleLeft);
+		boiteVerticaleGauche.add(espacement1);
+		boiteVerticaleGauche.add(boxTexteComposante);
+		boiteVerticaleGauche.add(boxChoixFichier);
+		boiteVerticaleGauche.add(espacement2);
+		boiteVerticaleGauche.add(boxTexteSeuil);
+		boiteVerticaleGauche.add(boxChoixSeuil);
+		boiteVerticaleGauche.add(espacement3);
+		boiteVerticaleGauche.add(bouttonLancerRecherche);
+		boiteVerticaleGauche.add(messageErreur);
+
+		title.setFont(policeTitre);
+
+		bouttonvisualiserImage.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				panCenterRight.setVisible(true);
+				System.out.println(comboBox.getSelectedItem());
+				System.out.println(comboBox.getSelectedIndex());
+
+				BufferedImage myPicture;
+				try {
+					System.out.println(tableauResultats[comboBox.getSelectedIndex()].getPath());
+					myPicture = ImageIO.read(new File(tableauResultats[comboBox.getSelectedIndex()].getPath()));
+					visualisationImage.setIcon(new ImageIcon(myPicture));
+					averageLabelColor.setOpaque(true);
+					averageLabelColor
+							.setBackground(new Color(tableauResultats[comboBox.getSelectedIndex()].getComposante(0),
+									tableauResultats[comboBox.getSelectedIndex()].getComposante(1),
+									tableauResultats[comboBox.getSelectedIndex()].getComposante(2)));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				repaint();
+			}
+		});
+
+		titleMidle.setFont(policeTitre);
+		boxResultats.add(titleMidle);
+		labelTexteResultat.setFont(policeParagraphe);
+		boxResultats.add(labelTexteResultat);
+		boxResultats.add(comboBox);
+		boxResultats.add(espacement4);
+		boxResultats.add(bouttonvisualiserImage);
+
+		labelTexteAverage.setFont(policeParagraphe);
+
+		titleRight.setFont(policeTitre);
+		boxVisualisation.add(titleRight);
+
+		averageLabelColor.setMinimumSize(new Dimension(100, 100));
+
+		boxVisualisation.add(labelTexteAverage);
+		boxVisualisation.add(averageLabelColor);
+		boxVisualisation.add(espacement5);
+		labelTexteImage.setFont(policeParagraphe);
+		boxVisualisation.add(labelTexteImage);
+		boxVisualisation.add(visualisationImage);
+		
+		titleImgDonne.setFont(policeTitre);
+		
+		boxImageDonnee.add(titleImgDonne);
+		boxImageDonnee.add(labelTexteImageDonnee);
+		boxImageDonnee.add(visualisationImageDonnee);
+		boxImageDonnee.add(espacement6);
+		boxImageDonnee.add(labelTexteAverageImageDonnee);
+		boxImageDonnee.add(averageLabelColorImageDonnee);
+
+		effacerRecherche.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				panCenter.setVisible(false);
+			}
+		});
+		panCenterBottom.add(effacerRecherche);
+
+		panTop.add(title);
+		panLeft.add(boiteVerticaleGauche);
+		panCenterCenter.add(boxImageDonnee);
+		panCenterRight.add(boxVisualisation);
+		panCenterLeft.add(boxResultats);
+		panCenter.add(panCenterLeft, BorderLayout.CENTER);
+		panCenter.add(panCenterCenter, BorderLayout.WEST);
+		panCenter.add(panCenterRight, BorderLayout.EAST);
+		panCenter.add(panCenterBottom, BorderLayout.SOUTH);
+
+		this.add(panTop, BorderLayout.NORTH);
+		this.add(panCenter, BorderLayout.CENTER);
+		this.add(panLeft, BorderLayout.WEST);
+
+		panCenter.setVisible(false);
+		this.repaint();
+	}
+
+}

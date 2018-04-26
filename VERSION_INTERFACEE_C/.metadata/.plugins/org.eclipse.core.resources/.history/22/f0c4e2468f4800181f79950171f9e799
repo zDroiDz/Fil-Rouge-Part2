@@ -1,0 +1,4 @@
+<profil> <identifiant> admin.admin </identifiant> <password> admin </password> <type> administrateur </type> <historique>  </historique> </profil> ;<profil> <identifiant> p.julien </identifiant> <password> p </password> <type> utilisateur </type> <historique> </historique> </profil>
+<profil> <identifiant> nom.pre </identifiant> <password> a </password> <type> utilisateur </type> <historique> </historique> </profil>
+<profil> <identifiant> zez.bob </identifiant> <password> zzz </password> <type> utilisateur </type> <historique> </historique> </profil>
+<profil> <identifiant> testeeeee.tastaaaaa </identifiant> <password> aze </password> <type> utilisateur </type> <historique> </historique> </profil>

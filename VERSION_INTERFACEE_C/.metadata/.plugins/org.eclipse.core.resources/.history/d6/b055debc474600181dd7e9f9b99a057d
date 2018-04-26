@@ -1,0 +1,89 @@
+package vueGraphique;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import control.ControlIndexationC;
+import model.DescripteurTexte;
+
+import javax.swing.JFileChooser;
+import javax.swing.JList;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+
+public class PanRechercheTexteComparaisonFichier extends JPanel {
+	
+	private JTextField textFieldPath = new JTextField();
+	DefaultListModel<String> model = new DefaultListModel<>();
+	JList<String> list = new JList(model);
+	JLabel lblFIchierTexte = new JLabel("Recherche fichier : Textes");
+	JFileChooser jFileChooser = new JFileChooser();
+	private final JLabel lblNomDuFichier = new JLabel("Nom du fichier");
+	JScrollPane jScrollPane = new JScrollPane(list);
+	
+	ControlIndexationC controlIndexationC = new ControlIndexationC();
+	
+	public PanRechercheTexteComparaisonFichier() {
+		setLayout(null);
+		lblFIchierTexte.setFont(new Font("Dialog", Font.BOLD, 20));
+		
+		lblFIchierTexte.setBounds(251, 46, 373, 15);
+		add(lblFIchierTexte);
+		
+		
+		textFieldPath.setBounds(251, 160, 218, 19);
+		add(textFieldPath);
+		textFieldPath.setColumns(10);
+		
+		jFileChooser.setBounds(481, 145, 50, 50);
+		add(jFileChooser);
+		
+		jScrollPane.setBounds(251, 259, 229, 203);
+		add(jScrollPane);
+		
+		lblNomDuFichier.setBounds(251, 134, 123, 15);
+		
+		add(lblNomDuFichier);
+		
+		JLabel lblRsultats = new JLabel("Résultats");
+		lblRsultats.setBounds(251, 216, 70, 15);
+		add(lblRsultats);
+		
+		JButton btnRechercher = new JButton("Rechercher");
+		btnRechercher.setBounds(567, 157, 117, 25);
+		
+		btnRechercher.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				java.util.List <DescripteurTexte> resultatTexte = controlIndexationC.compareTextes(stockerChemin.getText(), 0);
+				model.clear();
+				
+				Map<String, String> resultatHistoriqueTexte = new HashMap<>();
+				
+				for(DescripteurTexte d : resultatTexte) {
+					model.addElement(d.getNomFichier());
+					resultatHistoriqueTexte.put(d.getNomFichier(), d.getPath());
+				}
+				//ajout historique
+				String[] separation = stockerChemin.getText().split("/");
+				String nom = separation[separation.length-1];
+				RequeteRecherche requeteTexte = new RequeteRecherche(nom, FrameClient.profil.getIdentifiant(), "Texte fichier", resultatHistoriqueTexte);
+				controlProfil.addHistoricContent(FrameClient.profil,requeteTexte.getStockageBD());
+				controlHistorique.FillBDHistorique(FrameClient.profil);
+			}
+			
+		});
+		
+		add(btnRechercher);
+	}
+}
